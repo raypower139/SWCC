@@ -1,6 +1,6 @@
-package ie.wit.api
+package ie.swcc.api
 
-import ie.wit.models.StravaModel
+import ie.swcc.models.StravaModel
 
 
 class StravaWrapper {

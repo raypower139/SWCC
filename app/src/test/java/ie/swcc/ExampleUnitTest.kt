@@ -1,4 +1,4 @@
-package ie.wit
+package ie.swcc
 
 import org.junit.Test
 

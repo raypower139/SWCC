@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1078760847301",
+    "firebase_url": "https://swcc-acb37.firebaseio.com",
+    "project_id": "swcc-acb37",
+    "storage_bucket": "swcc-acb37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078760847301:android:ffd5bd1a98c389b80ebdac",
+        "android_client_info": {
+          "package_name": "ie.swcc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078760847301-bu9p442fk45oppiibntb1gkeqsvi52ga.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ie.swcc",
+            "certificate_hash": "e4b5a53ad7476115158af0f1b1400ad54a8cd5a8"
+          }
+        },
+        {
+          "client_id": "1078760847301-15abf5tr1seic3env8dpm2fh9oibhi0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqKH2MEV3sFnXMTZ9MRHRI_Udw5vc2G2o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078760847301-15abf5tr1seic3env8dpm2fh9oibhi0g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

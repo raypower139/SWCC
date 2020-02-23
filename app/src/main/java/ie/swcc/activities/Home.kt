@@ -1,4 +1,4 @@
-package ie.wit.activities
+package ie.swcc.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,10 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
-import ie.wit.R
-import ie.wit.fragments.ChatFragment
-import ie.wit.fragments.NewsFragment
-import ie.wit.fragments.StravaFragment
+import ie.swcc.R
+import ie.swcc.fragments.ChatFragment
+import ie.swcc.fragments.NewsFragment
+import ie.swcc.fragments.StravaFragment
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.home.*
 import org.jetbrains.anko.toast

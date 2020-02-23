@@ -1,11 +1,11 @@
-package ie.wit.adapters
+package ie.swcc.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ie.wit.R
-import ie.wit.models.StravaModel
+import ie.swcc.R
+import ie.swcc.models.StravaModel
 import kotlinx.android.synthetic.main.card_strava_member.view.*
 
 class StravaAdapter constructor(private var members: List<StravaModel>)

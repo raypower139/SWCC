@@ -1,4 +1,4 @@
-package ie.wit.models;
+package ie.swcc.models;
 
 interface StravaStore {
     fun findAll() : List<StravaModel?>

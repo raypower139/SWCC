@@ -1,4 +1,4 @@
-package ie.wit.fragments
+package ie.swcc.fragments
 
 
 import android.os.Bundle
@@ -9,11 +9,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 
-import ie.wit.R
-import ie.wit.adapters.StravaAdapter
-import ie.wit.main.SWCCApp
-import ie.wit.models.StravaModel
-import ie.wit.utils.*
+import ie.swcc.R
+import ie.swcc.adapters.StravaAdapter
+import ie.swcc.main.SWCCApp
+import ie.swcc.models.StravaModel
+import ie.swcc.utils.*
 import kotlinx.android.synthetic.main.fragment_report.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info

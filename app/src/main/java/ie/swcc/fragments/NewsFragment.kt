@@ -1,4 +1,4 @@
-package ie.wit.fragments
+package ie.swcc.fragments
 
 
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import ie.wit.R
+import ie.swcc.R
 
 
 class NewsFragment : Fragment() {

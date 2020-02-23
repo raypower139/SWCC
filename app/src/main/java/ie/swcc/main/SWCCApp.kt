@@ -1,8 +1,8 @@
-package ie.wit.main
+package ie.swcc.main
 
 import android.app.Application
-import ie.wit.api.StravaService
-import ie.wit.models.StravaMemStore
+import ie.swcc.api.StravaService
+import ie.swcc.models.StravaMemStore
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
