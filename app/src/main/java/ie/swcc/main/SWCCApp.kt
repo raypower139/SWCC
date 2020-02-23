@@ -1,6 +1,7 @@
 package ie.swcc.main
 
 import android.app.Application
+import com.google.firebase.auth.FirebaseAuth
 import ie.swcc.api.StravaService
 import ie.swcc.models.StravaMemStore
 import org.jetbrains.anko.AnkoLogger
@@ -10,6 +11,11 @@ class SWCCApp : Application(),AnkoLogger {
 
     lateinit var stravaStore: StravaMemStore
     lateinit var stravaService: StravaService
+
+    // [START declare_auth]
+    lateinit var auth: FirebaseAuth
+    // [END declare_auth]
+
 
     override fun onCreate() {
         super.onCreate()

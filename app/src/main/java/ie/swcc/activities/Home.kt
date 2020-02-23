@@ -14,20 +14,24 @@ import ie.swcc.R
 import ie.swcc.fragments.ChatFragment
 import ie.swcc.fragments.NewsFragment
 import ie.swcc.fragments.StravaFragment
+import ie.swcc.main.SWCCApp
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.home.*
 import org.jetbrains.anko.toast
+import org.jetbrains.anko.startActivity
 
 class Home : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var ft: FragmentTransaction
+    lateinit var app: SWCCApp
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
         setSupportActionBar(toolbar)
-
+        app = application as SWCCApp
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action",
                 Snackbar.LENGTH_LONG).setAction("Action", null).show()
@@ -56,6 +60,7 @@ class Home : AppCompatActivity(),
             R.id.nav_chat -> navigateTo(ChatFragment.newInstance())
             R.id.nav_report -> navigateTo(StravaFragment.newInstance())
             R.id.nav_news -> navigateTo(NewsFragment.newInstance())
+            R.id.nav_sign_out -> signOut()
 
             else -> toast("You Selected Something Else")
         }
@@ -90,5 +95,12 @@ class Home : AppCompatActivity(),
             .replace(R.id.homeFrame, fragment)
             .addToBackStack(null)
             .commit()
+    }
+
+    private fun signOut()
+    {
+        app.auth.signOut()
+        startActivity<Login>()
+        finish()
     }
 }
