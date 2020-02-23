@@ -17,6 +17,7 @@ import ie.swcc.fragments.StravaFragment
 import ie.swcc.main.SWCCApp
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.home.*
+import kotlinx.android.synthetic.main.nav_header_home.view.*
 import org.jetbrains.anko.toast
 import org.jetbrains.anko.startActivity
 
@@ -38,6 +39,8 @@ class Home : AppCompatActivity(),
         }
 
         navView.setNavigationItemSelectedListener(this)
+        navView.getHeaderView(0).nav_header_email.text = app.auth.currentUser?.email
+
 
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar,
