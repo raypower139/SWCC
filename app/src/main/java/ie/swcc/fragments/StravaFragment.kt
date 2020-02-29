@@ -14,7 +14,7 @@ import ie.swcc.adapters.StravaAdapter
 import ie.swcc.main.SWCCApp
 import ie.swcc.models.StravaModel
 import ie.swcc.utils.*
-import kotlinx.android.synthetic.main.fragment_report.view.*
+import kotlinx.android.synthetic.main.fragment_strava_report.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import retrofit2.Call
@@ -36,7 +36,7 @@ class StravaFragment : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var root = inflater.inflate(R.layout.fragment_report, container, false)
+        var root = inflater.inflate(R.layout.fragment_strava_report, container, false)
         activity?.title = getString(R.string.action_report)
         loader = createLoader(activity!!)
 
@@ -70,7 +70,7 @@ class StravaFragment : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
         getAllMembers()
     }
     fun getAllMembers() {
-        showLoader(loader, "Downloading Donations List")
+        showLoader(loader, "Downloading Strava List")
         var callGetAll = app.stravaService.getall()
         callGetAll.enqueue(this)
 

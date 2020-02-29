@@ -33,7 +33,7 @@ class StravaAdapter constructor(private var members: List<StravaModel>)
         fun bind(member: StravaModel) {
             itemView.paymentamount.text = member.firstname.toString()
             itemView.paymentmethod.text = member.lastname.toString()
-            itemView.imageIcon.setImageResource(R.mipmap.ic_launcher_round)
+            itemView.imageIcon.setImageResource(R.drawable.logo)
         }
     }
 }

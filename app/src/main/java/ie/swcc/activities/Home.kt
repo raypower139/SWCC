@@ -11,9 +11,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import ie.swcc.R
-import ie.swcc.fragments.ChatFragment
-import ie.swcc.fragments.NewsFragment
-import ie.swcc.fragments.StravaFragment
+import ie.swcc.fragments.*
 import ie.swcc.main.SWCCApp
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.home.*
@@ -33,10 +31,7 @@ class Home : AppCompatActivity(),
         setContentView(R.layout.home)
         setSupportActionBar(toolbar)
         app = application as SWCCApp
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action",
-                Snackbar.LENGTH_LONG).setAction("Action", null).show()
-        }
+
 
         navView.setNavigationItemSelectedListener(this)
         navView.getHeaderView(0).nav_header_email.text = app.auth.currentUser?.email
@@ -52,7 +47,7 @@ class Home : AppCompatActivity(),
 
         ft = supportFragmentManager.beginTransaction()
 
-        val fragment = StravaFragment.newInstance()
+        val fragment = BlogFragment.newInstance()
         ft.replace(R.id.homeFrame, fragment)
         ft.commit()
     }
@@ -60,6 +55,8 @@ class Home : AppCompatActivity(),
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
+            R.id.nav_blog -> navigateTo(BlogFragment.newInstance())
+            R.id.nav_bloglist -> navigateTo(ReportFragment.newInstance())
             R.id.nav_chat -> navigateTo(ChatFragment.newInstance())
             R.id.nav_report -> navigateTo(StravaFragment.newInstance())
             R.id.nav_news -> navigateTo(NewsFragment.newInstance())

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 //import com.google.firebase.quickstart.auth.R
 import ie.swcc.R
 import ie.swcc.main.SWCCApp
@@ -38,6 +39,7 @@ class Login : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
         app = application as SWCCApp
+
         // Buttons
         emailSignInButton.setOnClickListener(this)
         emailCreateAccountButton.setOnClickListener(this)
@@ -48,7 +50,7 @@ class Login : AppCompatActivity(), View.OnClickListener {
         // Initialize Firebase Auth
         app.auth = FirebaseAuth.getInstance()
         // [END initialize_auth]
-
+        app.database = FirebaseDatabase.getInstance().reference
         loader = createLoader(this)
     }
 

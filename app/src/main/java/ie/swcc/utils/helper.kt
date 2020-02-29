@@ -11,7 +11,7 @@ fun createLoader(activity: FragmentActivity) : AlertDialog {
         .setView(R.layout.loading)
     var loader = loaderBuilder.create()
     loader.setTitle(R.string.app_name)
-    loader.setIcon(R.mipmap.ic_launcher_homer_round)
+    loader.setIcon(R.drawable.logo)
 
     return loader
 }
