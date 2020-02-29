@@ -9,8 +9,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class BlogModel(
     var uid: String? = "",
-    var paymenttype: String = "N/A",
-    var amount: Int = 0,
+    var title: String = "",
+    var body: String = "",
+    var posttype: String = "N/A",
     var message: String = "a message",
     var upvotes: Int = 0,
     var email: String? = "joe@bloggs.com")
@@ -20,8 +21,9 @@ data class BlogModel(
     fun toMap(): Map<String, Any?> {
         return mapOf(
             "uid" to uid,
-            "paymenttype" to paymenttype,
-            "amount" to amount,
+            "title" to title,
+            "body" to body,
+            "posttype" to posttype,
             "message" to message,
             "upvotes" to upvotes,
             "email" to email

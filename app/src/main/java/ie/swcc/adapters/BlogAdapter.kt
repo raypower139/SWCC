@@ -42,9 +42,9 @@ class BlogAdapter constructor(var donations: ArrayList<BlogModel>,
 
         fun bind(donation: BlogModel, listener: BlogListener) {
             itemView.tag = donation
-            itemView.paymentamount.text = donation.amount.toString()
-            itemView.paymentmethod.text = donation.paymenttype
-            itemView.imageIcon.setImageResource(R.drawable.logo)
+            itemView.title.text = donation.title
+            //itemView.post.text = donation.posttype.toString()
+            //itemView.imageIcon.setImageResource(R.drawable.logo)
             itemView.setOnClickListener { listener.onDonationClick(donation) }
         }
     }

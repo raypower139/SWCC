@@ -45,9 +45,9 @@ class EditFragment : Fragment(), AnkoLogger {
         root = inflater.inflate(R.layout.fragment_edit, container, false)
         activity?.title = getString(R.string.action_edit)
         loader = createLoader(activity!!)
-
-        root.editAmount.setText(editPost!!.amount.toString())
-        root.editPaymenttype.setText(editPost!!.paymenttype)
+        root.editTitle.setText(editPost!!.title)
+        root.editBody.setText(editPost!!.body)
+        root.editPosttype.setText(editPost!!.posttype)
         root.editMessage.setText(editPost!!.message)
         root.editUpvotes.setText(editPost!!.upvotes.toString())
 
@@ -73,7 +73,8 @@ class EditFragment : Fragment(), AnkoLogger {
     }
 
     fun updatePostData() {
-        editPost!!.amount = root.editAmount.text.toString().toInt()
+        editPost!!.title = root.editTitle.text.toString()
+        editPost!!.body = root.editBody.text.toString()
         editPost!!.message = root.editMessage.text.toString()
         editPost!!.upvotes = root.editUpvotes.text.toString().toInt()
     }

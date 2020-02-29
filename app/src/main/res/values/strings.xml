@@ -30,10 +30,10 @@
 
     <string name="messageLoading">Please Wait while Strava is contacted...</string>
 
-    <string name="action_edit">Edit Donation</string>
-    <string name="action_update">Update</string>
+    <string name="action_edit">Edit Blog Post</string>
+    <string name="action_update">Update Blog Post</string>
     <string name="message_edit">Please Update your Details Below</string>
-    <string name="action_donate">Donate</string>
+    <string name="action_post">Add Blog Post</string>
 
 
     <!-- START Firebase Resources-->
@@ -61,17 +61,9 @@
 
     <!--END Firebase Resources-->
 
-    <string name="donateTitle">Welcome Homer</string>
-    <string name="donateSubtitle">Please Give Generously</string>
-    <string name="donateButton">Donate</string>
-    <string name="paypal">PayPal</string>
-    <string name="direct">Direct</string>
-    <string name="amount">Amount</string>
-    <string name="total">Total so Far</string>
-    <string name="totalSoFar">$ Total</string>
+    <string name="postButton">Donate</string>
+    <string name="news">News</string>
+    <string name="spins">Spins</string>
 
-    <string name="defaultAmount">00</string>
-    <string name="defaultMethod">N/A</string>
-    <string name="enter_amount">Enter Amount</string>
 
 </resources>
