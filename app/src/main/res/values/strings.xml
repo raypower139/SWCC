@@ -64,6 +64,8 @@
     <string name="postButton">Donate</string>
     <string name="news">News</string>
     <string name="spins">Spins</string>
+    <string name="select_image">Select Image</string>
+
 
 
 </resources>

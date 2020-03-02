@@ -1,5 +1,6 @@
 package ie.swcc.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -10,14 +11,21 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Callback
 import ie.swcc.R
 import ie.swcc.fragments.*
 import ie.swcc.main.SWCCApp
+import ie.swcc.utils.uploadImageView
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.home.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
 import org.jetbrains.anko.toast
 import org.jetbrains.anko.startActivity
+
+import com.squareup.picasso.Picasso
+import ie.swcc.utils.readImageUri
+import ie.swcc.utils.writeImageRef
+import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
 class Home : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener {
@@ -102,5 +110,26 @@ class Home : AppCompatActivity(),
         app.auth.signOut()
         startActivity<Login>()
         finish()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            1 -> {
+                if (data != null) {
+                    writeImageRef(app,readImageUri(resultCode, data).toString())
+                    Picasso.get().load(readImageUri(resultCode, data).toString())
+                        .resize(180, 180)
+                        .transform(CropCircleTransformation())
+                        .into(navView.getHeaderView(0).imageView, object : Callback {
+                            override fun onSuccess() {
+                                // Drawable is ready
+                                uploadImageView(app,navView.getHeaderView(0).imageView)
+                            }
+                            override fun onError(e: Exception) {}
+                        })
+                }
+            }
+        }
     }
 }

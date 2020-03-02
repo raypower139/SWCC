@@ -1,6 +1,7 @@
 package ie.swcc.fragments
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
 import ie.swcc.main.SWCCApp
 
 import ie.swcc.R
@@ -29,10 +31,11 @@ class BlogFragment : Fragment(), AnkoLogger {
     lateinit var app: SWCCApp
     lateinit var loader : AlertDialog
     lateinit var eventListener : ValueEventListener
-
+    val IMAGE_REQUEST = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         app = activity?.application as SWCCApp
+
     }
 
     override fun onCreateView(
@@ -46,6 +49,8 @@ class BlogFragment : Fragment(), AnkoLogger {
 
         setButtonListener(root)
         return root;
+
+
     }
 
     companion object {
@@ -94,5 +99,10 @@ class BlogFragment : Fragment(), AnkoLogger {
         app.database.updateChildren(childUpdates)
         hideLoader(loader)
     }
+
+
+
+
+
 
 }
