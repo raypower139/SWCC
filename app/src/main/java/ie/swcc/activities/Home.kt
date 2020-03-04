@@ -55,9 +55,13 @@ class Home : AppCompatActivity(),
         navView.getHeaderView(0).nav_header_name.text = app.auth.currentUser?.displayName
         navView.getHeaderView(0).nav_header_email.text = app.auth.currentUser?.email
 
-        Picasso.get().load(app.auth.currentUser?.photoUrl)
-            .resize(180, 180)
-            .into(navView.getHeaderView(0).imageView)
+        if (app.auth.currentUser?.photoUrl != null) {
+            navView.getHeaderView(0).nav_header_name.text = app.auth.currentUser?.displayName
+            Picasso.get().load(app.auth.currentUser?.photoUrl)
+                .resize(240, 240)
+                .transform(CropCircleTransformation())
+                .into(navView.getHeaderView(0).imageView)
+        }
 
         ft = supportFragmentManager.beginTransaction()
 
@@ -71,6 +75,8 @@ class Home : AppCompatActivity(),
         when (item.itemId) {
             R.id.nav_blog -> navigateTo(BlogFragment.newInstance())
             R.id.nav_bloglist -> navigateTo(ReportFragment.newInstance())
+            R.id.nav_bloglist_all ->
+                navigateTo(ReportAllFragment.newInstance())
             R.id.nav_chat -> navigateTo(ChatFragment.newInstance())
             R.id.nav_report -> navigateTo(StravaFragment.newInstance())
             R.id.nav_news -> navigateTo(NewsFragment.newInstance())

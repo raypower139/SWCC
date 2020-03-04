@@ -16,7 +16,8 @@
 
 
     <string name="menu_blog">Add Post</string>
-    <string name="menu_bloglist">Blog</string>
+    <string name="menu_bloglist">My Blog Posts</string>
+    <string name="menu_bloglist_all">All Blog Posts</string>
 
     <string name="menu_report">Strava Club Members</string>
     <string name="menu_chat">Club Chat</string>

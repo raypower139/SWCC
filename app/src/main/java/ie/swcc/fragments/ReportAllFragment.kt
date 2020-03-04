@@ -21,12 +21,11 @@ import ie.swcc.adapters.BlogAdapter
 import ie.swcc.models.BlogModel
 import ie.swcc.utils.*
 import kotlinx.android.synthetic.main.fragment_blogreport.view.*
-import kotlinx.android.synthetic.main.fragment_strava_report.view.*
 import kotlinx.android.synthetic.main.fragment_blogreport.view.recyclerView
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
-class ReportFragment : Fragment(), AnkoLogger,
+class ReportAllFragment : Fragment(), AnkoLogger,
     BlogListener {
 
     lateinit var app: SWCCApp
@@ -75,7 +74,7 @@ class ReportFragment : Fragment(), AnkoLogger,
     companion object {
         @JvmStatic
         fun newInstance() =
-            ReportFragment().apply {
+            ReportAllFragment().apply {
                 arguments = Bundle().apply { }
             }
     }
@@ -136,9 +135,9 @@ class ReportFragment : Fragment(), AnkoLogger,
 
     fun getAllDonations(userId: String?) {
         loader = createLoader(activity!!)
-        showLoader(loader, "Downloading All Blog Posts from Firebase")
+        showLoader(loader, "Downloading Posts from Firebase")
         val donationsList = ArrayList<BlogModel>()
-        app.database.child("user-posts").child(userId!!)
+        app.database.child("posts")
             .addValueEventListener(object : ValueEventListener {
                 override fun onCancelled(error: DatabaseError) {
                     info("Firebase Post error : ${error.message}")
@@ -153,11 +152,11 @@ class ReportFragment : Fragment(), AnkoLogger,
 
                         donationsList.add(donation!!)
                         root.recyclerView.adapter =
-                            BlogAdapter(donationsList, this@ReportFragment)
+                            BlogAdapter(donationsList, this@ReportAllFragment)
                         root.recyclerView.adapter?.notifyDataSetChanged()
                         checkSwipeRefresh()
 
-                        app.database.child("user-posts").child(userId)
+                        app.database.child("posts")
                             .removeEventListener(this)
                     }
                 }
