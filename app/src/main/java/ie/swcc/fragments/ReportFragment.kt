@@ -21,12 +21,11 @@ import ie.swcc.adapters.BlogAdapter
 import ie.swcc.models.BlogModel
 import ie.swcc.utils.*
 import kotlinx.android.synthetic.main.fragment_blogreport.view.*
-import kotlinx.android.synthetic.main.fragment_strava_report.view.*
 import kotlinx.android.synthetic.main.fragment_blogreport.view.recyclerView
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
-class ReportFragment : Fragment(), AnkoLogger,
+open class ReportFragment : Fragment(), AnkoLogger,
     BlogListener {
 
     lateinit var app: SWCCApp
@@ -80,11 +79,11 @@ class ReportFragment : Fragment(), AnkoLogger,
             }
     }
 
-    fun setSwipeRefresh() {
+    open fun setSwipeRefresh() {
         root.swiperefresh.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener {
             override fun onRefresh() {
                 root.swiperefresh.isRefreshing = true
-                getAllDonations(app.auth.currentUser!!.uid)
+                getAllPosts(app.auth.currentUser!!.uid)
             }
         })
     }
@@ -131,10 +130,11 @@ class ReportFragment : Fragment(), AnkoLogger,
 
     override fun onResume() {
         super.onResume()
-        getAllDonations(app.auth.currentUser!!.uid)
+        if(this::class == ReportFragment::class)
+        getAllPosts(app.auth.currentUser!!.uid)
     }
 
-    fun getAllDonations(userId: String?) {
+    fun getAllPosts(userId: String?) {
         loader = createLoader(activity!!)
         showLoader(loader, "Downloading All Blog Posts from Firebase")
         val donationsList = ArrayList<BlogModel>()
@@ -153,7 +153,7 @@ class ReportFragment : Fragment(), AnkoLogger,
 
                         donationsList.add(donation!!)
                         root.recyclerView.adapter =
-                            BlogAdapter(donationsList, this@ReportFragment)
+                            BlogAdapter(donationsList, this@ReportFragment,false)
                         root.recyclerView.adapter?.notifyDataSetChanged()
                         checkSwipeRefresh()
 

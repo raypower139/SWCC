@@ -25,17 +25,8 @@ import kotlinx.android.synthetic.main.fragment_blogreport.view.recyclerView
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
-class ReportAllFragment : Fragment(), AnkoLogger,
+class ReportAllFragment : ReportFragment(),
     BlogListener {
-
-    lateinit var app: SWCCApp
-    lateinit var loader : AlertDialog
-    lateinit var root: View
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        app = activity?.application as SWCCApp
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,34 +34,13 @@ class ReportAllFragment : Fragment(), AnkoLogger,
     ): View? {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_blogreport, container, false)
-        activity?.title = getString(R.string.action_report2)
+        activity?.title = getString(R.string.menu_bloglist_all)
 
         root.recyclerView.setLayoutManager(LinearLayoutManager(activity))
         setSwipeRefresh()
 
-        val swipeDeleteHandler = object : SwipeToDeleteCallback(activity!!) {
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val adapter = root.recyclerView.adapter as BlogAdapter
-                adapter.removeAt(viewHolder.adapterPosition)
-                deleteDonation((viewHolder.itemView.tag as BlogModel).uid)
-                deleteUserDonation(app.auth.currentUser!!.uid,
-                                  (viewHolder.itemView.tag as BlogModel).uid)
-            }
-        }
-        val itemTouchDeleteHelper = ItemTouchHelper(swipeDeleteHandler)
-        itemTouchDeleteHelper.attachToRecyclerView(root.recyclerView)
-
-        val swipeEditHandler = object : SwipeToEditCallback(activity!!) {
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                onDonationClick(viewHolder.itemView.tag as BlogModel)
-            }
-        }
-        val itemTouchEditHelper = ItemTouchHelper(swipeEditHandler)
-        itemTouchEditHelper.attachToRecyclerView(root.recyclerView)
-
         return root
     }
-
     companion object {
         @JvmStatic
         fun newInstance() =
@@ -79,61 +49,24 @@ class ReportAllFragment : Fragment(), AnkoLogger,
             }
     }
 
-    fun setSwipeRefresh() {
+    override fun setSwipeRefresh() {
         root.swiperefresh.setOnRefreshListener(object : SwipeRefreshLayout.OnRefreshListener {
             override fun onRefresh() {
                 root.swiperefresh.isRefreshing = true
-                getAllDonations(app.auth.currentUser!!.uid)
+                getAllUsersPosts()
             }
         })
     }
 
-    fun checkSwipeRefresh() {
-        if (root.swiperefresh.isRefreshing) root.swiperefresh.isRefreshing = false
-    }
 
 
-
-    fun deleteUserDonation(userId: String, uid: String?) {
-        app.database.child("user-posts").child(userId).child(uid!!)
-            .addListenerForSingleValueEvent(
-                object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        snapshot.ref.removeValue()
-                    }
-                    override fun onCancelled(error: DatabaseError) {
-                        info("Firebase Donation error : ${error.message}")
-                    }
-                })
-    }
-
-    fun deleteDonation(uid: String?) {
-        app.database.child("posts").child(uid!!)
-            .addListenerForSingleValueEvent(
-                object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        snapshot.ref.removeValue()
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                        info("Firebase Donation error : ${error.message}")
-                    }
-                })
-    }
-
-    override fun onDonationClick(donation: BlogModel) {
-        activity!!.supportFragmentManager.beginTransaction()
-            .replace(R.id.homeFrame, EditFragment.newInstance(donation))
-            .addToBackStack(null)
-            .commit()
-    }
 
     override fun onResume() {
         super.onResume()
-        getAllDonations(app.auth.currentUser!!.uid)
+        getAllUsersPosts()
     }
 
-    fun getAllDonations(userId: String?) {
+    fun getAllUsersPosts() {
         loader = createLoader(activity!!)
         showLoader(loader, "Downloading Posts from Firebase")
         val donationsList = ArrayList<BlogModel>()
@@ -152,7 +85,7 @@ class ReportAllFragment : Fragment(), AnkoLogger,
 
                         donationsList.add(donation!!)
                         root.recyclerView.adapter =
-                            BlogAdapter(donationsList, this@ReportAllFragment)
+                            BlogAdapter(donationsList, this@ReportAllFragment, true)
                         root.recyclerView.adapter?.notifyDataSetChanged()
                         checkSwipeRefresh()
 

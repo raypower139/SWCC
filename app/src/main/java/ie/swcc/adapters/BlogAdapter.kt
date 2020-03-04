@@ -13,8 +13,10 @@ interface BlogListener {
 }
 
 class BlogAdapter constructor(var donations: ArrayList<BlogModel>,
-                                  private val listener: BlogListener)
+                                  private val listener: BlogListener, blogAll: Boolean)
     : RecyclerView.Adapter<BlogAdapter.MainHolder>() {
+
+    val blogAll = blogAll
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
@@ -28,7 +30,7 @@ class BlogAdapter constructor(var donations: ArrayList<BlogModel>,
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val donation = donations[holder.adapterPosition]
-        holder.bind(donation,listener)
+        holder.bind(donation,listener,blogAll)
     }
 
     override fun getItemCount(): Int = donations.size
@@ -40,11 +42,12 @@ class BlogAdapter constructor(var donations: ArrayList<BlogModel>,
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(donation: BlogModel, listener: BlogListener) {
+        fun bind(donation: BlogModel, listener: BlogListener, blogAll: Boolean) {
             itemView.tag = donation
             itemView.title.text = donation.title
             //itemView.post.text = donation.posttype.toString()
             //itemView.imageIcon.setImageResource(R.drawable.logo)
+            if(!blogAll)
             itemView.setOnClickListener { listener.onDonationClick(donation) }
         }
     }
