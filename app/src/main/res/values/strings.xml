@@ -10,6 +10,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">SWCC Club App</string>
     <string name="nav_header_subtitle">sportifwaterfordcc@gmail.com</string>
+    <string name="nav_header_name">User Name Here</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 

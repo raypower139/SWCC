@@ -42,7 +42,6 @@ class Home : AppCompatActivity(),
 
 
         navView.setNavigationItemSelectedListener(this)
-        navView.getHeaderView(0).nav_header_email.text = app.auth.currentUser?.email
 
 
         val toggle = ActionBarDrawerToggle(
@@ -52,6 +51,13 @@ class Home : AppCompatActivity(),
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
+        navView.getHeaderView(0).nav_header_name.text = app.auth.currentUser?.displayName
+        navView.getHeaderView(0).nav_header_email.text = app.auth.currentUser?.email
+
+        Picasso.get().load(app.auth.currentUser?.photoUrl)
+            .resize(180, 180)
+            .into(navView.getHeaderView(0).imageView)
 
         ft = supportFragmentManager.beginTransaction()
 
@@ -107,9 +113,11 @@ class Home : AppCompatActivity(),
 
     private fun signOut()
     {
-        app.auth.signOut()
-        startActivity<Login>()
-        finish()
+        app.googleSignInClient.signOut().addOnCompleteListener(this) {
+            app.auth.signOut()
+            startActivity<Login>()
+            finish()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
