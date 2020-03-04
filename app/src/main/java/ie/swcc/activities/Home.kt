@@ -55,13 +55,22 @@ class Home : AppCompatActivity(),
         navView.getHeaderView(0).nav_header_name.text = app.auth.currentUser?.displayName
         navView.getHeaderView(0).nav_header_email.text = app.auth.currentUser?.email
 
+        //Checking if Google User, upload google profile pic
         if (app.auth.currentUser?.photoUrl != null) {
             navView.getHeaderView(0).nav_header_name.text = app.auth.currentUser?.displayName
             Picasso.get().load(app.auth.currentUser?.photoUrl)
-                .resize(240, 240)
+                .resize(180, 180)
                 .transform(CropCircleTransformation())
-                .into(navView.getHeaderView(0).imageView)
+                .into(navView.getHeaderView(0).imageView, object : Callback {
+                    override fun onSuccess() {
+                        // Drawable is ready
+                        uploadImageView(app,navView.getHeaderView(0).imageView)
+                    }
+                    override fun onError(e: Exception) {}
+                })
         }
+        else // Regular User, upload default pic of homer
+            uploadImageView(app,navView.getHeaderView(0).imageView)
 
         ft = supportFragmentManager.beginTransaction()
 

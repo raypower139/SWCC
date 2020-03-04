@@ -66,7 +66,7 @@ class BlogFragment : Fragment(), AnkoLogger {
             val title = layout.editTitle.text.toString()
             val body = layout.editBody.text.toString()
             val posttype = if(layout.postMethod.checkedRadioButtonId == R.id.Spins) "Spins" else "News"
-                writeNewDonation(BlogModel(title = title, posttype = posttype, body = body,
+                writeNewDonation(BlogModel(title = title, posttype = posttype, body = body, profilepic = app.userImage.toString(),
                                                email = app.auth.currentUser?.email))
             }
         }

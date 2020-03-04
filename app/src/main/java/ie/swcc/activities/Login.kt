@@ -51,6 +51,8 @@ class Login : AppCompatActivity(), View.OnClickListener {
         app.auth = FirebaseAuth.getInstance()
         // [END initialize_auth]
         app.database = FirebaseDatabase.getInstance().reference
+        // Initalize Storage
+        app.storage = FirebaseStorage.getInstance().reference
 
         // [START config_signin]
         // Configure Google Sign In

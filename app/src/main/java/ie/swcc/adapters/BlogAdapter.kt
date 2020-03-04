@@ -3,10 +3,14 @@ package ie.swcc.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import ie.swcc.R
 import ie.swcc.models.BlogModel
+import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.card_donation.view.*
+
 
 interface BlogListener {
     fun onDonationClick(donation: BlogModel)
@@ -49,6 +53,17 @@ class BlogAdapter constructor(var donations: ArrayList<BlogModel>,
             //itemView.imageIcon.setImageResource(R.drawable.logo)
             if(!blogAll)
             itemView.setOnClickListener { listener.onDonationClick(donation) }
+
+            if(!donation.profilepic.isEmpty()) {
+                Picasso.get().load(donation.profilepic.toUri())
+                    //.resize(180, 180)
+                    .transform(CropCircleTransformation())
+                    .into(itemView.imageIcon)
+            }
+            else
+                itemView.imageIcon.setImageResource(R.mipmap.ic_launcher_homer_round)
+        }
+
+
         }
     }
-}
