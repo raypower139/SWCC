@@ -15,7 +15,6 @@ import com.squareup.picasso.Callback
 import ie.swcc.R
 import ie.swcc.fragments.*
 import ie.swcc.main.SWCCApp
-import ie.swcc.utils.uploadImageView
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.home.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
@@ -23,8 +22,7 @@ import org.jetbrains.anko.toast
 import org.jetbrains.anko.startActivity
 
 import com.squareup.picasso.Picasso
-import ie.swcc.utils.readImageUri
-import ie.swcc.utils.writeImageRef
+import ie.swcc.utils.*
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
 class Home : AppCompatActivity(),
@@ -42,6 +40,8 @@ class Home : AppCompatActivity(),
 
 
         navView.setNavigationItemSelectedListener(this)
+        navView.getHeaderView(0).imageView
+            .setOnClickListener { showImagePicker(this,1) }
 
 
         val toggle = ActionBarDrawerToggle(
@@ -56,21 +56,7 @@ class Home : AppCompatActivity(),
         navView.getHeaderView(0).nav_header_email.text = app.auth.currentUser?.email
 
         //Checking if Google User, upload google profile pic
-        if (app.auth.currentUser?.photoUrl != null) {
-            navView.getHeaderView(0).nav_header_name.text = app.auth.currentUser?.displayName
-            Picasso.get().load(app.auth.currentUser?.photoUrl)
-                .resize(180, 180)
-                .transform(CropCircleTransformation())
-                .into(navView.getHeaderView(0).imageView, object : Callback {
-                    override fun onSuccess() {
-                        // Drawable is ready
-                        uploadImageView(app,navView.getHeaderView(0).imageView)
-                    }
-                    override fun onError(e: Exception) {}
-                })
-        }
-        else // Regular User, upload default pic of homer
-            uploadImageView(app,navView.getHeaderView(0).imageView)
+        checkExistingPhoto(app,this)
 
         ft = supportFragmentManager.beginTransaction()
 
@@ -142,7 +128,7 @@ class Home : AppCompatActivity(),
                 if (data != null) {
                     writeImageRef(app,readImageUri(resultCode, data).toString())
                     Picasso.get().load(readImageUri(resultCode, data).toString())
-                        .resize(180, 180)
+                        .resize(240, 240)
                         .transform(CropCircleTransformation())
                         .into(navView.getHeaderView(0).imageView, object : Callback {
                             override fun onSuccess() {
