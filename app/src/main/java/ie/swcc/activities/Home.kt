@@ -10,7 +10,6 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Callback
 import ie.swcc.R
 import ie.swcc.fragments.*
@@ -72,7 +71,7 @@ class Home : AppCompatActivity(),
             R.id.nav_bloglist -> navigateTo(ReportFragment.newInstance())
             R.id.nav_bloglist_all ->
                 navigateTo(ReportAllFragment.newInstance())
-            R.id.nav_chat -> navigateTo(ChatFragment.newInstance())
+            R.id.nav_chat -> startActivity<LatestMessagesActivity>()
             R.id.nav_report -> navigateTo(StravaFragment.newInstance())
             R.id.nav_news -> navigateTo(NewsFragment.newInstance())
             R.id.nav_sign_out -> signOut()
