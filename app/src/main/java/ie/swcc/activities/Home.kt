@@ -21,6 +21,11 @@ import org.jetbrains.anko.toast
 import org.jetbrains.anko.startActivity
 
 import com.squareup.picasso.Picasso
+import ie.swcc.activities.chat.LatestMessagesActivity
+import ie.swcc.fragments.blog.BlogFragment
+import ie.swcc.fragments.blog.ReportAllFragment
+import ie.swcc.fragments.blog.ReportFragment
+import ie.swcc.fragments.strava.StravaFragment
 import ie.swcc.utils.*
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 

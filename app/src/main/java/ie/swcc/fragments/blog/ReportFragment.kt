@@ -1,4 +1,4 @@
-package ie.swcc.fragments
+package ie.swcc.fragments.blog
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -18,7 +18,7 @@ import ie.swcc.main.SWCCApp
 
 import ie.swcc.R
 import ie.swcc.adapters.BlogAdapter
-import ie.swcc.models.BlogModel
+import ie.swcc.models.blog.BlogModel
 import ie.swcc.utils.*
 import kotlinx.android.synthetic.main.fragment_blogreport.view.*
 import kotlinx.android.synthetic.main.fragment_blogreport.view.recyclerView
@@ -149,7 +149,8 @@ open class ReportFragment : Fragment(), AnkoLogger,
                     val children = snapshot.children
                     children.forEach {
                         val donation = it.
-                            getValue<BlogModel>(BlogModel::class.java)
+                            getValue<BlogModel>(
+                                BlogModel::class.java)
 
                         donationsList.add(donation!!)
                         root.recyclerView.adapter =

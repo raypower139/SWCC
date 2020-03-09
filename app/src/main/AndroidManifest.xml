@@ -12,13 +12,19 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.NewMessageActivity">
+        <activity android:name=".activities.chat.ChatActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.LatestMessagesActivity" />
+                android:value=".activities.chat.LatestMessagesActivity" />
+
+        </activity>
+        <activity android:name=".activities.chat.NewMessageActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.chat.LatestMessagesActivity" />
         </activity>
         <activity
-            android:name=".activities.LatestMessagesActivity"
+            android:name=".activities.chat.LatestMessagesActivity"
             android:label="@string/club_chat" />
         <activity
             android:name=".activities.Home"

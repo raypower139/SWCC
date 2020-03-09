@@ -7,7 +7,7 @@ import kotlinx.android.parcel.Parcelize
 
 @IgnoreExtraProperties
 @Parcelize
-data class UserPhotoModel(
+data class UserModel(
     var uid: String? = "",
     var profilepic: String = "",
     var name: String? = "")

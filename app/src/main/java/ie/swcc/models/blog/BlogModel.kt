@@ -1,4 +1,4 @@
-package ie.swcc.models
+package ie.swcc.models.blog
 
 import android.os.Parcelable
 import com.google.firebase.database.Exclude

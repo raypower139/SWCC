@@ -1,4 +1,4 @@
-package ie.swcc.models
+package ie.swcc.models.strava
 
 import android.util.Log
 

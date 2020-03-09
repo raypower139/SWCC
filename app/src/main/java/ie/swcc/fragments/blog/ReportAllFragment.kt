@@ -1,28 +1,22 @@
-package ie.swcc.fragments
+package ie.swcc.fragments.blog
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import ie.swcc.adapters.BlogListener
-import ie.swcc.main.SWCCApp
 
 import ie.swcc.R
 import ie.swcc.adapters.BlogAdapter
-import ie.swcc.models.BlogModel
+import ie.swcc.models.blog.BlogModel
 import ie.swcc.utils.*
 import kotlinx.android.synthetic.main.fragment_blogreport.view.*
 import kotlinx.android.synthetic.main.fragment_blogreport.view.recyclerView
-import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
 class ReportAllFragment : ReportFragment(),
@@ -81,7 +75,8 @@ class ReportAllFragment : ReportFragment(),
                     val children = snapshot.children
                     children.forEach {
                         val donation = it.
-                            getValue<BlogModel>(BlogModel::class.java)
+                            getValue<BlogModel>(
+                                BlogModel::class.java)
 
                         donationsList.add(donation!!)
                         root.recyclerView.adapter =

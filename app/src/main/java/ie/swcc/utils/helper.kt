@@ -22,7 +22,7 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import ie.swcc.R
 import ie.swcc.main.SWCCApp
-import ie.swcc.models.UserPhotoModel
+import ie.swcc.models.UserModel
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.home.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
@@ -111,7 +111,7 @@ fun convertImageToBytes(imageView: ImageView) : ByteArray {
 
 fun writeImageRef(app: SWCCApp, imageRef: String) {
     val userId = app.auth.currentUser!!.uid
-    val values = UserPhotoModel(userId,imageRef).toMap()
+    val values = UserModel(userId,imageRef).toMap()
     val childUpdates = HashMap<String, Any>()
 
     childUpdates["/user-photos/$userId"] = values
@@ -219,7 +219,7 @@ fun checkExistingPhoto(app: SWCCApp,activity: Activity) {
 
             override fun onDataChange(snapshot: DataSnapshot ) {
                 snapshot.children.forEach {
-                    val usermodel = it.getValue<UserPhotoModel>(UserPhotoModel::class.java)
+                    val usermodel = it.getValue<UserModel>(UserModel::class.java)
                     app.userImage = usermodel!!.profilepic.toUri()
                 }
                 validatePhoto(app,activity)

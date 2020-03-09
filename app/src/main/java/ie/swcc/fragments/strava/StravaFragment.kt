@@ -1,4 +1,4 @@
-package ie.swcc.fragments
+package ie.swcc.fragments.strava
 
 
 import android.os.Bundle
@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ie.swcc.R
 import ie.swcc.adapters.StravaAdapter
 import ie.swcc.main.SWCCApp
-import ie.swcc.models.StravaModel
+import ie.swcc.models.strava.StravaModel
 import ie.swcc.utils.*
 import kotlinx.android.synthetic.main.fragment_strava_report.view.*
 import org.jetbrains.anko.AnkoLogger

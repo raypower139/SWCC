@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ie.swcc.R
-import ie.swcc.models.StravaModel
+import ie.swcc.models.strava.StravaModel
 import kotlinx.android.synthetic.main.card_strava_member.view.*
 
 class StravaAdapter constructor(private var members: List<StravaModel>)

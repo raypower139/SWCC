@@ -7,7 +7,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.storage.StorageReference
 import ie.swcc.api.StravaService
-import ie.swcc.models.StravaMemStore
+import ie.swcc.models.strava.StravaMemStore
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 

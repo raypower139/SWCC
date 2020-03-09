@@ -1,15 +1,14 @@
-package ie.swcc.activities
+package ie.swcc.activities.chat
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.core.content.ContextCompat.startActivity
 import com.google.firebase.auth.FirebaseAuth
 import ie.swcc.R
+import ie.swcc.activities.Home
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.toast
 
 class LatestMessagesActivity : AppCompatActivity() {
 

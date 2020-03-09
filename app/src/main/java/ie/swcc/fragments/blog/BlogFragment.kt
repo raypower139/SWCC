@@ -1,28 +1,21 @@
-package ie.swcc.fragments
+package ie.swcc.fragments.blog
 
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.storage.FirebaseStorage
 import ie.swcc.main.SWCCApp
 
 import ie.swcc.R
-import ie.swcc.models.BlogModel
+import ie.swcc.models.blog.BlogModel
 import ie.swcc.utils.*
-import kotlinx.android.synthetic.main.fragment_add_blogpost.*
 import kotlinx.android.synthetic.main.fragment_add_blogpost.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
-import org.jetbrains.anko.toast
-import java.lang.String.format
 import java.util.HashMap
 
 
@@ -66,8 +59,15 @@ class BlogFragment : Fragment(), AnkoLogger {
             val title = layout.editTitle.text.toString()
             val body = layout.editBody.text.toString()
             val posttype = if(layout.postMethod.checkedRadioButtonId == R.id.Spins) "Spins" else "News"
-                writeNewDonation(BlogModel(title = title, posttype = posttype, body = body, profilepic = app.userImage.toString(),
-                                               email = app.auth.currentUser?.email))
+                writeNewDonation(
+                    BlogModel(
+                        title = title,
+                        posttype = posttype,
+                        body = body,
+                        profilepic = app.userImage.toString(),
+                        email = app.auth.currentUser?.email
+                    )
+                )
             }
         }
 

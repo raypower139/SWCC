@@ -1,7 +1,7 @@
 package ie.swcc.api
 
 import com.google.gson.GsonBuilder
-import ie.swcc.models.StravaModel
+import ie.swcc.models.strava.StravaModel
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit

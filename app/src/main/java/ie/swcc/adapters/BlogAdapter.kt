@@ -7,7 +7,7 @@ import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import ie.swcc.R
-import ie.swcc.models.BlogModel
+import ie.swcc.models.blog.BlogModel
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.card_donation.view.*
 
@@ -17,7 +17,7 @@ interface BlogListener {
 }
 
 class BlogAdapter constructor(var donations: ArrayList<BlogModel>,
-                                  private val listener: BlogListener, blogAll: Boolean)
+                              private val listener: BlogListener, blogAll: Boolean)
     : RecyclerView.Adapter<BlogAdapter.MainHolder>() {
 
     val blogAll = blogAll

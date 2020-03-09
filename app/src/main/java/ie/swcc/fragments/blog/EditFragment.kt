@@ -1,4 +1,4 @@
-package ie.swcc.fragments
+package ie.swcc.fragments.blog
 
 
 import android.os.Bundle
@@ -13,7 +13,7 @@ import com.google.firebase.database.ValueEventListener
 
 import ie.swcc.R
 import ie.swcc.main.SWCCApp
-import ie.swcc.models.BlogModel
+import ie.swcc.models.blog.BlogModel
 import ie.swcc.utils.createLoader
 import ie.swcc.utils.hideLoader
 import ie.swcc.utils.showLoader
@@ -86,7 +86,9 @@ class EditFragment : Fragment(), AnkoLogger {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         snapshot.ref.setValue(post)
                         activity!!.supportFragmentManager.beginTransaction()
-                        .replace(R.id.homeFrame, ReportFragment.newInstance())
+                        .replace(R.id.homeFrame,
+                            ReportFragment.newInstance()
+                        )
                         .addToBackStack(null)
                         .commit()
                         hideLoader(loader)
