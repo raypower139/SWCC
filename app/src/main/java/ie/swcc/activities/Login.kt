@@ -306,3 +306,4 @@ class Login : AppCompatActivity(), View.OnClickListener {
     }
     // [END auth_with_google]
 }
+
