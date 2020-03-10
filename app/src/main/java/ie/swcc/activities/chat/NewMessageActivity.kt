@@ -52,7 +52,8 @@ fetchusers()
 
                     val userItem = item as UserItem
                     val intent = Intent(view.context, ChatActivity::class.java)
-                    intent.putExtra(USER_KEY, userItem.user.uid)
+
+                    intent.putExtra(USER_KEY, userItem.user)
                     startActivity(intent)
                     finish()
                 }
