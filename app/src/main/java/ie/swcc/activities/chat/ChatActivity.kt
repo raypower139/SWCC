@@ -49,7 +49,9 @@ class ChatActivity : AppCompatActivity() {
     }
 
 private fun listenForMessages(){
-    val ref = FirebaseDatabase.getInstance().getReference("/messages")
+    val fromId = FirebaseAuth.getInstance().uid
+    val toId = toUser?.uid
+    val ref = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId")
     ref.addChildEventListener(object: ChildEventListener{
 
         override fun onChildAdded(p0: DataSnapshot, p1: String?) {
@@ -92,12 +94,22 @@ private fun listenForMessages(){
         val fromId = FirebaseAuth.getInstance().uid
         val user = intent.getParcelableExtra<UserModel>(NewMessageActivity.USER_KEY)
         val toId = user.uid
-        val reference = FirebaseDatabase.getInstance().getReference("/messages").push()
-
+        val reference = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
+        val toReference = FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
         val chatMessage = ChatMessageModel(reference.key!!, text, fromId, toId!!, System.currentTimeMillis()/1000
         )
         reference.setValue(chatMessage)
-            .addOnSuccessListener { Log.d(TAG, "Saved our Chat Message: ${reference.key}") }
+            .addOnSuccessListener { Log.d(TAG, "Saved our Chat Message: ${reference.key}")
+                // Clear Text View after you send
+                editText_chat.text.clear()
+                // Move view to last message
+            recyclerview_chat.scrollToPosition(adapter.itemCount -1)
+            }
+        toReference.setValue(chatMessage)
+            .addOnSuccessListener { Log.d(TAG, "To Chat Message: ${reference.key}") }
+
+        val latestMessageRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId/${toId}")
+        latestMessageRef.setValue(chatMessage)
     }
 
 

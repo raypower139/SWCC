@@ -6,14 +6,19 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.GroupieViewHolder
+import com.xwray.groupie.Item
 import ie.swcc.R
 import ie.swcc.activities.Home
 import ie.swcc.models.UserModel
+import kotlinx.android.synthetic.main.activity_latest_messages.*
 import org.jetbrains.anko.startActivity
 
 class LatestMessagesActivity : AppCompatActivity() {
@@ -24,11 +29,32 @@ class LatestMessagesActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_latest_messages)
+        setupDummyRows()
         fetchCurrenntUser()
         // Check to see if User is logged in
         verifyUserIsLoggedIn()
     }
+
+    class LatestMessageRow: Item<GroupieViewHolder>(){
+    override fun bind(viewHolder: GroupieViewHolder, position: Int) {
+
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.latest_message_row
+    }
+}
+
+    private fun setupDummyRows(){
+        val adapter = GroupAdapter<GroupieViewHolder>()
+        adapter.add(LatestMessageRow())
+        adapter.add(LatestMessageRow())
+        adapter.add(LatestMessageRow())
+        recyclerview_latest_messages.adapter = adapter
+    }
+
+
 
     private fun fetchCurrenntUser(){
         val uid = FirebaseAuth.getInstance().uid
