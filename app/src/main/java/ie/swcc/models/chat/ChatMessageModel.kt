@@ -8,11 +8,11 @@ import kotlinx.android.parcel.Parcelize
 @IgnoreExtraProperties
 @Parcelize
 data class ChatMessageModel(
-    var id: String?,
-    var text: String,
-    var fromId: String?,
-    var toId: String,
-    var timestamp: Long)
+    var id: String? = "",
+    var text: String = "",
+    var fromId: String? ="",
+    var toId: String ="",
+    var timestamp: Long = 0)
     : Parcelable
 {
     @Exclude

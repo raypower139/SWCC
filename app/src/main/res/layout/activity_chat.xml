@@ -12,15 +12,17 @@
         android:layout_width="302dp"
         android:layout_height="53dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="30dp"
         android:ems="10"
         android:hint="Enter Message"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/send_button_chat"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerview_chat" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerview_chat"
+        app:layout_constraintVertical_bias="0.924" />
 
     <Button
         android:id="@+id/send_button_chat"
@@ -36,13 +38,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_chat"
-        android:layout_width="414dp"
-        android:layout_height="542dp"
-        android:layout_marginTop="63dp"
+        android:layout_width="407dp"
+        android:layout_height="516dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

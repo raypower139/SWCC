@@ -7,7 +7,6 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class StravaModel(
 
-
     @SerializedName("resource_state")
 val resource_state: String,
                          @SerializedName("firstname")
