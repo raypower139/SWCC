@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupDataObserver
 import com.xwray.groupie.GroupieViewHolder
@@ -17,6 +19,7 @@ import ie.swcc.R
 import ie.swcc.activities.Home
 import ie.swcc.models.UserModel
 import ie.swcc.models.chat.ChatMessageModel
+import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.activity_latest_messages.*
 import kotlinx.android.synthetic.main.latest_message_row.view.*
 import org.jetbrains.anko.startActivity
@@ -32,6 +35,8 @@ class LatestMessagesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_latest_messages)
 
         recyclerview_latest_messages.adapter = adapter
+        // Display a vertical line between rows
+        recyclerview_latest_messages.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
 
         listenForLatestMessages()
         fetchCurrenntUser()
@@ -41,16 +46,43 @@ class LatestMessagesActivity : AppCompatActivity() {
 
     class LatestMessageRow(val chatMessage:ChatMessageModel): Item<GroupieViewHolder>(){
     override fun bind(viewHolder: GroupieViewHolder, position: Int) {
-          viewHolder.itemView.textview_latest_message.text = chatMessage.text
-        viewHolder.itemView.username_textview_latest_message.text = chatMessage.fromId
+        // Display the Message Text
+        viewHolder.itemView.textview_latest_message.text = chatMessage.text
+        // Figure out which user to display
+        val chatPartnerId: String
+        if(chatMessage.fromId == FirebaseAuth.getInstance().uid){
+            chatPartnerId = chatMessage.toId
+        }else{
+            chatPartnerId = chatMessage.fromId!!
+        }
 
+        // Retrieve the correct users details from user-photo
+        val ref = FirebaseDatabase.getInstance().getReference("/user-photos/$chatPartnerId")
+        ref.addListenerForSingleValueEvent(object:ValueEventListener {
+
+            override fun onDataChange(p0: DataSnapshot) {
+               // Get the User Details
+                val user = p0.getValue(UserModel::class.java)
+                // Display the User's Name
+                viewHolder.itemView.username_textview_latest_message.text = user?.uid
+                // Load the user image into the imageview and crop it
+                val targetImageView = viewHolder.itemView.imageview_latest_message
+                Picasso.get().load(user?.profilepic)
+                    .transform(CropCircleTransformation())
+                    .into(targetImageView)
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+        })
     }
 
     override fun getLayout(): Int {
         return R.layout.latest_message_row
     }
 }
-    // Hasmap to store the latest messages
+    // Hashmap to store the latest messages
     val latestMessagesMap = HashMap<String, ChatMessageModel>()
 
     // Refresh the Lastest Messages Recycler when an update occurs with all data from HashMap
