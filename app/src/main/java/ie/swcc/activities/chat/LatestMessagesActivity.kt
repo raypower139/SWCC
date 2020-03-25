@@ -17,6 +17,7 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import ie.swcc.R
 import ie.swcc.activities.Home
+import ie.swcc.activities.chat.views.LatestMessageRow
 import ie.swcc.models.UserModel
 import ie.swcc.models.chat.ChatMessageModel
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
@@ -28,6 +29,7 @@ class LatestMessagesActivity : AppCompatActivity() {
 
     companion object{
         var currentUser: UserModel? = null
+        val TAG = "LatestMessages"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,50 +40,23 @@ class LatestMessagesActivity : AppCompatActivity() {
         // Display a vertical line between rows
         recyclerview_latest_messages.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
 
+        // Listener on the adapter
+        adapter.setOnItemClickListener { item, view ->
+            Log.d(TAG, "123")
+            val intent = Intent(this, ChatActivity::class.java)
+
+            val row = item as LatestMessageRow
+            intent.putExtra(NewMessageActivity.USER_KEY, row.chatPartnerUser)
+            startActivity(intent)
+        }
+
         listenForLatestMessages()
         fetchCurrenntUser()
         // Check to see if User is logged in
         verifyUserIsLoggedIn()
     }
 
-    class LatestMessageRow(val chatMessage:ChatMessageModel): Item<GroupieViewHolder>(){
-    override fun bind(viewHolder: GroupieViewHolder, position: Int) {
-        // Display the Message Text
-        viewHolder.itemView.textview_latest_message.text = chatMessage.text
-        // Figure out which user to display
-        val chatPartnerId: String
-        if(chatMessage.fromId == FirebaseAuth.getInstance().uid){
-            chatPartnerId = chatMessage.toId
-        }else{
-            chatPartnerId = chatMessage.fromId!!
-        }
 
-        // Retrieve the correct users details from user-photo
-        val ref = FirebaseDatabase.getInstance().getReference("/user-photos/$chatPartnerId")
-        ref.addListenerForSingleValueEvent(object:ValueEventListener {
-
-            override fun onDataChange(p0: DataSnapshot) {
-               // Get the User Details
-                val user = p0.getValue(UserModel::class.java)
-                // Display the User's Name
-                viewHolder.itemView.username_textview_latest_message.text = user?.uid
-                // Load the user image into the imageview and crop it
-                val targetImageView = viewHolder.itemView.imageview_latest_message
-                Picasso.get().load(user?.profilepic)
-                    .transform(CropCircleTransformation())
-                    .into(targetImageView)
-            }
-
-            override fun onCancelled(p0: DatabaseError) {
-
-            }
-        })
-    }
-
-    override fun getLayout(): Int {
-        return R.layout.latest_message_row
-    }
-}
     // Hashmap to store the latest messages
     val latestMessagesMap = HashMap<String, ChatMessageModel>()
 
@@ -159,4 +134,6 @@ class LatestMessagesActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 }
+
+
 
