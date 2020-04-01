@@ -62,7 +62,7 @@ open class ReportFragment : Fragment(), AnkoLogger,
 
         val swipeEditHandler = object : SwipeToEditCallback(activity!!) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                onDonationClick(viewHolder.itemView.tag as BlogModel)
+                onBlogPostClick(viewHolder.itemView.tag as BlogModel)
             }
         }
         val itemTouchEditHelper = ItemTouchHelper(swipeEditHandler)
@@ -121,7 +121,7 @@ open class ReportFragment : Fragment(), AnkoLogger,
                 })
     }
 
-    override fun onDonationClick(donation: BlogModel) {
+    override fun onBlogPostClick(donation: BlogModel) {
         activity!!.supportFragmentManager.beginTransaction()
             .replace(R.id.homeFrame, EditFragment.newInstance(donation))
             .addToBackStack(null)

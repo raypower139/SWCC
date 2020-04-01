@@ -79,7 +79,7 @@ class BlogFragment : Fragment(), AnkoLogger {
                     //.removeEventListener(eventListener)
     }
 
-    fun writeNewDonation(donation: BlogModel) {
+    fun writeNewDonation(blog: BlogModel) {
         // Create new donation at /donations & /donations/$uid
         showLoader(loader, "Adding Post to Firebase")
         info("Firebase DB Reference : $app.database")
@@ -89,8 +89,8 @@ class BlogFragment : Fragment(), AnkoLogger {
             info("Firebase Error : Key Empty")
             return
         }
-        donation.uid = key
-        val donationValues = donation.toMap()
+        blog.uid = key
+        val donationValues = blog.toMap()
 
         val childUpdates = HashMap<String, Any>()
         childUpdates["/posts/$key"] = donationValues
