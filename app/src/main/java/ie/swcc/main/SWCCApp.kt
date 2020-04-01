@@ -18,6 +18,7 @@ class SWCCApp : Application(),AnkoLogger {
     lateinit var stravaService: StravaService
     lateinit var googleSignInClient: GoogleSignInClient
     lateinit var userImage: Uri
+    lateinit var image: Uri
 
 
     // [START declare_auth]

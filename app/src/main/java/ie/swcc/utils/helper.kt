@@ -21,13 +21,17 @@ import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import ie.swcc.R
+import ie.swcc.fragments.blog.BlogFragment
 import ie.swcc.main.SWCCApp
 import ie.swcc.models.UserModel
+import ie.swcc.models.blog.BlogModel
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.home.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
+import java.util.*
+import kotlin.collections.HashMap
 
 fun createLoader(activity: FragmentActivity) : AlertDialog {
     val loaderBuilder = AlertDialog.Builder(activity)
@@ -95,6 +99,32 @@ fun uploadImageView(app: SWCCApp, imageView: ImageView) {
     }
 }
 
+fun uploadBlogImageView(app: SWCCApp, blogImage: ImageView) {
+    val filename = UUID.randomUUID().toString()
+    val imageRef2 = app.storage.child("photos").child("$filename.jpg")
+    val uploadTask = imageRef2.putBytes(convertImageToBytes(blogImage))
+
+    uploadTask.addOnFailureListener { object : OnFailureListener {
+        override fun onFailure(error: Exception) {
+            Log.v("Post", "uploadTask.exception" + error)
+        }
+    }
+    }.addOnSuccessListener {
+        uploadTask.continueWithTask { task ->
+            imageRef2.downloadUrl
+        }.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                app.image = task.result!!.toString().toUri()
+                //updateAllPosts(app)
+                //writeBlogImageRef(app,app.image.toString())
+                Picasso.get().load(app.image)
+                    .resize(240, 240)
+                    .into(blogImage)
+            }
+        }
+    }
+}
+
 fun convertImageToBytes(imageView: ImageView) : ByteArray {
     // Get the data from an ImageView as bytes
     lateinit var bitmap: Bitmap
@@ -129,7 +159,35 @@ fun readImageUri(resultCode: Int, data: Intent?): Uri? {
     return uri
 }
 
+fun writeBlogImageRef(app: SWCCApp, imageRef: String) {
+    val userId = app.auth.currentUser!!.uid
+    val values = BlogModel(userId,imageRef).toMap()
+    val childUpdates = HashMap<String, Any>()
+    childUpdates["/posts/$userId"] = values
+    app.database.updateChildren(childUpdates)
+}
+
+fun readBlogImageUri(resultCode: Int, data: Intent?): Uri? {
+    var uri: Uri? = null
+    if (resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+        try { uri = data.data }
+        catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+    return uri
+}
+
 fun showImagePicker(parent: Activity, id: Int) {
+    val intent = Intent()
+    intent.type = "image/*"
+    intent.action = Intent.ACTION_OPEN_DOCUMENT
+    intent.addCategory(Intent.CATEGORY_OPENABLE)
+    val chooser = Intent.createChooser(intent, R.string.select_profile_image.toString())
+    parent.startActivityForResult(chooser, id)
+}
+
+fun showBlogImagePicker(parent: BlogFragment, id: Int) {
     val intent = Intent()
     intent.type = "image/*"
     intent.action = Intent.ACTION_OPEN_DOCUMENT

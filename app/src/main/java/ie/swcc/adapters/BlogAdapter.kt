@@ -49,15 +49,15 @@ class BlogAdapter constructor(var blogPosts: ArrayList<BlogModel>,
         fun bind(blog: BlogModel, listener: BlogListener, blogAll: Boolean) {
             itemView.tag = blog
             itemView.title.text = blog.title
+            itemView.blogText.text = blog.body
             //itemView.post.text = donation.posttype.toString()
-            //itemView.imageIcon.setImageResource(R.drawable.logo)
+            //itemView.imageIcon.setImageResource(blog.image)
             if(!blogAll)
             itemView.setOnClickListener { listener.onBlogPostClick(blog) }
 
-            if(!blog.profilepic.isEmpty()) {
-                Picasso.get().load(blog.profilepic.toUri())
-                    //.resize(180, 180)
-                    .transform(CropCircleTransformation())
+            if(!blog.image.isEmpty()) {
+                Picasso.get().load(blog.image.toUri())
+                    .resize(190, 160)
                     .into(itemView.imageIcon)
             }
             else
