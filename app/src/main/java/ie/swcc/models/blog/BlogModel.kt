@@ -13,8 +13,6 @@ data class BlogModel(
     var title: String = "",
     var body: String = "",
     var posttype: String = "N/A",
-    var message: String = "a message",
-    var upvotes: Int = 0,
     var profilepic: String = "",
     var email: String? = "joe@bloggs.com")
                         : Parcelable
@@ -27,8 +25,6 @@ data class BlogModel(
             "title" to title,
             "body" to body,
             "posttype" to posttype,
-            "message" to message,
-            "upvotes" to upvotes,
             "profilepic" to profilepic,
             "email" to email
         )

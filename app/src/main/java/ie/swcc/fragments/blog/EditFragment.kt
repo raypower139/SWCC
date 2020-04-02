@@ -68,13 +68,10 @@ class EditFragment : Fragment(), AnkoLogger {
             root.editBlogImage.setImageResource(R.mipmap.ic_launcher_homer_round)
 
         // Set the Radio Button to the saved value
-        if (editPost!!.posttype=="News"){
+        if(editPost!!.posttype=="News"){
         root.editNews.setChecked(true)}
         else{root.editSpins.setChecked(true)}
 
-        root.editBlogImage.setOnClickListener { Log.d("Photo","Working")
-            showEditBlogImagePicker(this,3)
-        }
 
 
         root.editUpdateButton.setOnClickListener {
@@ -83,6 +80,10 @@ class EditFragment : Fragment(), AnkoLogger {
             updatePost(editPost!!.uid, editPost!!)
             updateUserPost(app.auth.currentUser!!.uid,
                                editPost!!.uid, editPost!!)
+        }
+
+        root.editBlogImage.setOnClickListener { Log.d("Photo","Working")
+            showEditBlogImagePicker(this,3)
         }
 
         return root
@@ -101,10 +102,8 @@ class EditFragment : Fragment(), AnkoLogger {
     fun updatePostData() {
         editPost!!.title = root.editTitle.text.toString()
         editPost!!.body = root.editBody.text.toString()
-        val posttype = if(root.editPostType.checkedRadioButtonId == R.id.Spins) "Spins" else "News"
-        editPost!!.posttype = posttype
         editPost!!.image = app.image.toString()
-
+        editPost!!.posttype = if(root.editPostType.checkedRadioButtonId == R.id.Spins) "Spins" else "News"
 
     }
 
