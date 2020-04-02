@@ -22,6 +22,7 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import ie.swcc.R
 import ie.swcc.fragments.blog.BlogFragment
+import ie.swcc.fragments.blog.EditFragment
 import ie.swcc.main.SWCCApp
 import ie.swcc.models.UserModel
 import ie.swcc.models.blog.BlogModel
@@ -125,6 +126,32 @@ fun uploadBlogImageView(app: SWCCApp, blogImage: ImageView) {
     }
 }
 
+fun uploadEditBlogImageView(app: SWCCApp, editBlogImage: ImageView) {
+    val filename = UUID.randomUUID().toString()
+    val imageRef2 = app.storage.child("photos").child("$filename.jpg")
+    val uploadTask = imageRef2.putBytes(convertImageToBytes(editBlogImage))
+
+    uploadTask.addOnFailureListener { object : OnFailureListener {
+        override fun onFailure(error: Exception) {
+            Log.v("Post", "uploadTask.exception" + error)
+        }
+    }
+    }.addOnSuccessListener {
+        uploadTask.continueWithTask { task ->
+            imageRef2.downloadUrl
+        }.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                app.image = task.result!!.toString().toUri()
+                //updateAllPosts(app)
+                //writeBlogImageRef(app,app.image.toString())
+                Picasso.get().load(app.image)
+                    .resize(600, 400)
+                    .into(editBlogImage)
+            }
+        }
+    }
+}
+
 fun convertImageToBytes(imageView: ImageView) : ByteArray {
     // Get the data from an ImageView as bytes
     lateinit var bitmap: Bitmap
@@ -159,15 +186,19 @@ fun readImageUri(resultCode: Int, data: Intent?): Uri? {
     return uri
 }
 
-fun writeBlogImageRef(app: SWCCApp, imageRef: String) {
-    val userId = app.auth.currentUser!!.uid
-    val values = BlogModel(userId,imageRef).toMap()
-    val childUpdates = HashMap<String, Any>()
-    childUpdates["/posts/$userId"] = values
-    app.database.updateChildren(childUpdates)
-}
 
 fun readBlogImageUri(resultCode: Int, data: Intent?): Uri? {
+    var uri: Uri? = null
+    if (resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+        try { uri = data.data }
+        catch (e: IOException) {
+            e.printStackTrace()
+        }
+    }
+    return uri
+}
+
+fun readEditBlogImageUri(resultCode: Int, data: Intent?): Uri? {
     var uri: Uri? = null
     if (resultCode == Activity.RESULT_OK && data != null && data.data != null) {
         try { uri = data.data }
@@ -188,6 +219,15 @@ fun showImagePicker(parent: Activity, id: Int) {
 }
 
 fun showBlogImagePicker(parent: BlogFragment, id: Int) {
+    val intent = Intent()
+    intent.type = "image/*"
+    intent.action = Intent.ACTION_OPEN_DOCUMENT
+    intent.addCategory(Intent.CATEGORY_OPENABLE)
+    val chooser = Intent.createChooser(intent, R.string.select_profile_image.toString())
+    parent.startActivityForResult(chooser, id)
+}
+
+fun showEditBlogImagePicker(parent: EditFragment, id: Int) {
     val intent = Intent()
     intent.type = "image/*"
     intent.action = Intent.ACTION_OPEN_DOCUMENT

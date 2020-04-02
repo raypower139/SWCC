@@ -8,6 +8,16 @@
     tools:context=".fragments.blog.BlogFragment">
 
 
+    <ImageView
+        android:id="@+id/blogImage"
+        android:layout_width="400dp"
+        android:layout_height="220dp"
+        android:src="@drawable/placeholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/postButton"
         android:layout_width="389dp"
@@ -74,15 +84,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTitle" />
-
-    <ImageView
-        android:id="@+id/blogImage"
-        android:layout_width="409dp"
-        android:layout_height="209dp"
-        android:src="@drawable/placeholder"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
