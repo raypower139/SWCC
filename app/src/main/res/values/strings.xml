@@ -65,7 +65,7 @@
 
     <!--END Firebase Resources-->
 
-    <string name="postButton">Donate</string>
+    <string name="postButton">Add Post</string>
     <string name="news">News</string>
     <string name="spins">Spins</string>
     <string name="select_image">Select Image</string>

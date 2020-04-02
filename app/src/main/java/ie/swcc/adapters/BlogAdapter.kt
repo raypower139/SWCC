@@ -57,7 +57,7 @@ class BlogAdapter constructor(var blogPosts: ArrayList<BlogModel>,
 
             if(!blog.image.isEmpty()) {
                 Picasso.get().load(blog.image.toUri())
-                    .resize(190, 160)
+                    .resize(240, 180)
                     .into(itemView.imageIcon)
             }
             else

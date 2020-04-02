@@ -127,7 +127,7 @@ class BlogFragment : Fragment(), AnkoLogger {
                 if (data != null) {
                     //writeBlogImageRef(app,readBlogImageUri(resultCode, data).toString())
                     Picasso.get().load(readBlogImageUri(resultCode, data).toString())
-                        .resize(190, 160)
+                        .resize(600, 400)
                         .into(blogImage, object : Callback {
                             override fun onSuccess() {
                                 // Drawable is ready

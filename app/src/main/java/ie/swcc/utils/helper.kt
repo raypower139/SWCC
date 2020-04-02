@@ -118,7 +118,7 @@ fun uploadBlogImageView(app: SWCCApp, blogImage: ImageView) {
                 //updateAllPosts(app)
                 //writeBlogImageRef(app,app.image.toString())
                 Picasso.get().load(app.image)
-                    .resize(240, 240)
+                    .resize(600, 400)
                     .into(blogImage)
             }
         }
