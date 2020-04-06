@@ -12,6 +12,7 @@ data class BlogModel(
     var image: String = "",
     var title: String = "",
     var body: String = "",
+    var date: String = "",
     var posttype: String = "N/A",
     var profilepic: String = "",
     var email: String? = "joe@bloggs.com")
@@ -24,6 +25,7 @@ data class BlogModel(
             "image" to image,
             "title" to title,
             "body" to body,
+            "date" to date,
             "posttype" to posttype,
             "profilepic" to profilepic,
             "email" to email

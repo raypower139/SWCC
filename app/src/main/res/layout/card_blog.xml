@@ -12,15 +12,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="2dp"
-        android:layout_marginTop="10dp">
+        android:layout_height="141dp"
+        android:layout_marginTop="10dp"
+        android:padding="2dp">
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="226dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="10dp"
+            android:layout_width="235dp"
+            android:layout_height="36dp"
             android:layout_marginTop="3dp"
             android:text="TextView"
             android:textAlignment="viewStart"
@@ -32,10 +31,24 @@
             tools:text="" />
 
         <TextView
+            android:id="@+id/blogDate"
+            android:layout_width="237dp"
+            android:layout_height="16dp"
+            android:layout_marginBottom="25dp"
+            android:text=" "
+            android:textAlignment="viewStart"
+            android:textColor="#000000"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toTopOf="@+id/blogText"
+            app:layout_constraintStart_toEndOf="@+id/imageIcon"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="" />
+
+        <TextView
             android:id="@+id/blogText"
-            android:layout_width="228dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="10dp"
+            android:layout_width="235dp"
+            android:layout_height="100dp"
             android:layout_marginBottom="5dp"
             android:text="TextView"
             android:textAlignment="viewStart"

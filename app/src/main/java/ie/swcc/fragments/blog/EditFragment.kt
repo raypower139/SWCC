@@ -31,6 +31,10 @@ import kotlinx.android.synthetic.main.fragment_edit.view.editTitle
 import kotlinx.android.synthetic.main.nav_header_home.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 
 class EditFragment : Fragment(), AnkoLogger {
 
@@ -59,6 +63,8 @@ class EditFragment : Fragment(), AnkoLogger {
         loader = createLoader(activity!!)
         root.editTitle.setText(editPost!!.title)
         root.editBody.setText(editPost!!.body)
+
+        root.editDate.setText(editPost!!.date)
         if(!editPost!!.image.isEmpty()) {
             Picasso.get().load(editPost!!.image.toUri())
                 .resize(600, 400)
@@ -105,6 +111,12 @@ class EditFragment : Fragment(), AnkoLogger {
         editPost!!.image = app.image.toString()
         editPost!!.posttype = if(root.editPostType.checkedRadioButtonId == R.id.Spins) "Spins" else "News"
 
+        val zonedToday = ZonedDateTime.now(ZoneId.of("Europe/Dublin")).toLocalDate()
+        val zonedFormattedToday = zonedToday.format(
+            DateTimeFormatter.ofLocalizedDate(
+                FormatStyle.FULL))
+        val date = zonedFormattedToday
+        editPost!!.date = date
     }
 
     fun updateUserPost(userId: String, uid: String?, post: BlogModel) {

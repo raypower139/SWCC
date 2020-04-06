@@ -50,6 +50,7 @@ class BlogAdapter constructor(var blogPosts: ArrayList<BlogModel>,
             itemView.tag = blog
             itemView.title.text = blog.title
             itemView.blogText.text = blog.body
+            itemView.blogDate.text = blog.date
             //itemView.post.text = donation.posttype.toString()
             //itemView.imageIcon.setImageResource(blog.image)
             if(!blogAll)

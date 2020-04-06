@@ -26,6 +26,10 @@ import kotlinx.android.synthetic.main.nav_header_home.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.FormatStyle
 import java.util.HashMap
 
 
@@ -73,13 +77,17 @@ class BlogFragment : Fragment(), AnkoLogger {
         layout.postButton.setOnClickListener {
             val title = layout.editTitle.text.toString()
             val body = layout.editBody.text.toString()
-
+            val zonedToday = ZonedDateTime.now(ZoneId.of("Europe/Dublin")).toLocalDate()
+            val zonedFormattedToday = zonedToday.format(DateTimeFormatter.ofLocalizedDate(
+                FormatStyle.FULL))
+            val date = zonedFormattedToday
             val posttype = if(layout.postMethod.checkedRadioButtonId == R.id.Spins) "Spins" else "News"
                 writeNewBlogPost(
                     BlogModel(
                         title = title,
                         posttype = posttype,
                         body = body,
+                        date = date,
                         image = app.image.toString(),
                         profilepic = app.userImage.toString(),
                         email = app.auth.currentUser?.email
