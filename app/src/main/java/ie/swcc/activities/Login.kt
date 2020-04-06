@@ -19,8 +19,11 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+
 //import com.google.firebase.quickstart.auth.R
 import ie.swcc.R
+import ie.swcc.activities.chat.LatestMessagesActivity
+import ie.swcc.fragments.NewsFragment
 import ie.swcc.main.SWCCApp
 import ie.swcc.utils.createLoader
 import ie.swcc.utils.hideLoader
@@ -45,6 +48,7 @@ class Login : AppCompatActivity(), View.OnClickListener {
         signOutButton.setOnClickListener(this)
         verifyEmailButton.setOnClickListener(this)
         sign_in_button.setOnClickListener(this)
+        btn_forgot_password.setOnClickListener(this)
 
         // [START initialize_auth]
         // Initialize Firebase Auth
@@ -239,6 +243,7 @@ class Login : AppCompatActivity(), View.OnClickListener {
             R.id.emailSignInButton -> signIn(fieldEmail.text.toString(), fieldPassword.text.toString())
             R.id.signOutButton -> signOut()
             R.id.verifyEmailButton -> sendEmailVerification()
+            R.id.btn_forgot_password -> startActivity<ResetPasswordActivity>()
             R.id.sign_in_button -> googleSignIn()
         }
     }
