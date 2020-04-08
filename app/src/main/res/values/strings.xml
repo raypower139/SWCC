@@ -23,6 +23,7 @@
     <string name="menu_report">Strava Club Members</string>
     <string name="menu_chat">Club Chat</string>
     <string name="menu_news">Club News</string>
+    <string name="menu_profile">Profile</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="select_profile_image">Select Profile Image</string>
@@ -38,6 +39,7 @@
     <string name="action_update">Update Blog Post</string>
     <string name="message_edit">Please Update your Details Below</string>
     <string name="action_post">Add Blog Post</string>
+    <string name="action_profile">Edit Profile Details</string>
 
 
     <!-- START Firebase Resources-->

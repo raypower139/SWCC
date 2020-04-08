@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
-import androidx.core.net.toUri
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -18,12 +17,8 @@ import ie.swcc.main.SWCCApp
 import ie.swcc.R
 import ie.swcc.models.blog.BlogModel
 import ie.swcc.utils.*
-import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.fragment_add_blogpost.*
 import kotlinx.android.synthetic.main.fragment_add_blogpost.view.*
-import kotlinx.android.synthetic.main.home.*
-import kotlinx.android.synthetic.main.nav_header_home.*
-import kotlinx.android.synthetic.main.nav_header_home.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import java.time.ZoneId

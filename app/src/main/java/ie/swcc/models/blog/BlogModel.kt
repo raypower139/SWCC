@@ -18,6 +18,8 @@ data class BlogModel(
     var email: String? = "joe@bloggs.com")
                         : Parcelable
 {
+
+
     @Exclude
     fun toMap(): Map<String, Any?> {
         return mapOf(

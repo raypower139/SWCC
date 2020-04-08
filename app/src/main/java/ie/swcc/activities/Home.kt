@@ -23,9 +23,11 @@ import org.jetbrains.anko.startActivity
 import com.squareup.picasso.Picasso
 import ie.swcc.activities.chat.LatestMessagesActivity
 import ie.swcc.fragments.blog.BlogFragment
+import ie.swcc.fragments.blog.ProfileFragment
 import ie.swcc.fragments.blog.ReportAllFragment
 import ie.swcc.fragments.blog.ReportFragment
 import ie.swcc.fragments.strava.StravaFragment
+import ie.swcc.models.UserModel
 import ie.swcc.utils.*
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
@@ -79,6 +81,7 @@ class Home : AppCompatActivity(),
             R.id.nav_chat -> startActivity<LatestMessagesActivity>()
             R.id.nav_report -> navigateTo(StravaFragment.newInstance())
             R.id.nav_news -> navigateTo(NewsFragment.newInstance())
+            R.id.nav_profile -> navigateTo(ProfileFragment.newInstance())
             R.id.nav_sign_out -> signOut()
 
             else -> toast("You Selected Something Else")

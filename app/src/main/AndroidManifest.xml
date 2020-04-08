@@ -25,6 +25,8 @@
         </activity>
         <activity
             android:name=".activities.ResetPasswordActivity" />
+
+
         <activity
             android:name=".activities.chat.LatestMessagesActivity"
             android:label="@string/club_chat" />

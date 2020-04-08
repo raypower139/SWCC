@@ -121,9 +121,9 @@ open class ReportFragment : Fragment(), AnkoLogger,
                 })
     }
 
-    override fun onBlogPostClick(donation: BlogModel) {
+    override fun onBlogPostClick(post: BlogModel) {
         activity!!.supportFragmentManager.beginTransaction()
-            .replace(R.id.homeFrame, EditFragment.newInstance(donation))
+            .replace(R.id.homeFrame, EditFragment.newInstance(post))
             .addToBackStack(null)
             .commit()
     }

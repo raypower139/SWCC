@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import ie.swcc.R
 import ie.swcc.models.blog.BlogModel
-import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.card_blog.view.*
 
 

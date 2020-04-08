@@ -10,7 +10,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
-import androidx.core.view.get
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -21,14 +20,10 @@ import ie.swcc.R
 import ie.swcc.main.SWCCApp
 import ie.swcc.models.blog.BlogModel
 import ie.swcc.utils.*
-import kotlinx.android.synthetic.main.card_blog.view.*
-import kotlinx.android.synthetic.main.fragment_add_blogpost.*
-import kotlinx.android.synthetic.main.fragment_add_blogpost.view.*
 import kotlinx.android.synthetic.main.fragment_edit.*
 import kotlinx.android.synthetic.main.fragment_edit.view.*
 import kotlinx.android.synthetic.main.fragment_edit.view.editBody
 import kotlinx.android.synthetic.main.fragment_edit.view.editTitle
-import kotlinx.android.synthetic.main.nav_header_home.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import java.time.ZoneId
@@ -100,7 +95,7 @@ class EditFragment : Fragment(), AnkoLogger {
         fun newInstance(post: BlogModel) =
             EditFragment().apply {
                 arguments = Bundle().apply {
-                    putParcelable("editpost",post)
+                    //putParcelable("editpost",post)
                 }
             }
     }

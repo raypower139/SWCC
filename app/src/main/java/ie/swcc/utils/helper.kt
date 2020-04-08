@@ -25,7 +25,6 @@ import ie.swcc.fragments.blog.BlogFragment
 import ie.swcc.fragments.blog.EditFragment
 import ie.swcc.main.SWCCApp
 import ie.swcc.models.UserModel
-import ie.swcc.models.blog.BlogModel
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.home.*
 import kotlinx.android.synthetic.main.nav_header_home.view.*
@@ -152,6 +151,34 @@ fun uploadEditBlogImageView(app: SWCCApp, editBlogImage: ImageView) {
     }
 }
 
+fun uploadEditProfileImageView(app: SWCCApp, editProfileImage: ImageView) {
+    val filename = UUID.randomUUID().toString()
+    val imageRef2 = app.storage.child("photos").child("$filename.jpg")
+    val uploadTask = imageRef2.putBytes(convertImageToBytes(editProfileImage))
+
+    uploadTask.addOnFailureListener { object : OnFailureListener {
+        override fun onFailure(error: Exception) {
+            Log.v("Post", "uploadTask.exception" + error)
+        }
+    }
+    }.addOnSuccessListener {
+        uploadTask.continueWithTask { task ->
+            imageRef2.downloadUrl
+        }.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                app.image = task.result!!.toString().toUri()
+                //updateAllPosts(app)
+                //writeBlogImageRef(app,app.image.toString())
+                Picasso.get().load(app.image)
+                    .resize(600, 400)
+                    .into(editProfileImage)
+            }
+        }
+    }
+}
+
+
+
 fun convertImageToBytes(imageView: ImageView) : ByteArray {
     // Get the data from an ImageView as bytes
     lateinit var bitmap: Bitmap
@@ -209,6 +236,8 @@ fun readEditBlogImageUri(resultCode: Int, data: Intent?): Uri? {
     return uri
 }
 
+
+
 fun showImagePicker(parent: Activity, id: Int) {
     val intent = Intent()
     intent.type = "image/*"
@@ -235,6 +264,8 @@ fun showEditBlogImagePicker(parent: EditFragment, id: Int) {
     val chooser = Intent.createChooser(intent, R.string.select_profile_image.toString())
     parent.startActivityForResult(chooser, id)
 }
+
+
 
 fun updateAllPosts(app: SWCCApp) {
     val userId = app.auth.currentUser!!.uid
