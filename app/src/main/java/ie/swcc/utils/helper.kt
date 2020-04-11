@@ -23,6 +23,7 @@ import com.squareup.picasso.Picasso
 import ie.swcc.R
 import ie.swcc.fragments.blog.BlogFragment
 import ie.swcc.fragments.blog.EditFragment
+import ie.swcc.fragments.blog.ProfileFragment
 import ie.swcc.main.SWCCApp
 import ie.swcc.models.UserModel
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
@@ -151,7 +152,7 @@ fun uploadEditBlogImageView(app: SWCCApp, editBlogImage: ImageView) {
     }
 }
 
-fun uploadEditProfileImageView(app: SWCCApp, editProfileImage: ImageView) {
+fun uploadProfileImageView(app: SWCCApp, editProfileImage: ImageView) {
     val filename = UUID.randomUUID().toString()
     val imageRef2 = app.storage.child("photos").child("$filename.jpg")
     val uploadTask = imageRef2.putBytes(convertImageToBytes(editProfileImage))
@@ -166,15 +167,16 @@ fun uploadEditProfileImageView(app: SWCCApp, editProfileImage: ImageView) {
             imageRef2.downloadUrl
         }.addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                app.image = task.result!!.toString().toUri()
+                app.userImage = task.result!!.toString().toUri()
                 //updateAllPosts(app)
-                //writeBlogImageRef(app,app.image.toString())
-                Picasso.get().load(app.image)
+                writeImageRef(app,app.userImage.toString())
+                Picasso.get().load(app.userImage)
                     .resize(600, 400)
                     .into(editProfileImage)
             }
         }
     }
+
 }
 
 
@@ -200,6 +202,16 @@ fun writeImageRef(app: SWCCApp, imageRef: String) {
 
     childUpdates["/user-photos/$userId"] = values
     app.database.updateChildren(childUpdates)
+}
+
+fun updateProfile(app: SWCCApp, profilepic: String, name: String) {
+    val userId = app.auth.currentUser!!.uid
+    val values = UserModel(userId,profilepic, name).toMap()
+    val childUpdates = HashMap<String, Any>()
+
+    childUpdates["/user-photos/$userId"] = values
+    app.database.updateChildren(childUpdates)
+
 }
 
 fun readImageUri(resultCode: Int, data: Intent?): Uri? {
@@ -239,6 +251,15 @@ fun readEditBlogImageUri(resultCode: Int, data: Intent?): Uri? {
 
 
 fun showImagePicker(parent: Activity, id: Int) {
+    val intent = Intent()
+    intent.type = "image/*"
+    intent.action = Intent.ACTION_OPEN_DOCUMENT
+    intent.addCategory(Intent.CATEGORY_OPENABLE)
+    val chooser = Intent.createChooser(intent, R.string.select_profile_image.toString())
+    parent.startActivityForResult(chooser, id)
+}
+
+fun showProfileImagePicker(parent: ProfileFragment, id: Int) {
     val intent = Intent()
     intent.type = "image/*"
     intent.action = Intent.ACTION_OPEN_DOCUMENT

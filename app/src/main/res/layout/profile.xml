@@ -7,10 +7,29 @@
     android:layout_height="match_parent"
     tools:context=".fragments.blog.EditFragment">
 
+    <Button
+        android:id="@+id/deleteUserButton"
+        android:layout_width="204dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:text="Delete User"
+        app:layout_constraintStart_toStartOf="@+id/resetPasswordButton"
+        app:layout_constraintTop_toBottomOf="@+id/resetPasswordButton" />
+
+    <Button
+        android:id="@+id/editNameButton"
+        android:layout_width="204dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/editProfileName"
+        app:layout_constraintStart_toStartOf="@+id/editProfileName"
+        app:layout_constraintTop_toBottomOf="@+id/editProfileName" />
+
     <ImageView
         android:id="@+id/editProfileImage"
         android:layout_width="400dp"
         android:layout_height="220dp"
+        android:text="@string/editProfileImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,26 +38,33 @@
 
     <EditText
         android:id="@+id/editProfileName"
-        android:layout_width="360dp"
-        android:layout_height="49dp"
-        android:layout_marginEnd="32dp"
-        android:ems="10"
+        android:layout_width="203dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="12dp"
+        android:hint="Profile Name"
         android:inputType="text"
         android:textAlignment="viewStart"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editProfileImage" />
-
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/updateProfileImage"
+        app:layout_constraintTop_toBottomOf="@+id/updateProfileImage" />
 
     <Button
-        android:id="@+id/editProfileButton"
-        android:layout_width="390dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="5dp"
-        android:text="@string/action_update"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/updateProfileImage"
+        android:layout_width="206dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/editProfileImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editProfileImage" />
+
+    <Button
+        android:id="@+id/resetPasswordButton"
+        android:layout_width="204dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:text="Request Email Reset"
+        app:layout_constraintStart_toStartOf="@+id/editNameButton"
+        app:layout_constraintTop_toBottomOf="@+id/editNameButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

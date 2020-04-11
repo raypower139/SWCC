@@ -40,8 +40,10 @@
     <string name="message_edit">Please Update your Details Below</string>
     <string name="action_post">Add Blog Post</string>
     <string name="action_profile">Edit Profile Details</string>
-
-
+    <string name="editProfileImage">Update Image</string>
+    <string name="editProfileName">Update Profile Name</string>
+    <string name="resetPassword">Reset Password</string>
+    <string name="deleteUserText">Delete User</string>
     <!-- START Firebase Resources-->
 
     <string name="label_emailpassword">Email/Password Authentication</string>

@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageview_latest_message"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="66dp"
+        android:layout_height="61dp"
         android:layout_marginStart="26dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +21,8 @@
         android:id="@+id/username_textview_latest_message"
         android:layout_width="141dp"
         android:layout_height="23dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="8dp"
         android:text="username"
         android:textColor="@android:color/black"
@@ -34,14 +35,10 @@
 
     <TextView
         android:id="@+id/textview_latest_message"
-        android:layout_width="296dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="270dp"
+        android:layout_height="49dp"
         android:text="Latest Message"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageview_latest_message"
+        app:layout_constraintStart_toStartOf="@+id/username_textview_latest_message"
         app:layout_constraintTop_toBottomOf="@+id/username_textview_latest_message" />
 </androidx.constraintlayout.widget.ConstraintLayout>

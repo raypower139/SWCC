@@ -59,7 +59,7 @@ class EditFragment : Fragment(), AnkoLogger {
         root.editTitle.setText(editPost!!.title)
         root.editBody.setText(editPost!!.body)
 
-        root.editDate.setText(editPost!!.date)
+
         if(!editPost!!.image.isEmpty()) {
             Picasso.get().load(editPost!!.image.toUri())
                 .resize(600, 400)
@@ -95,7 +95,7 @@ class EditFragment : Fragment(), AnkoLogger {
         fun newInstance(post: BlogModel) =
             EditFragment().apply {
                 arguments = Bundle().apply {
-                    //putParcelable("editpost",post)
+                    putParcelable("editpost",post)
                 }
             }
     }

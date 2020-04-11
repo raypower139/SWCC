@@ -15,20 +15,25 @@ import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
 import ie.swcc.R
 import ie.swcc.activities.Home
+import ie.swcc.activities.chat.LatestMessagesActivity.Companion.currentUser
+import ie.swcc.main.SWCCApp
 import ie.swcc.models.UserModel
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 import kotlinx.android.synthetic.main.activity_new_message.*
 import kotlinx.android.synthetic.main.card_user.view.*
 
+
+lateinit var app: SWCCApp
 class NewMessageActivity : AppCompatActivity() {
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_message)
         supportActionBar?.title = "Select User"
 
-
-fetchusers()
+        fetchusers()
 
     }
 
@@ -70,7 +75,8 @@ fetchusers()
 
 class UserItem(val user: UserModel): Item<GroupieViewHolder>(){
     override fun bind(viewHolder: GroupieViewHolder, position:Int){
-        viewHolder.itemView.message_user_name.text = user.uid
+
+        viewHolder.itemView.message_user_name.text = user.name
         if(!user.profilepic.isEmpty()) {
             Picasso.get().load(user.profilepic.toUri())
                 //.resize(180, 180)

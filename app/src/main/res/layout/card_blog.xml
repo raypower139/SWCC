@@ -5,64 +5,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
-    android:layout_marginBottom="5dp"
-    android:elevation="24dp">
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    android:elevation="15dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="141dp"
-        android:layout_marginTop="10dp"
-        android:padding="2dp">
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:padding="1dp">
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="235dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="3dp"
+            android:layout_width="211dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
             android:text="TextView"
             android:textAlignment="viewStart"
             android:textColor="#000000"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/blogText"
+            android:textSize="14sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/imageIcon"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="" />
 
         <TextView
             android:id="@+id/blogDate"
-            android:layout_width="237dp"
-            android:layout_height="16dp"
-            android:layout_marginBottom="25dp"
+            android:layout_width="170dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="8dp"
             android:text=" "
             android:textAlignment="viewStart"
             android:textColor="#000000"
-            android:textSize="8sp"
-            app:layout_constraintBottom_toTopOf="@+id/blogText"
+            android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/imageIcon"
             app:layout_constraintTop_toBottomOf="@+id/title"
-            app:layout_constraintVertical_bias="0.0"
             tools:text="" />
 
         <TextView
             android:id="@+id/blogText"
-            android:layout_width="235dp"
-            android:layout_height="100dp"
-            android:layout_marginBottom="5dp"
+            android:layout_width="208dp"
+            android:layout_height="77dp"
             android:text="TextView"
             android:textAlignment="viewStart"
             android:textColor="#000000"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageIcon"
-            app:layout_constraintTop_toBottomOf="@+id/title"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@+id/title"
+            app:layout_constraintTop_toBottomOf="@+id/blogDate"
             tools:text="" />
 
         <ImageView
             android:id="@+id/imageIcon"
             android:layout_width="159dp"
             android:layout_height="117dp"
+            android:layout_marginStart="5dp"
             android:layout_marginBottom="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
