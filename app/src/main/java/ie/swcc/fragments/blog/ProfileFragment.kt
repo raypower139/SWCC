@@ -85,19 +85,17 @@ class ProfileFragment : Fragment(), AnkoLogger {
                     hideLoader(loader)
 
                     val user = snapshot.getValue<UserModel>(UserModel::class.java)
-                    val googleUser = FirebaseAuth.getInstance().currentUser
+                    val chatUser = FirebaseAuth.getInstance().currentUser
 
-                    if (user!!.profilepic == null) {
-                        root.editProfileImage.setImageURI(googleUser!!.photoUrl)
-                        root.editProfileName.setText(googleUser!!.displayName)
-                        //root.editProfileName.setSelection(user!!2.displayName!!.length)
-                        Picasso.get().load(app.userImage)
+                    if (app.auth.currentUser?.photoUrl != null) {
+                        root.editProfileName.setText(app.auth.currentUser?.displayName)
+                        //root.editProfileName.setSelection(user!!.displayName.length)
+                        Picasso.get().load(app.auth.currentUser?.photoUrl)
                             .resize(600, 400)
                             .into(root.editProfileImage)
                     } else {
-                        root.editProfileName.setText(googleUser!!.displayName)
-                        root.editProfileImage.setImageURI(user.profilepic.toUri())
-                        Picasso.get().load(user.profilepic.toUri())
+                        root.editProfileName.setText(user!!.name)
+                        Picasso.get().load(user!!.profilepic.toUri())
                             .resize(600, 400)
                             .into(root.editProfileImage)
                         //root.editProfileImage.setImageResource(R.mipmap.ic_launcher_homer_round)}
@@ -120,9 +118,10 @@ class ProfileFragment : Fragment(), AnkoLogger {
                 ?.addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d(TAG, "User profile updated.")
+                        updateProfile(app, app.userImage.toString(), editProfileName.toString())
                     }
                 }
-
+            updateProfile(app, app.userImage.toString(), editProfileName.toString())
 
         }
 
@@ -136,19 +135,14 @@ class ProfileFragment : Fragment(), AnkoLogger {
                     Log.d(TAG, "User account deleted.")
                }
             } }
-
-
-
-        //root.editImageButton.setOnClickListener { showProfileImagePicker(this, 2) }
+        //root.editProfileImage.setOnClickListener { showProfileImagePicker(this, 2) }
 
     root.updateProfileImage.setOnClickListener {
 
         showProfileImagePicker(this, 2)
         //showLoader(loader, "Updating Profile on Server...")
-        updateProfile(app, app.userImage.toString(), editProfileName.toString())
-        // [START_EXCLUDE]
-        hideLoader(loader)
-        // [END_EXCLUDE]
+
+
     }
 
     return root;
@@ -174,6 +168,10 @@ class ProfileFragment : Fragment(), AnkoLogger {
                             override fun onSuccess() {
                                 // Drawable is ready
                                 uploadProfileImageView(app, editProfileImage)
+
+                                // [START_EXCLUDE]
+                                hideLoader(loader)
+                                // [END_EXCLUDE]
                             }
 
                             override fun onError(e: Exception) {}

@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import ie.swcc.R
+import ie.swcc.activities.chat.LatestMessagesActivity.Companion.currentUser
 import ie.swcc.fragments.blog.BlogFragment
 import ie.swcc.fragments.blog.EditFragment
 import ie.swcc.fragments.blog.ProfileFragment
@@ -197,7 +198,7 @@ fun convertImageToBytes(imageView: ImageView) : ByteArray {
 
 fun writeImageRef(app: SWCCApp, imageRef: String) {
     val userId = app.auth.currentUser!!.uid
-    val values = UserModel(userId,imageRef).toMap()
+    val values = UserModel(userId, profilepic = imageRef ).toMap()
     val childUpdates = HashMap<String, Any>()
 
     childUpdates["/user-photos/$userId"] = values
@@ -206,7 +207,8 @@ fun writeImageRef(app: SWCCApp, imageRef: String) {
 
 fun updateProfile(app: SWCCApp, profilepic: String, name: String) {
     val userId = app.auth.currentUser!!.uid
-    val values = UserModel(userId,profilepic, name).toMap()
+    val name = app.auth.currentUser!!.displayName
+    val values = UserModel(userId,profilepic,name).toMap()
     val childUpdates = HashMap<String, Any>()
 
     childUpdates["/user-photos/$userId"] = values

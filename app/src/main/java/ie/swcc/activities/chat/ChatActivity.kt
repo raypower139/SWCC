@@ -39,7 +39,7 @@ class ChatActivity : AppCompatActivity() {
 
         recyclerview_chat.adapter = adapter
         toUser = intent.getParcelableExtra<UserModel>(NewMessageActivity.USER_KEY)
-        supportActionBar?.title= toUser?.uid
+        supportActionBar?.title= toUser?.name
 
         listenForMessages()
 

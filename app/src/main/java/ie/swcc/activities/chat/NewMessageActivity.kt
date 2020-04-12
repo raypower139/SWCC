@@ -23,9 +23,8 @@ import kotlinx.android.synthetic.main.activity_new_message.*
 import kotlinx.android.synthetic.main.card_user.view.*
 
 
-lateinit var app: SWCCApp
-class NewMessageActivity : AppCompatActivity() {
 
+class NewMessageActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
