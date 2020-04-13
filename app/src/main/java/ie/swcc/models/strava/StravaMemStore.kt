@@ -11,11 +11,14 @@ internal fun getId(): Long {
 class StravaMemStore : StravaStore {
 
         var members = ArrayList<StravaModel>()
+        var activities = ArrayList<StravaStatsModel>()
 
         override fun findAll(): List<StravaModel> {
             return members
         }
-
+        override fun findAllStats(): List<StravaStatsModel> {
+            return activities
+        }
 
 
         fun logAll() {
@@ -23,3 +26,4 @@ class StravaMemStore : StravaStore {
             members.forEach { Log.v("Donate","${it}") }
         }
     }
+

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import ie.swcc.R
 import ie.swcc.adapters.StravaAdapter2
 import ie.swcc.main.SWCCApp
-import ie.swcc.models.strava.StravaModel
+import ie.swcc.models.strava.StravaStatsModel
 import ie.swcc.utils.*
 import kotlinx.android.synthetic.main.fragment_strava_report2.view.*
 import org.jetbrains.anko.AnkoLogger
@@ -21,7 +21,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class StravaStats : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
+class StravaStats : Fragment(), Callback<List<StravaStatsModel>>, AnkoLogger {
 
     lateinit var app: SWCCApp
     lateinit var loader : AlertDialog
@@ -40,25 +40,25 @@ class StravaStats : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
         activity?.title = getString(R.string.action_strava)
         loader = createLoader(activity!!)
 
-        root.recyclerView.setLayoutManager(LinearLayoutManager(activity))
-        root.recyclerView.adapter = StravaAdapter2(app.stravaStore.findAll())
+        root.recyclerView2.setLayoutManager(LinearLayoutManager(activity))
+        root.recyclerView2.adapter = StravaAdapter2(app.stravaStore.findAllStats())
 
         return root
     }
 
 
 
-    override fun onResponse(call: Call<List<StravaModel>>,
-                            response: Response<List<StravaModel>>
+    override fun onResponse(call: Call<List<StravaStatsModel>>,
+                            response: Response<List<StravaStatsModel>>
     ) {
         serviceAvailableMessage(activity!!)
         info("Retrofit JSON = $response.raw()")
-        app.stravaStore.members = response.body() as ArrayList<StravaModel>
+        app.stravaStore.activities = response.body() as ArrayList<StravaStatsModel>
         //updateUI()
         hideLoader(loader)
     }
 
-    override fun onFailure(call: Call<List<StravaModel>>, t: Throwable) {
+    override fun onFailure(call: Call<List<StravaStatsModel>>, t: Throwable) {
         info("Retrofit Error : $t.message")
         serviceUnavailableMessage(activity!!)
         hideLoader(loader)
@@ -67,9 +67,9 @@ class StravaStats : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
 
     override fun onResume() {
         super.onResume()
-        getAllMembers()
+        getAllActivities()
     }
-    fun getAllMembers() {
+    fun getAllActivities() {
         showLoader(loader, "Downloading Strava List")
         var callGetAll = app.stravaService.getall2()
         callGetAll.enqueue(this)

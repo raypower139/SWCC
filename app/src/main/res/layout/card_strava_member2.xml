@@ -15,7 +15,7 @@
 
 
         <TextView
-            android:id="@+id/paymentamount"
+            android:id="@+id/biggestRide"
             android:layout_width="105dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"

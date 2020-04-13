@@ -6,9 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ie.swcc.R
 import ie.swcc.models.strava.StravaModel
+import ie.swcc.models.strava.StravaStatsModel
 import kotlinx.android.synthetic.main.card_strava_member.view.*
+import kotlinx.android.synthetic.main.card_strava_member.view.imageIcon
+import kotlinx.android.synthetic.main.card_strava_member2.view.*
 
-class StravaAdapter2 constructor(private var members: List<StravaModel>)
+class StravaAdapter2 constructor(private var activities: List<StravaStatsModel>)
     : RecyclerView.Adapter<StravaAdapter2.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -22,16 +25,16 @@ class StravaAdapter2 constructor(private var members: List<StravaModel>)
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val donation = members[holder.adapterPosition]
+        val donation = activities[holder.adapterPosition]
         holder.bind(donation)
     }
 
-    override fun getItemCount(): Int = members.size
+    override fun getItemCount(): Int = activities.size
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(member: StravaModel) {
-            itemView.paymentamount.text = member.firstname.toString()
+        fun bind(member: StravaStatsModel) {
+            itemView.biggestRide.text = member.distance.toString()
             //itemView.paymentmethod.text = member.lastname.toString()
             itemView.imageIcon.setImageResource(R.drawable.logo)
         }
