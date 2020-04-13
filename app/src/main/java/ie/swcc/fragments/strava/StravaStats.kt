@@ -10,18 +10,18 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import ie.swcc.R
-import ie.swcc.adapters.StravaAdapter
+import ie.swcc.adapters.StravaAdapter2
 import ie.swcc.main.SWCCApp
 import ie.swcc.models.strava.StravaModel
 import ie.swcc.utils.*
-import kotlinx.android.synthetic.main.fragment_strava_report.view.*
+import kotlinx.android.synthetic.main.fragment_strava_report2.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class StravaFragment : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
+class StravaStats : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
 
     lateinit var app: SWCCApp
     lateinit var loader : AlertDialog
@@ -36,12 +36,12 @@ class StravaFragment : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var root = inflater.inflate(R.layout.fragment_strava_report, container, false)
+        var root = inflater.inflate(R.layout.fragment_strava_report2, container, false)
         activity?.title = getString(R.string.action_strava)
         loader = createLoader(activity!!)
 
         root.recyclerView.setLayoutManager(LinearLayoutManager(activity))
-        root.recyclerView.adapter = StravaAdapter(app.stravaStore.findAll())
+        root.recyclerView.adapter = StravaAdapter2(app.stravaStore.findAll())
 
         return root
     }
@@ -71,7 +71,7 @@ class StravaFragment : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
     }
     fun getAllMembers() {
         showLoader(loader, "Downloading Strava List")
-        var callGetAll = app.stravaService.getall()
+        var callGetAll = app.stravaService.getall2()
         callGetAll.enqueue(this)
 
     }
@@ -82,10 +82,14 @@ class StravaFragment : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
     companion object {
         @JvmStatic
         fun newInstance() =
-            StravaFragment().apply {
+            StravaStats().apply {
                 arguments = Bundle().apply { }
             }
     }
+
+
+
+
 }
 
 

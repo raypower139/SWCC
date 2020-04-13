@@ -85,12 +85,12 @@ class ProfileFragment : Fragment(), AnkoLogger {
                     hideLoader(loader)
 
                     val user = snapshot.getValue<UserModel>(UserModel::class.java)
-                    val chatUser = FirebaseAuth.getInstance().currentUser
 
-                    if (app.auth.currentUser?.photoUrl != null) {
+
+                    if (user!!.profilepic != null) {
                         root.editProfileName.setText(app.auth.currentUser?.displayName)
                         //root.editProfileName.setSelection(user!!.displayName.length)
-                        Picasso.get().load(app.auth.currentUser?.photoUrl)
+                        Picasso.get().load(user!!.profilepic.toUri())
                             .resize(600, 400)
                             .into(root.editProfileImage)
                     } else {
@@ -141,8 +141,10 @@ class ProfileFragment : Fragment(), AnkoLogger {
 
         showProfileImagePicker(this, 2)
         //showLoader(loader, "Updating Profile on Server...")
-
-
+        //updateProfile(app, app.userImage.toString(), editProfileName.toString())
+        // [START_EXCLUDE]
+        hideLoader(loader)
+        // [END_EXCLUDE]
     }
 
     return root;
@@ -168,10 +170,7 @@ class ProfileFragment : Fragment(), AnkoLogger {
                             override fun onSuccess() {
                                 // Drawable is ready
                                 uploadProfileImageView(app, editProfileImage)
-
-                                // [START_EXCLUDE]
-                                hideLoader(loader)
-                                // [END_EXCLUDE]
+                                updateProfile(app, app.userImage.toString(), editProfileName.toString())
                             }
 
                             override fun onError(e: Exception) {}

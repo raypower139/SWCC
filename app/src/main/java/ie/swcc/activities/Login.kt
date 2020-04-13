@@ -22,8 +22,6 @@ import com.google.firebase.storage.FirebaseStorage
 
 //import com.google.firebase.quickstart.auth.R
 import ie.swcc.R
-import ie.swcc.activities.chat.LatestMessagesActivity
-import ie.swcc.fragments.NewsFragment
 import ie.swcc.main.SWCCApp
 import ie.swcc.utils.createLoader
 import ie.swcc.utils.hideLoader

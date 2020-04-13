@@ -8,6 +8,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.util.Log
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
@@ -21,7 +22,6 @@ import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import ie.swcc.R
-import ie.swcc.activities.chat.LatestMessagesActivity.Companion.currentUser
 import ie.swcc.fragments.blog.BlogFragment
 import ie.swcc.fragments.blog.EditFragment
 import ie.swcc.fragments.blog.ProfileFragment

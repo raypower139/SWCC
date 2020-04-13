@@ -27,7 +27,7 @@ import ie.swcc.fragments.blog.ProfileFragment
 import ie.swcc.fragments.blog.ReportAllFragment
 import ie.swcc.fragments.blog.ReportFragment
 import ie.swcc.fragments.strava.StravaFragment
-import ie.swcc.models.UserModel
+import ie.swcc.fragments.strava.StravaStats
 import ie.swcc.utils.*
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
@@ -36,7 +36,6 @@ class Home : AppCompatActivity(),
 
     lateinit var ft: FragmentTransaction
     lateinit var app: SWCCApp
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +57,7 @@ class Home : AppCompatActivity(),
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
+
         navView.getHeaderView(0).nav_header_name.text = app.auth.currentUser?.displayName
         navView.getHeaderView(0).nav_header_email.text = app.auth.currentUser?.email
 
@@ -66,7 +66,7 @@ class Home : AppCompatActivity(),
 
         ft = supportFragmentManager.beginTransaction()
 
-        val fragment = BlogFragment.newInstance()
+        val fragment = MenuFragment.newInstance()
         ft.replace(R.id.homeFrame, fragment)
         ft.commit()
     }
@@ -74,13 +74,12 @@ class Home : AppCompatActivity(),
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            R.id.nav_blog -> navigateTo(BlogFragment.newInstance())
-            R.id.nav_bloglist -> navigateTo(ReportFragment.newInstance())
+            R.id.nav_menu -> navigateTo(MenuFragment.newInstance())
             R.id.nav_bloglist_all ->
                 navigateTo(ReportAllFragment.newInstance())
             R.id.nav_chat -> startActivity<LatestMessagesActivity>()
             R.id.nav_report -> navigateTo(StravaFragment.newInstance())
-            R.id.nav_news -> navigateTo(NewsFragment.newInstance())
+            R.id.nav_report2 -> navigateTo(StravaStats.newInstance())
             R.id.nav_profile -> navigateTo(ProfileFragment.newInstance())
             R.id.nav_sign_out -> signOut()
 
@@ -99,7 +98,9 @@ class Home : AppCompatActivity(),
 
         when (item.itemId) {
 
-            R.id.action_report -> toast("You Selected Report")
+            R.id.action_addBlog -> navigateTo(BlogFragment.newInstance())
+            R.id.action_viewAllBlog -> navigateTo(ReportAllFragment.newInstance())
+            R.id.action_viewMyBlog -> navigateTo(ReportFragment.newInstance())
 
         }
         return super.onOptionsItemSelected(item)
@@ -135,7 +136,7 @@ class Home : AppCompatActivity(),
                 if (data != null) {
                     writeImageRef(app,readImageUri(resultCode, data).toString())
                     Picasso.get().load(readImageUri(resultCode, data).toString())
-                        .resize(240, 240)
+                        .resize(340, 340)
                         .transform(CropCircleTransformation())
                         .into(navView.getHeaderView(0).imageView, object : Callback {
                             override fun onSuccess() {
@@ -145,6 +146,7 @@ class Home : AppCompatActivity(),
                             override fun onError(e: Exception) {}
                         })
                 }
+
             }
         }
     }

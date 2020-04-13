@@ -1,12 +1,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+
     tools:context="ie.swcc.activities.Donate">
 
     <item
-        android:id="@+id/action_report"
+        android:id="@+id/action_addBlog"
         android:orderInCategory="100"
-        android:title="@string/action_report"
+        android:icon="@drawable/ic_add_message"
+        android:title="@string/action_addBlog"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_viewAllBlog"
+        android:orderInCategory="100"
+        android:title="@string/action_viewAllBlog"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_viewMyBlog"
+        android:orderInCategory="100"
+        android:title="@string/action_viewMyBlog"
         app:showAsAction="never" />
 
 

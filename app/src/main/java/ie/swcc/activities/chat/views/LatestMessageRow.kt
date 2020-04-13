@@ -36,7 +36,7 @@ class LatestMessageRow(val chatMessage: ChatMessageModel): Item<GroupieViewHolde
                 // Get the User Details
                 chatPartnerUser = p0.getValue(UserModel::class.java)
                 // Display the User's Name
-                viewHolder.itemView.username_textview_latest_message.text = chatPartnerUser?.uid
+                viewHolder.itemView.username_textview_latest_message.text = chatPartnerUser?.name
                 // Load the user image into the imageview and crop it
                 val targetImageView = viewHolder.itemView.imageview_latest_message
                 Picasso.get().load(chatPartnerUser?.profilepic)

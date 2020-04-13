@@ -103,7 +103,7 @@ class LatestMessagesActivity : AppCompatActivity() {
         ref.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onDataChange(p0: DataSnapshot) {
                 currentUser = p0.getValue(UserModel::class.java)
-                Log.d("LatestMessages", "Current User ${currentUser?.uid}")
+                Log.d("LatestMessages", "Current User ${currentUser?.name}")
 
             }
             override fun onCancelled(p0: DatabaseError) {

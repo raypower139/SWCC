@@ -4,10 +4,8 @@ package ie.swcc.fragments.blog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Callback
@@ -21,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_add_blogpost.*
 import kotlinx.android.synthetic.main.fragment_add_blogpost.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import org.jetbrains.anko.toast
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -67,6 +66,9 @@ class BlogFragment : Fragment(), AnkoLogger {
                 arguments = Bundle().apply {}
             }
     }
+
+
+
 
     fun setButtonListener( layout: View) {
         layout.postButton.setOnClickListener {

@@ -113,7 +113,7 @@ private fun listenForMessages(){
         latestMessageRef.setValue(chatMessage)
 
         val latestMessageToRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$toId/${fromId}")
-        latestMessageRef.setValue(chatMessage)
+        latestMessageToRef.setValue(chatMessage)
     }
 
 
