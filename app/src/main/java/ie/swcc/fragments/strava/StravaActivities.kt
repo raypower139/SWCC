@@ -10,18 +10,18 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import ie.swcc.R
-import ie.swcc.adapters.StravaAdapter2
+import ie.swcc.adapters.StravaActivitiesAdapter
 import ie.swcc.main.SWCCApp
 import ie.swcc.models.strava.StravaStatsModel
 import ie.swcc.utils.*
-import kotlinx.android.synthetic.main.fragment_strava_report2.view.*
+import kotlinx.android.synthetic.main.fragment_strava_activity_report.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class StravaStats : Fragment(), Callback<List<StravaStatsModel>>, AnkoLogger {
+class StravaActivities : Fragment(), Callback<List<StravaStatsModel>>, AnkoLogger {
 
     lateinit var app: SWCCApp
     lateinit var loader : AlertDialog
@@ -36,12 +36,12 @@ class StravaStats : Fragment(), Callback<List<StravaStatsModel>>, AnkoLogger {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var root = inflater.inflate(R.layout.fragment_strava_report2, container, false)
-        activity?.title = getString(R.string.action_strava)
+        var root = inflater.inflate(R.layout.fragment_strava_activity_report, container, false)
+        activity?.title = getString(R.string.action_strava_activities)
         loader = createLoader(activity!!)
 
         root.recyclerView2.setLayoutManager(LinearLayoutManager(activity))
-        root.recyclerView2.adapter = StravaAdapter2(app.stravaStore.findAllStats())
+        root.recyclerView2.adapter = StravaActivitiesAdapter(app.stravaStore.findAllStats())
 
         return root
     }
@@ -82,7 +82,7 @@ class StravaStats : Fragment(), Callback<List<StravaStatsModel>>, AnkoLogger {
     companion object {
         @JvmStatic
         fun newInstance() =
-            StravaStats().apply {
+            StravaActivities().apply {
                 arguments = Bundle().apply { }
             }
     }

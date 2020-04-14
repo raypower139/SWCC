@@ -7,7 +7,7 @@
 
         <item
             android:id="@+id/nav_menu"
-            android:icon="@drawable/ic_menu_report"
+            android:icon="@drawable/ic_home"
             android:title="Home" />
 
         <item
@@ -17,13 +17,9 @@
 
         <item
             android:id="@+id/nav_report"
-            android:icon="@drawable/ic_menu_report"
-            android:title="@string/menu_report" />
+            android:icon="@drawable/ic_strava"
+            android:title="@string/strava_menu" />
 
-        <item
-            android:id="@+id/nav_report2"
-            android:icon="@drawable/ic_menu_report"
-            android:title="@string/menu_report" />
 
         <item
             android:id="@+id/nav_chat"

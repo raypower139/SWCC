@@ -9,52 +9,51 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TextView
-        android:id="@+id/welcome_message"
-        android:layout_width="339dp"
-        android:layout_height="62dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/welcome_message"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/colorPrimary"
-        android:textSize="60dp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="4dp" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="163dp"
+        android:layout_height="121dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
-        android:id="@+id/welcome_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:id="@+id/strava_welcome_name"
+        android:layout_width="213dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="68dp"
         android:text="User Name"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textSize="30dp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_message"
-        tools:layout_editor_absoluteX="4dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <ImageView
         android:id="@+id/newsImage"
         android:layout_width="157dp"
         android:layout_height="153dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/news"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_name" />
+        app:layout_constraintTop_toBottomOf="@+id/strava_welcome_name" />
 
     <ImageView
         android:id="@+id/chatImage"
         android:layout_width="157dp"
         android:layout_height="153dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/chat"
         app:layout_constraintStart_toEndOf="@+id/newsImage"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_name" />
+        app:layout_constraintTop_toBottomOf="@+id/strava_welcome_name" />
 
     <ImageView
         android:id="@+id/stravaImage"
@@ -132,5 +131,7 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/newsImage"
         app:layout_constraintTop_toBottomOf="@+id/newsImage" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

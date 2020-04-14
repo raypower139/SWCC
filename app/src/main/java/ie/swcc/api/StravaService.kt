@@ -10,10 +10,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
 interface StravaService {
-    @GET("clubs/498435/members?access_token=d39a37b2e32436ce46395755f36ed757f04057d9&per_page=200")
+    @GET("clubs/498435/members?access_token=b4efdef18cdc7801d7586822792b8570436693a8&per_page=30")
     fun getall(): Call<List<StravaModel>>
 
-    @GET("clubs/498435/activities?access_token=d39a37b2e32436ce46395755f36ed757f04057d9&per_page=200")
+    @GET("clubs/498435/activities?access_token=b4efdef18cdc7801d7586822792b8570436693a8&per_page=50")
     fun getall2(): Call<List<StravaStatsModel>>
 
     companion object {

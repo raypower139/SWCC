@@ -22,7 +22,7 @@ class StravaAdapter constructor(private var members: List<StravaModel>)
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val donation = members[holder.adapterPosition]
+        val donation = members.sortedBy {!it.admin}[holder.adapterPosition]
         holder.bind(donation)
     }
 
@@ -31,9 +31,13 @@ class StravaAdapter constructor(private var members: List<StravaModel>)
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(member: StravaModel) {
-            itemView.paymentamount.text = member.firstname.toString()
-            itemView.paymentmethod.text = member.lastname.toString()
+            itemView.strava_member_firstname.text = member.firstname.toString()
+            itemView.strava_member_initial.text = member.lastname.toString()
             itemView.imageIcon.setImageResource(R.drawable.logo)
+            var admin = member.admin.toString()
+            if(admin == "true"){
+                itemView.strava_member_membership.text = "Admin"
+            }
         }
     }
 }

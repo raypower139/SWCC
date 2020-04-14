@@ -12,19 +12,15 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import ie.swcc.R
-import ie.swcc.activities.chat.ChatActivity
 import ie.swcc.activities.chat.LatestMessagesActivity
-import ie.swcc.fragments.blog.BlogFragment
 import ie.swcc.fragments.blog.ProfileFragment
 import ie.swcc.fragments.blog.ReportAllFragment
-import ie.swcc.fragments.strava.StravaFragment
+import ie.swcc.fragments.strava.StravaMenu
 import ie.swcc.main.SWCCApp
 import ie.swcc.models.UserModel
 import ie.swcc.utils.createLoader
 import ie.swcc.utils.hideLoader
 import kotlinx.android.synthetic.main.fragment_menu.view.*
-import kotlinx.android.synthetic.main.profile.view.*
-import org.jetbrains.anko.startActivity
 
 
 class MenuFragment : Fragment() {
@@ -63,6 +59,7 @@ class MenuFragment : Fragment() {
             fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
+
         }
 
         root.chatImage.setOnClickListener {
@@ -71,7 +68,7 @@ class MenuFragment : Fragment() {
         }
 
         root.stravaImage.setOnClickListener {
-            val newGamefragment = StravaFragment()
+            val newGamefragment = StravaMenu()
             val fragmentTransaction: FragmentTransaction =
                 activity!!.supportFragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
@@ -99,7 +96,7 @@ class MenuFragment : Fragment() {
                     hideLoader(loader)
 
                     val user = snapshot.getValue<UserModel>(UserModel::class.java)
-                    root.welcome_name.setText(app.auth.currentUser?.displayName)
+                    root.strava_welcome_name.setText(app.auth.currentUser?.displayName)
 
 
                     app.database.child("user-photos").child(userId)

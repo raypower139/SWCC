@@ -27,7 +27,8 @@ import ie.swcc.fragments.blog.ProfileFragment
 import ie.swcc.fragments.blog.ReportAllFragment
 import ie.swcc.fragments.blog.ReportFragment
 import ie.swcc.fragments.strava.StravaFragment
-import ie.swcc.fragments.strava.StravaStats
+import ie.swcc.fragments.strava.StravaActivities
+import ie.swcc.fragments.strava.StravaMenu
 import ie.swcc.utils.*
 import jp.wasabeef.picasso.transformations.CropCircleTransformation
 
@@ -77,9 +78,8 @@ class Home : AppCompatActivity(),
             R.id.nav_menu -> navigateTo(MenuFragment.newInstance())
             R.id.nav_bloglist_all ->
                 navigateTo(ReportAllFragment.newInstance())
+            R.id.nav_report -> navigateTo(StravaMenu.newInstance())
             R.id.nav_chat -> startActivity<LatestMessagesActivity>()
-            R.id.nav_report -> navigateTo(StravaFragment.newInstance())
-            R.id.nav_report2 -> navigateTo(StravaStats.newInstance())
             R.id.nav_profile -> navigateTo(ProfileFragment.newInstance())
             R.id.nav_sign_out -> signOut()
 

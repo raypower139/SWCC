@@ -2,6 +2,7 @@
     <string name="app_name">SWCC Club App</string>
     <string name="club_chat">Club Chat</string>
     <string name="action_strava">Strava</string>
+    <string name="action_strava_activities">Club Group Activities</string>
     <string name="action_addBlog">Add News</string>
     <string name="action_viewAllBlog">View All News</string>
     <string name="action_viewMyBlog">View My News</string>
@@ -23,7 +24,7 @@
     <string name="menu_bloglist">My Blog Posts</string>
     <string name="menu_bloglist_all">All Blog Posts</string>
 
-    <string name="menu_report">Strava Club Members</string>
+    <string name="strava_menu">Strava</string>
     <string name="menu_chat">Club Chat</string>
     <string name="menu_news">Club News</string>
     <string name="menu_profile">Profile</string>

@@ -16,7 +16,7 @@ val resource_state: String,
                          @SerializedName("membership")
                          val membership: String,
                          @SerializedName("admin")
-                         val admin: Boolean,
+    var admin: Boolean,
                          @SerializedName("owner")
                          val owner: Boolean
 

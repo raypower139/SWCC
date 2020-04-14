@@ -9,8 +9,9 @@
 
     <TextView
         android:id="@+id/textview_to_row"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="119dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="164dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/rounded_corner"
         android:ems="10"
@@ -19,16 +20,16 @@
         android:padding="4dp"
         android:text="Right Message"
         android:textColor="@color/colorWhite"
-        app:layout_constraintEnd_toStartOf="@+id/chatToImage"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/chatToImage"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:layout_marginStart="2dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textview_to_row"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/btn_star_big_on" />
 
