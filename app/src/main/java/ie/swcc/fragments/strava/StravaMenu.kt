@@ -64,6 +64,16 @@ class StravaMenu : Fragment() {
 
         }
 
+        root.strava_segment_button.setOnClickListener {
+            val newGamefragment = StravaSegment()
+            val fragmentTransaction: FragmentTransaction =
+                activity!!.supportFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+
+        }
+
         return root
     }
 }

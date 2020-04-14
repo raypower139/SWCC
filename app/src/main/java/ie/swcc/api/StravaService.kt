@@ -2,6 +2,7 @@ package ie.swcc.api
 
 import com.google.gson.GsonBuilder
 import ie.swcc.models.strava.StravaModel
+import ie.swcc.models.strava.StravaSegmentModel
 import ie.swcc.models.strava.StravaStatsModel
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -15,6 +16,9 @@ interface StravaService {
 
     @GET("clubs/498435/activities?access_token=b4efdef18cdc7801d7586822792b8570436693a8&per_page=50")
     fun getall2(): Call<List<StravaStatsModel>>
+
+    @GET("segments/623750/leaderboard?access_token=b4efdef18cdc7801d7586822792b8570436693a8&club_id=498435&per_page=50")
+    fun getallSegmentEfforts(): Call<List<StravaSegmentModel>>
 
     companion object {
 

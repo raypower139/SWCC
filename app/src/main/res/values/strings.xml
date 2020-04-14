@@ -3,6 +3,7 @@
     <string name="club_chat">Club Chat</string>
     <string name="action_strava">Strava</string>
     <string name="action_strava_activities">Club Group Activities</string>
+    <string name="action_strava_segments">Segment Efforts</string>
     <string name="action_addBlog">Add News</string>
     <string name="action_viewAllBlog">View All News</string>
     <string name="action_viewMyBlog">View My News</string>
@@ -46,7 +47,7 @@
     <string name="action_post">Add Blog Post</string>
     <string name="action_profile">Edit Profile Details</string>
     <string name="editProfileImage">Update Image</string>
-    <string name="editProfileName">Update Profile Name</string>
+    <string name="editProfileName">Save Profile Details</string>
     <string name="resetPassword">Reset Password</string>
     <string name="deleteUserText">Delete User</string>
     <!-- START Firebase Resources-->

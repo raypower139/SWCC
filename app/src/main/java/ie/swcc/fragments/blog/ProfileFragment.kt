@@ -4,40 +4,31 @@ package ie.swcc.fragments.blog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import ie.swcc.main.SWCCApp
 import ie.swcc.R
 import ie.swcc.activities.chat.ChatActivity.Companion.TAG
-import ie.swcc.activities.chat.LatestMessagesActivity.Companion.currentUser
-import ie.swcc.adapters.BlogAdapter
+import ie.swcc.fragments.MenuFragment
+import ie.swcc.main.SWCCApp
 import ie.swcc.models.UserModel
-import ie.swcc.models.blog.BlogModel
 import ie.swcc.utils.*
-import jp.wasabeef.picasso.transformations.CropCircleTransformation
-import kotlinx.android.synthetic.main.fragment_blogreport.view.*
-import kotlinx.android.synthetic.main.fragment_edit.view.*
-import kotlinx.android.synthetic.main.home.*
-import kotlinx.android.synthetic.main.nav_header_home.*
-import kotlinx.android.synthetic.main.nav_header_home.view.*
 import kotlinx.android.synthetic.main.profile.*
 import kotlinx.android.synthetic.main.profile.view.*
+
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
-import java.time.ZoneId
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 
 
 class ProfileFragment : Fragment(), AnkoLogger {
@@ -193,6 +184,7 @@ class ProfileFragment : Fragment(), AnkoLogger {
             }
         // [END send_password_reset]
     }
+
 
 
 }

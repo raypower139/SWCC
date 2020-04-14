@@ -27,15 +27,15 @@
 
         <TextView
             android:id="@+id/message_user_name"
-            android:layout_width="174dp"
-            android:layout_height="51dp"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="43dp"
             android:layout_marginTop="16dp"
-            android:textSize="24dp"
-            android:textStyle="bold"
             android:layout_toEndOf="@+id/message_imageIcon"
-            android:text="TextView" />
+            android:text="TextView"
+            android:textSize="24dp"
+            android:textStyle="bold" />
 
 
     </RelativeLayout>

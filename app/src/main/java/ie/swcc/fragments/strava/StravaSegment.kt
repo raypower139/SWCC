@@ -10,18 +10,19 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import ie.swcc.R
-import ie.swcc.adapters.StravaActivitiesAdapter
+import ie.swcc.adapters.StravaSegmentAdapter
 import ie.swcc.main.SWCCApp
-import ie.swcc.models.strava.StravaStatsModel
+import ie.swcc.models.strava.Entry
+import ie.swcc.models.strava.StravaSegmentModel
 import ie.swcc.utils.*
-import kotlinx.android.synthetic.main.fragment_strava_activity_report.view.*
+import kotlinx.android.synthetic.main.fragment_strava_segments.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class StravaSegment : Fragment(), Callback<List<StravaStatsModel>>, AnkoLogger {
+class StravaSegment : Fragment(), Callback<List<StravaSegmentModel>>, AnkoLogger {
 
     lateinit var app: SWCCApp
     lateinit var loader : AlertDialog
@@ -36,29 +37,29 @@ class StravaSegment : Fragment(), Callback<List<StravaStatsModel>>, AnkoLogger {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var root = inflater.inflate(R.layout.fragment_strava_activity_report, container, false)
-        activity?.title = getString(R.string.action_strava_activities)
+        var root = inflater.inflate(R.layout.fragment_strava_segments, container, false)
+        activity?.title = getString(R.string.action_strava_segments)
         loader = createLoader(activity!!)
 
-        root.recyclerView2.setLayoutManager(LinearLayoutManager(activity))
-        root.recyclerView2.adapter = StravaActivitiesAdapter(app.stravaStore.findAllStats())
+        root.recyclerView3.setLayoutManager(LinearLayoutManager(activity))
+        root.recyclerView3.adapter = StravaSegmentAdapter(app.stravaStore.findAllSegmentEfforts())
 
         return root
     }
 
 
 
-    override fun onResponse(call: Call<List<StravaStatsModel>>,
-                            response: Response<List<StravaStatsModel>>
+    override fun onResponse(call: Call<List<StravaSegmentModel>>,
+                            response: Response<List<StravaSegmentModel>>
     ) {
         serviceAvailableMessage(activity!!)
         info("Retrofit JSON = $response.raw()")
-        app.stravaStore.activities = response.body() as ArrayList<StravaStatsModel>
+        app.stravaStore.segmentEfforts = response.body() as ArrayList<StravaSegmentModel>
         //updateUI()
         hideLoader(loader)
     }
 
-    override fun onFailure(call: Call<List<StravaStatsModel>>, t: Throwable) {
+    override fun onFailure(call: Call<List<StravaSegmentModel>>, t: Throwable) {
         info("Retrofit Error : $t.message")
         serviceUnavailableMessage(activity!!)
         hideLoader(loader)
@@ -67,11 +68,11 @@ class StravaSegment : Fragment(), Callback<List<StravaStatsModel>>, AnkoLogger {
 
     override fun onResume() {
         super.onResume()
-        getAllActivities()
+        getAllSegmentEfforts()
     }
-    fun getAllActivities() {
-        showLoader(loader, "Downloading Strava List")
-        var callGetAll = app.stravaService.getall2()
+    fun getAllSegmentEfforts() {
+        showLoader(loader, "Downloading Segment Efforts")
+        var callGetAll = app.stravaService.getallSegmentEfforts()
         callGetAll.enqueue(this)
 
     }

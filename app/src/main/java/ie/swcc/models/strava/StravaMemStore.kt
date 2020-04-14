@@ -12,6 +12,7 @@ class StravaMemStore : StravaStore {
 
         var members = ArrayList<StravaModel>()
         var activities = ArrayList<StravaStatsModel>()
+        var segmentEfforts = ArrayList<StravaSegmentModel>()
 
         override fun findAll(): List<StravaModel> {
             return members
@@ -19,7 +20,9 @@ class StravaMemStore : StravaStore {
         override fun findAllStats(): List<StravaStatsModel> {
             return activities
         }
-
+        override fun findAllSegmentEfforts(): List<StravaSegmentModel> {
+             return segmentEfforts
+    }
 
         fun logAll() {
             Log.v("Donate","** Donations List **")
