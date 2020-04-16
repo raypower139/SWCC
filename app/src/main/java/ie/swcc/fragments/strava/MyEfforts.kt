@@ -9,12 +9,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.swcc.R
+import ie.swcc.adapters.MyEffortsAdapter
 import ie.swcc.adapters.StravaSegmentAdapter
 import ie.swcc.api.StravaWrapper
 import ie.swcc.main.SWCCApp
 import ie.swcc.models.strava.Entry
 import ie.swcc.models.strava.StravaSegmentModel
+import ie.swcc.models.strava.mySegmentEfforts.MyEffortsModel
 import ie.swcc.utils.*
+import kotlinx.android.synthetic.main.fragment_strava_my_efforts.view.*
 import kotlinx.android.synthetic.main.fragment_strava_segments.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -23,7 +26,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class StravaSegment() : Fragment(), Callback<StravaWrapper>, AnkoLogger {
+class MyEfforts() : Fragment(), Callback<List<MyEffortsModel>>, AnkoLogger {
 
     lateinit var app: SWCCApp
     lateinit var loader : AlertDialog
@@ -39,12 +42,12 @@ class StravaSegment() : Fragment(), Callback<StravaWrapper>, AnkoLogger {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var root = inflater.inflate(R.layout.fragment_strava_segments, container, false)
+        var root = inflater.inflate(R.layout.fragment_strava_my_efforts, container, false)
         activity?.title = getString(R.string.action_strava_segments)
         loader = createLoader(activity!!)
 
-        root.recyclerView3.setLayoutManager(LinearLayoutManager(activity))
-        root.recyclerView3.adapter = StravaSegmentAdapter(app.stravaStore.findAllSegmentEfforts())
+        root.recyclerView4.setLayoutManager(LinearLayoutManager(activity))
+        root.recyclerView4.adapter = MyEffortsAdapter(app.stravaStore.findAllMyEfforts())
 
         return root
     }
@@ -52,17 +55,16 @@ class StravaSegment() : Fragment(), Callback<StravaWrapper>, AnkoLogger {
 
 
     override fun onResponse(
-        call: Call<StravaWrapper>,
-        response: Response<StravaWrapper>
+        call: Call<List<MyEffortsModel>>,
+        response: Response<List<MyEffortsModel>>
     ) {
         serviceAvailableMessage(activity!!)
         info("Retrofit JSON = $response.raw()")
-
-        app.stravaStore.segmentEfforts = response.body()!!.entries!!
+        app.stravaStore.myEfforts = response.body() as ArrayList<MyEffortsModel>
         hideLoader(loader)
     }
 
-    override fun onFailure(call: Call<StravaWrapper>, t: Throwable) {
+    override fun onFailure(call: Call<List<MyEffortsModel>>, t: Throwable) {
         info("Retrofit Error : $t.message")
         serviceUnavailableMessage(activity!!)
         hideLoader(loader)
@@ -70,11 +72,11 @@ class StravaSegment() : Fragment(), Callback<StravaWrapper>, AnkoLogger {
 
     override fun onResume() {
         super.onResume()
-        getAllSegmentEfforts()
+        getAllMyEfforts()
     }
-    fun getAllSegmentEfforts() {
-        showLoader(loader, "Downloading Segment Efforts")
-        var callGetAll = app.stravaService.getallSegmentEfforts()
+    fun getAllMyEfforts() {
+        showLoader(loader, "Downloading My Efforts")
+        var callGetAll = app.stravaService.getAllMyEfforts()
         callGetAll.enqueue(this)
 
     }
@@ -82,7 +84,7 @@ class StravaSegment() : Fragment(), Callback<StravaWrapper>, AnkoLogger {
     companion object {
         @JvmStatic
         fun newInstance() =
-            StravaSegment().apply {
+            MyEfforts().apply {
                 arguments = Bundle().apply { }
             }
     }

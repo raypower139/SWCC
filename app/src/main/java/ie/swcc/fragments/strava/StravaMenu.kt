@@ -74,6 +74,16 @@ class StravaMenu : Fragment() {
 
         }
 
+        root.my_efforts_button.setOnClickListener {
+            val newGamefragment = MyEfforts()
+            val fragmentTransaction: FragmentTransaction =
+                activity!!.supportFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
+
+        }
+
         return root
     }
 }

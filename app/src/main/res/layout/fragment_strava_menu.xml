@@ -18,6 +18,15 @@
         app:layout_constraintStart_toStartOf="@+id/strava_members_list"
         app:layout_constraintTop_toBottomOf="@+id/strava_activities_list" />
 
+
+    <Button
+        android:id="@+id/my_efforts_button"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:text="My Efforts"
+        app:layout_constraintStart_toStartOf="@+id/strava_members_list"
+        app:layout_constraintTop_toBottomOf="@+id/strava_segment_button" />
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="163dp"

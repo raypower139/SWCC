@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.storage.StorageReference
 import ie.swcc.api.StravaService
+import ie.swcc.api.StravaWrapper
 import ie.swcc.models.strava.StravaMemStore
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -19,7 +20,7 @@ class SWCCApp : Application(),AnkoLogger {
     lateinit var googleSignInClient: GoogleSignInClient
     lateinit var userImage: Uri
     lateinit var image: Uri
-    lateinit var segment: String
+
 
     // [START declare_auth]
     lateinit var auth: FirebaseAuth
