@@ -1,14 +1,14 @@
 package ie.swcc.fragments.strava
 
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import ie.swcc.R
 import ie.swcc.adapters.StravaAdapter
 import ie.swcc.main.SWCCApp
@@ -20,6 +20,7 @@ import org.jetbrains.anko.info
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class StravaFragment : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
 
@@ -46,8 +47,6 @@ class StravaFragment : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
         return root
     }
 
-
-
     override fun onResponse(call: Call<List<StravaModel>>,
                             response: Response<List<StravaModel>>
     ) {
@@ -70,9 +69,8 @@ class StravaFragment : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
     }
     fun getAllMembers() {
         showLoader(loader, "Downloading Strava List")
-        var callGetAll = app.stravaService.getall()
+        var callGetAll = app.stravaService.getall(app.groupId)
         callGetAll.enqueue(this)
-
     }
 
 
@@ -84,6 +82,7 @@ class StravaFragment : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
             StravaFragment().apply {
                 arguments = Bundle().apply { }
             }
+
     }
 }
 

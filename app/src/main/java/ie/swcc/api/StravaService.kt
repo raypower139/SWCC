@@ -13,16 +13,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
 interface StravaService {
-    @GET("clubs/498435/members?access_token=4d82777d9a0fb9a957a5e3094164d40fd50938ab&per_page=30")
-    fun getall(): Call<List<StravaModel>>
+    @GET("clubs/{groupId}/members?access_token=a9b21ac4178c456369d387e68ede3a4ea9c80192&per_page=30")
+    fun getall(@Path("groupId") groupId: String): Call<List<StravaModel>>
 
-    @GET("clubs/498435/activities?access_token=4d82777d9a0fb9a957a5e3094164d40fd50938ab&per_page=50")
+    @GET("clubs/498435/activities?access_token=a9b21ac4178c456369d387e68ede3a4ea9c80192&per_page=50")
     fun getall2(): Call<List<StravaStatsModel>>
 
-    @GET("segments/623750/all_efforts?access_token=4d82777d9a0fb9a957a5e3094164d40fd50938ab")
+    @GET("segments/623750/all_efforts?access_token=a9b21ac4178c456369d387e68ede3a4ea9c80192")
     fun getAllMyEfforts(): Call<List<MyEffortsModel>>
 
-    @GET("segments/623750/leaderboard?access_token=4d82777d9a0fb9a957a5e3094164d40fd50938ab&club_id=498435&per_page=50")
+    @GET("segments/623750/leaderboard?access_token=a9b21ac4178c456369d387e68ede3a4ea9c80192&club_id=498435&per_page=50")
     fun getallSegmentEfforts(): Call<StravaWrapper>
 
     companion object {

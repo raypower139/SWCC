@@ -9,6 +9,8 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+
+
     <Button
         android:id="@+id/strava_segment_button"
         android:layout_width="220dp"
@@ -57,7 +59,7 @@
         android:layout_width="220dp"
         android:layout_height="50dp"
         android:layout_marginStart="68dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="92dp"
         android:text="Strava Group Members"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/strava_welcome_name" />
@@ -70,6 +72,54 @@
         android:text="Club Latest Activities"
         app:layout_constraintStart_toStartOf="@+id/strava_members_list"
         app:layout_constraintTop_toBottomOf="@+id/strava_members_list" />
+
+    <Button
+        android:id="@+id/buttonGroupOne"
+        android:layout_width="80dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/colorPrimary"
+        android:text="Group 1"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/strava_welcome_name" />
+
+    <Button
+        android:id="@+id/buttonGroupTwo"
+        android:layout_width="80dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="4dp"
+        android:background="@color/colorPrimary"
+        android:text="Group 2"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/buttonGroupOne"
+        app:layout_constraintTop_toBottomOf="@+id/strava_welcome_name" />
+
+    <Button
+        android:id="@+id/buttonGroupThree"
+        android:layout_width="80dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="4dp"
+        android:background="@color/colorPrimary"
+        android:text="Group 3"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/buttonGroupTwo"
+        app:layout_constraintTop_toBottomOf="@+id/strava_welcome_name" />
+
+    <Button
+        android:id="@+id/buttonGroupFour"
+        android:layout_width="80dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="4dp"
+        android:background="@color/colorPrimary"
+        android:text="Group 4"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/buttonGroupThree"
+        app:layout_constraintTop_toBottomOf="@+id/strava_welcome_name" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

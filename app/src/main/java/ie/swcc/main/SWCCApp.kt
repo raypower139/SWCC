@@ -20,6 +20,7 @@ class SWCCApp : Application(),AnkoLogger {
     lateinit var googleSignInClient: GoogleSignInClient
     lateinit var userImage: Uri
     lateinit var image: Uri
+    var groupId = ""
 
 
     // [START declare_auth]
