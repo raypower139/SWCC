@@ -42,6 +42,8 @@ class StravaSegmentAdapter constructor(private var segmentEfforts: List<Entry>)
             itemView.strava_segment_start_date.text = efforts.startDate
             itemView.strava_segment_rank.text = efforts.rank.toString()
 
+
+
         }
 
 

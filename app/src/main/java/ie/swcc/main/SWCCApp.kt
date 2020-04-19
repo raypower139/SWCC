@@ -21,6 +21,10 @@ class SWCCApp : Application(),AnkoLogger {
     lateinit var userImage: Uri
     lateinit var image: Uri
     var groupId = ""
+    var groupName = ""
+    var segmentId = ""
+    var segmentName = ""
+    var access_token = "916daa0d6e45f84854c299d10103290aba401411"
 
 
     // [START declare_auth]

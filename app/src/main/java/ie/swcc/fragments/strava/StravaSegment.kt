@@ -12,10 +12,7 @@ import ie.swcc.R
 import ie.swcc.adapters.StravaSegmentAdapter
 import ie.swcc.api.StravaWrapper
 import ie.swcc.main.SWCCApp
-import ie.swcc.models.strava.Entry
-import ie.swcc.models.strava.StravaSegmentModel
 import ie.swcc.utils.*
-import kotlinx.android.synthetic.main.fragment_strava_segments.*
 import kotlinx.android.synthetic.main.fragment_strava_segments.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -41,7 +38,7 @@ class StravaSegment() : Fragment(), Callback<StravaWrapper>, AnkoLogger {
     ): View? {
         // Inflate the layout for this fragment
         var root = inflater.inflate(R.layout.fragment_strava_segments, container, false)
-        activity?.title = getString(R.string.action_strava_segments)
+        activity?.title = app.segmentName
         loader = createLoader(activity!!)
 
         root.recyclerView3.setLayoutManager(LinearLayoutManager(activity))
@@ -59,7 +56,6 @@ class StravaSegment() : Fragment(), Callback<StravaWrapper>, AnkoLogger {
         serviceAvailableMessage(activity!!)
         info("Retrofit JSON = $response.raw()")
         app.stravaStore.segmentEfforts = response.body()!!.entries!!
-
         hideLoader(loader)
     }
 
@@ -71,7 +67,7 @@ class StravaSegment() : Fragment(), Callback<StravaWrapper>, AnkoLogger {
 
     fun getAllSegmentEfforts() {
         showLoader(loader, "Downloading Segment Efforts")
-        var callGetAll = app.stravaService.getallSegmentEfforts()
+        var callGetAll = app.stravaService.getallSegmentEfforts(app.segmentId,app.access_token,app.groupId,50)
         callGetAll.enqueue(this)
 
     }

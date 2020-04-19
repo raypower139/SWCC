@@ -5,6 +5,7 @@ import ie.swcc.models.strava.Entry
 import ie.swcc.models.strava.StravaModel
 import ie.swcc.models.strava.StravaSegmentModel
 import ie.swcc.models.strava.StravaStatsModel
+import ie.swcc.models.strava.athleteStats.AthleteStatsModel
 import ie.swcc.models.strava.mySegmentEfforts.MyEffortsModel
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -13,17 +14,21 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
 interface StravaService {
-    @GET("clubs/{groupId}/members?access_token=a9b21ac4178c456369d387e68ede3a4ea9c80192&per_page=30")
-    fun getall(@Path("groupId") groupId: String): Call<List<StravaModel>>
+    @GET("clubs/{groupId}/members")
+    fun getall(@Path("groupId") groupId: String,@Query("access_token") access_token: String, @Query("per_page") int: Int ): Call<List<StravaModel>>
 
-    @GET("clubs/498435/activities?access_token=a9b21ac4178c456369d387e68ede3a4ea9c80192&per_page=50")
-    fun getall2(): Call<List<StravaStatsModel>>
+    @GET("clubs/{groupId}/activities")
+    fun getall2(@Path("groupId") groupId: String,@Query("access_token") access_token: String, @Query("per_page") int: Int) : Call<List<StravaStatsModel>>
 
-    @GET("segments/623750/all_efforts?access_token=a9b21ac4178c456369d387e68ede3a4ea9c80192")
-    fun getAllMyEfforts(): Call<List<MyEffortsModel>>
+    @GET("segments/{segmentId}/all_efforts")
+    fun getAllMyEfforts(@Path("segmentId") segmentId: String,@Query("access_token") access_token: String): Call<List<MyEffortsModel>>
 
-    @GET("segments/623750/leaderboard?access_token=a9b21ac4178c456369d387e68ede3a4ea9c80192&club_id=498435&per_page=50")
-    fun getallSegmentEfforts(): Call<StravaWrapper>
+    @GET("segments/{segmentId}/leaderboard")
+    fun getallSegmentEfforts(@Path("segmentId") segmentId: String,@Query("access_token") access_token: String, @Query("club_id") club_id: String,@Query("per_page") int: Int): Call<StravaWrapper>
+
+    @GET("athletes/606634/stats?access_token=916daa0d6e45f84854c299d10103290aba401411")
+    fun getMyStats(): Call<StatsWrapper>
+
 
     companion object {
 

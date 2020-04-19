@@ -71,7 +71,7 @@ class StravaActivities : Fragment(), Callback<List<StravaStatsModel>>, AnkoLogge
     }
     fun getAllActivities() {
         showLoader(loader, "Downloading Strava List")
-        var callGetAll = app.stravaService.getall2()
+        var callGetAll = app.stravaService.getall2(app.groupId,app.access_token,30)
         callGetAll.enqueue(this)
 
     }

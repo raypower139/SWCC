@@ -29,8 +29,8 @@ data class MyEffortsModel(
     val averageWatts: Double,
     val segment: Segment,
     @SerializedName("pr_rank")
-    val prRank: Int,
+    val prRank: Int?,
     val achievements: List<Achievement>,
     @SerializedName("kom_rank")
-    val komRank: Any
+    val komRank: Any?
 )

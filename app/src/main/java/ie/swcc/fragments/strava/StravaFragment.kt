@@ -38,7 +38,7 @@ class StravaFragment : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
     ): View? {
         // Inflate the layout for this fragment
         var root = inflater.inflate(R.layout.fragment_strava_report, container, false)
-        activity?.title = getString(R.string.action_strava)
+        activity?.title = app.groupName
         loader = createLoader(activity!!)
 
         root.recyclerView.setLayoutManager(LinearLayoutManager(activity))
@@ -69,7 +69,7 @@ class StravaFragment : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
     }
     fun getAllMembers() {
         showLoader(loader, "Downloading Strava List")
-        var callGetAll = app.stravaService.getall(app.groupId)
+        var callGetAll = app.stravaService.getall(app.groupId,app.access_token,30)
         callGetAll.enqueue(this)
     }
 

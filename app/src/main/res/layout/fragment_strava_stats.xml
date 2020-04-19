@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.strava.MyEfforts">
+    tools:context=".fragments.strava.StravaStats">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView4"
+        android:id="@+id/recyclerView5"
         android:layout_width="357dp"
         android:layout_height="554dp"
         android:layout_marginTop="30dp"
@@ -44,11 +44,22 @@
         android:id="@+id/strava_myEfforts_Watts_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
+        android:layout_marginStart="48dp"
         android:text="Avg.Watts"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        app:layout_constraintStart_toEndOf="@+id/strava_myEfforts_time_text"
+        app:layout_constraintTop_toTopOf="@+id/strava_myEfforts_date_text" />
+
+    <TextView
+        android:id="@+id/strava_myEfforts_KOM_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="KOM"
         android:textSize="18dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/strava_myEfforts_time_text"
+        app:layout_constraintStart_toEndOf="@+id/strava_myEfforts_Watts_text"
         app:layout_constraintTop_toTopOf="@+id/strava_myEfforts_date_text" />
 
 
