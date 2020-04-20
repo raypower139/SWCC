@@ -37,27 +37,18 @@ class BlogFragment : Fragment(), AnkoLogger {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         app = activity?.application as SWCCApp
-
-
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val root = inflater.inflate(R.layout.fragment_add_blogpost, container, false)
         loader = createLoader(activity!!)
         activity?.title = getString(R.string.action_post)
-
         setButtonListener(root)
-
         return root;
-
     }
-
-
 
     companion object {
         @JvmStatic
@@ -66,9 +57,6 @@ class BlogFragment : Fragment(), AnkoLogger {
                 arguments = Bundle().apply {}
             }
     }
-
-
-
 
     fun setButtonListener( layout: View) {
         layout.postButton.setOnClickListener {
@@ -95,7 +83,6 @@ class BlogFragment : Fragment(), AnkoLogger {
         layout.blogImage.setOnClickListener { Log.d("Photo","Working")
             showBlogImagePicker(this,2)}
         }
-
 
     override fun onPause() {
         super.onPause()
@@ -144,9 +131,6 @@ class BlogFragment : Fragment(), AnkoLogger {
             }
         }
     }
-
-
-
 }
 
 

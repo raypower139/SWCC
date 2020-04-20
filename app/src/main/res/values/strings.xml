@@ -41,6 +41,7 @@
 
     <string name="messageLoading">Please Wait while Strava is contacted...</string>
 
+    <string name="action_view">View Blog Post</string>
     <string name="action_edit">Edit Blog Post</string>
     <string name="action_update">Update Blog Post</string>
     <string name="message_edit">Please Update your Details Below</string>

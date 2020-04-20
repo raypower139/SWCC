@@ -35,6 +35,8 @@ open class ReportFragment : Fragment(), AnkoLogger,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         app = activity?.application as SWCCApp
+
+
     }
 
     override fun onCreateView(
