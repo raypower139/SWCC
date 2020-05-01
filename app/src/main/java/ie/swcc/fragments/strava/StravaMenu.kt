@@ -10,9 +10,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import ie.swcc.R
 import ie.swcc.main.SWCCApp
+import ie.swcc.models.strava.ClimbModel
 import ie.swcc.utils.createLoader
+import ie.swcc.utils.hideLoader
+import ie.swcc.utils.showLoader
 import kotlinx.android.synthetic.main.fragment_strava_menu.*
 import kotlinx.android.synthetic.main.fragment_strava_menu.view.*
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.util.HashMap
 
 
 class StravaMenu : Fragment() {
@@ -177,8 +183,54 @@ class StravaMenu : Fragment() {
             fragmentTransaction.commit()
         }
 
+        root.saveStravaButton.setOnClickListener {
+            val MahonFalls = root.checkBox_MahonFalls.isChecked
+            val SeskinHill = root.checkBox_SeskinHill.isChecked
+            val MtLeinster = root.checkBox_Mt_Leinster.isChecked
+            val LastUpdated = ZonedDateTime.now(ZoneId.of("Europe/Dublin")).toLocalDate().toString()
+            writeNewClimb(
+                ClimbModel(
+                    MahonFalls = MahonFalls,
+                    SeskinHill = SeskinHill,
+                    MtLeinster = MtLeinster,
+                    LastUpdated = LastUpdated
+                )
+            )
+        }
 
         return root
+    }
+
+
+
+
+
+
+    override fun onPause() {
+        super.onPause()
+        app.database.child("climbs")
+            .child(app.auth.currentUser!!.uid)
+        //.removeEventListener(eventListener)
+    }
+
+    fun writeNewClimb(climb: ClimbModel) {
+        // Create new record of the users climbs at /climbs
+        showLoader(loader, "Adding Climbs to Firebase")
+        //info("Firebase DB Reference : $app.database")
+        val uid = app.auth.currentUser!!.uid
+        val key = app.database.child("climbs").push().key
+        if (key == null) {
+            //info("Firebase Error : Key Empty")
+            return
+        }
+        climb.uid = key
+        val climbValues = climb.toMap()
+
+        val childUpdates = HashMap<String, Any>()
+        childUpdates["/climbs/$key"] = climbValues
+
+        app.database.updateChildren(childUpdates)
+        hideLoader(loader)
     }
 
 
