@@ -21,7 +21,7 @@ import java.time.ZonedDateTime
 import java.util.HashMap
 
 
-class StravaMenu : Fragment() {
+class AddClimbs : Fragment() {
 
     lateinit var app: SWCCApp
     lateinit var root: View
@@ -37,7 +37,7 @@ class StravaMenu : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() =
-            StravaMenu().apply {
+            AddClimbs().apply {
                 arguments = Bundle().apply {}
             }
     }
@@ -47,74 +47,10 @@ class StravaMenu : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val root = inflater.inflate(R.layout.fragment_strava_menu, container, false)
+        val root = inflater.inflate(R.layout.fragment_add_climbs, container, false)
         loader = createLoader(activity!!)
-        activity?.title = "Strava Menu"
+        activity?.title = "MRA Challenge"
 
-
-        root.strava_members_list.setOnClickListener {
-            val newGamefragment = StravaFragment()
-            val fragmentTransaction: FragmentTransaction =
-                activity!!.supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-
-        }
-
-        root.strava_activities_list.setOnClickListener {
-            val newGamefragment = StravaActivities()
-            val fragmentTransaction: FragmentTransaction =
-                activity!!.supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
-        root.addClimbs.setOnClickListener {
-            val newGamefragment = AddClimbs()
-            val fragmentTransaction: FragmentTransaction =
-                activity!!.supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-
-        }
-
-
-
-
-
-        root.buttonGroupOne.setOnClickListener {
-           app.groupId = "498435"
-            app.groupName = "Group One"
-            println("Changed to Group One")
-            strava_menu_choose_group_text.setText("Group 1 Selected")
-            strava_menu_choose_group_text.setTextColor(Color.parseColor("#bf0000"))
-        }
-
-        root.buttonGroupTwo.setOnClickListener {
-            app.groupId = "498437"
-            app.groupName = "Group Two"
-            println("Changed to Group Two")
-            strava_menu_choose_group_text.setText("Group 2 Selected")
-            strava_menu_choose_group_text.setTextColor(Color.parseColor("#bf0000"))
-        }
-
-        root.buttonGroupThree.setOnClickListener {
-            app.groupId = "498440"
-            app.groupName = "Group Three"
-            println("Changed to Group Three")
-            strava_menu_choose_group_text.setText("Group 3 Selected")
-            strava_menu_choose_group_text.setTextColor(Color.parseColor("#bf0000"))
-        }
-
-        root.buttonGroupFour.setOnClickListener {
-            app.groupId = "498452"
-            app.groupName = "Group Four"
-            println("Changed to Group Four")
-            strava_menu_choose_group_text.setText("Group 4 Selected")
-            strava_menu_choose_group_text.setTextColor(Color.parseColor("#bf0000"))
-        }
 
        // Buttons for Strava Segment MYEFFORTS
         root.my_efforts_button_MahonFalls.setOnClickListener {
@@ -153,44 +89,6 @@ class StravaMenu : Fragment() {
             fragmentTransaction.commit()
         }
 
-
-        // Leaderboard Buttons
-        root.strava_segment_button.setOnClickListener {
-            app.segmentId = "623750"
-            app.segmentName = "Mahon Falls"
-            println("Changed to Mahon Falls")
-            val newGamefragment = StravaSegment()
-            val fragmentTransaction: FragmentTransaction =
-                activity!!.supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
-
-        root.strava_segment_button_SeskinHill.setOnClickListener {
-            app.segmentId = "623748"
-            println("Changed to SeskinHill")
-            app.segmentName = "Seskin Hill"
-            val newGamefragment = StravaSegment()
-            val fragmentTransaction: FragmentTransaction =
-                activity!!.supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
-
-        root.strava_segment_button_Mt_Leinster.setOnClickListener {
-            app.segmentId = "4374283"
-            println("Changed to Mt.Leinster")
-            app.segmentName = "Mt.Leinster"
-            val newGamefragment = StravaSegment()
-            val fragmentTransaction: FragmentTransaction =
-                activity!!.supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
-
         root.saveStravaButton.setOnClickListener {
             val MahonFalls = root.checkBox_MahonFalls.isChecked
             val SeskinHill = root.checkBox_SeskinHill.isChecked
@@ -208,11 +106,6 @@ class StravaMenu : Fragment() {
 
         return root
     }
-
-
-
-
-
 
     override fun onPause() {
         super.onPause()
