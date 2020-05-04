@@ -79,7 +79,15 @@ class StravaMenu : Fragment() {
             fragmentTransaction.commit()
 
         }
+        root.button_strava_view_climbs.setOnClickListener {
+            val newGamefragment = ReportAllClimbsFragment()
+            val fragmentTransaction: FragmentTransaction =
+                activity!!.supportFragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.commit()
 
+        }
 
 
 

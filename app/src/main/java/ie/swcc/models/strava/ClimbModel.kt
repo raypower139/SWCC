@@ -9,9 +9,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class ClimbModel(
     var uid: String? = "",
-    var MahonFalls: Boolean,
-    var SeskinHill: Boolean,
-    var MtLeinster: Boolean,
+    var MahonFalls: Boolean= false,
+    var SeskinHill: Boolean = false,
+    var MtLeinster: Boolean = false,
     var LastUpdated: String = ""
     ) : Parcelable
 {

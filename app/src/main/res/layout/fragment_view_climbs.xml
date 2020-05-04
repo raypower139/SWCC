@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.strava.ViewClimbFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="161dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/strava_welcome_name"
+        android:layout_width="213dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="68dp"
+        android:text="User Name"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/strava_menu_choose_group_text"
+        android:layout_width="282dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="Check your results and record tick off climbs you have done"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/strava_welcome_name" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="44dp"
+        android:text="Mahon Falls"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/strava_menu_choose_group_text" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Seskin Hill"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="Mt.Leinster"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <Button
+        android:id="@+id/my_efforts_button_MahonFalls"
+        android:layout_width="80dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="4dp"
+        android:background="@color/colorPrimary"
+        android:text="Check"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/checkBox_MahonFalls"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/my_efforts_button_SeskinHill"
+        android:layout_width="80dp"
+        android:layout_height="25dp"
+        android:background="@color/colorPrimary"
+        android:text="Check"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/my_efforts_button_MahonFalls"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+    <Button
+        android:id="@+id/my_efforts_button_Mt_Leinster"
+        android:layout_width="80dp"
+        android:layout_height="25dp"
+        android:background="@color/colorPrimary"
+        android:text="Check"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/my_efforts_button_SeskinHill"
+        app:layout_constraintTop_toTopOf="@+id/textView9" />
+
+    <CheckBox
+        android:id="@+id/checkBox_MahonFalls"
+        android:layout_width="36dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <CheckBox
+        android:id="@+id/checkBox_SeskinHill"
+        android:layout_width="35dp"
+        android:layout_height="24dp"
+        app:layout_constraintStart_toStartOf="@+id/checkBox_MahonFalls"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+    <CheckBox
+        android:id="@+id/checkBox_Mt_Leinster"
+        android:layout_width="34dp"
+        android:layout_height="24dp"
+        app:layout_constraintStart_toStartOf="@+id/checkBox_SeskinHill"
+        app:layout_constraintTop_toTopOf="@+id/textView9" />
+
+    <Button
+        android:id="@+id/saveStravaButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="164dp"
+        android:text="Save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_efforts_button_Mt_Leinster" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
