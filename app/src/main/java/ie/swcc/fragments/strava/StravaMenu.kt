@@ -199,20 +199,20 @@ class StravaMenu : Fragment() {
             fragmentTransaction.commit()
         }
 
-        root.saveStravaButton.setOnClickListener {
-            val MahonFalls = root.checkBox_MahonFalls.isChecked
-            val SeskinHill = root.checkBox_SeskinHill.isChecked
-            val MtLeinster = root.checkBox_Mt_Leinster.isChecked
-            val LastUpdated = ZonedDateTime.now(ZoneId.of("Europe/Dublin")).toLocalDate().toString()
-            writeNewClimb(
-                ClimbModel(
-                    MahonFalls = MahonFalls,
-                    SeskinHill = SeskinHill,
-                    MtLeinster = MtLeinster,
-                    LastUpdated = LastUpdated
-                )
-            )
-        }
+//        root.saveStravaButton.setOnClickListener {
+//            val MahonFalls = root.checkBox_MahonFalls.isChecked
+//            val SeskinHill = root.checkBox_SeskinHill.isChecked
+//            val MtLeinster = root.checkBox_Mt_Leinster.isChecked
+//            val LastUpdated = ZonedDateTime.now(ZoneId.of("Europe/Dublin")).toLocalDate().toString()
+//            writeNewClimb(
+//                ClimbModel(
+//                    MahonFalls = MahonFalls,
+//                    SeskinHill = SeskinHill,
+//                    MtLeinster = MtLeinster,
+//                    LastUpdated = LastUpdated
+//                )
+//            )
+//        }
 
         return root
     }

@@ -1,5 +1,6 @@
 package ie.swcc.models.strava
 
+import android.net.Uri
 import android.os.Parcelable
 import com.google.firebase.database.Exclude
 import com.google.firebase.database.IgnoreExtraProperties
@@ -9,10 +10,12 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class ClimbModel(
     var uid: String? = "",
+    var Name: String? = "",
     var MahonFalls: Boolean= false,
     var SeskinHill: Boolean = false,
     var MtLeinster: Boolean = false,
     var LastUpdated: String = ""
+
     ) : Parcelable
 {
 
@@ -21,10 +24,12 @@ data class ClimbModel(
     fun toMap(): Map<String, Any?> {
         return mapOf(
             "uid" to uid,
+            "Name" to Name,
             "MahonFalls" to MahonFalls,
             "SeskinHill" to SeskinHill,
             "MtLeinster" to MtLeinster,
             "LastUpdated" to LastUpdated
+
         )
     }
 }

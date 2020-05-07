@@ -14,6 +14,7 @@ import ie.swcc.models.strava.ClimbModel
 import ie.swcc.utils.createLoader
 import ie.swcc.utils.hideLoader
 import ie.swcc.utils.showLoader
+import kotlinx.android.synthetic.main.fragment_menu.*
 import kotlinx.android.synthetic.main.fragment_strava_menu.*
 import kotlinx.android.synthetic.main.fragment_strava_menu.view.*
 import java.time.ZoneId
@@ -31,7 +32,6 @@ class AddClimbs : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         app = activity?.application as SWCCApp
-
     }
 
     companion object {
@@ -90,12 +90,14 @@ class AddClimbs : Fragment() {
         }
 
         root.saveStravaButton.setOnClickListener {
+            val Name = app.auth.currentUser!!.displayName
             val MahonFalls = root.checkBox_MahonFalls.isChecked
             val SeskinHill = root.checkBox_SeskinHill.isChecked
             val MtLeinster = root.checkBox_Mt_Leinster.isChecked
             val LastUpdated = ZonedDateTime.now(ZoneId.of("Europe/Dublin")).toLocalDate().toString()
             writeNewClimb(
                 ClimbModel(
+                    Name = Name,
                     MahonFalls = MahonFalls,
                     SeskinHill = SeskinHill,
                     MtLeinster = MtLeinster,

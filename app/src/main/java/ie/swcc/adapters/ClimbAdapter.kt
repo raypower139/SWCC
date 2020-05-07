@@ -13,6 +13,11 @@ import ie.swcc.fragments.MenuFragment
 import ie.swcc.models.blog.BlogModel
 import ie.swcc.models.strava.ClimbModel
 import kotlinx.android.synthetic.main.card_blog.view.*
+import kotlinx.android.synthetic.main.card_blog.view.blogDate
+import kotlinx.android.synthetic.main.card_blog.view.blogText
+import kotlinx.android.synthetic.main.card_blog.view.imageIcon
+import kotlinx.android.synthetic.main.card_blog.view.title
+import kotlinx.android.synthetic.main.card_climbs.view.*
 
 
 interface ClimbListener {
@@ -52,25 +57,12 @@ class ClimbAdapter constructor(var blogPosts: ArrayList<ClimbModel>,
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
-        fun bind(blog: ClimbModel, listener: ClimbListener, blogAll: Boolean) {
-            itemView.tag = blog
-            itemView.title.text = blog.LastUpdated
-            itemView.blogText.text = blog.LastUpdated
-            itemView.blogDate.text = blog.MtLeinster.toString()
-
+        fun bind(climb: ClimbModel, listener: ClimbListener, blogAll: Boolean) {
+            itemView.tag = climb
+            itemView.name.text = climb.Name
+            itemView.lastUpdated.text = climb.LastUpdated
             if (!blogAll)
-                itemView.setOnClickListener { listener.onClimbClick(blog) }
-
-//            if(!blog.image.isEmpty()) {
-//                Picasso.get().load(blog.image.toUri())
-//                    .resize(240, 180)
-//                    .into(itemView.imageIcon) }
-//
-//            else
-            itemView.imageIcon.setImageResource(R.mipmap.ic_launcher_homer_round)
-//        }
+                itemView.setOnClickListener { listener.onClimbClick(climb) }
         }
-
-
     }
 }
