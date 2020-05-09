@@ -28,9 +28,7 @@ class ClimbAdapter constructor(var blogPosts: ArrayList<ClimbModel>,
                               private val listener: ClimbListener, blogAll: Boolean)
     : RecyclerView.Adapter<ClimbAdapter.MainHolder>() {
 
-
     val blogAll = blogAll
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
@@ -49,6 +47,8 @@ class ClimbAdapter constructor(var blogPosts: ArrayList<ClimbModel>,
 
     override fun getItemCount(): Int = blogPosts.size
 
+
+
     fun removeAt(position: Int) {
         blogPosts.removeAt(position)
         notifyItemRemoved(position)
@@ -61,6 +61,9 @@ class ClimbAdapter constructor(var blogPosts: ArrayList<ClimbModel>,
             itemView.tag = climb
             itemView.name.text = climb.Name
             itemView.lastUpdated.text = climb.LastUpdated
+
+
+
             if (!blogAll)
                 itemView.setOnClickListener { listener.onClimbClick(climb) }
         }

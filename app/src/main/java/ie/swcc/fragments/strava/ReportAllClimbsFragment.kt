@@ -1,8 +1,6 @@
 package ie.swcc.fragments.strava
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,31 +13,20 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.GroupieViewHolder
-import com.xwray.groupie.Item
-import ie.swcc.adapters.BlogListener
-
 import ie.swcc.R
-import ie.swcc.activities.chat.ChatActivity
-import ie.swcc.activities.chat.LatestMessagesActivity
-import ie.swcc.activities.chat.NewMessageActivity
-import ie.swcc.activities.chat.views.LatestMessageRow
-import ie.swcc.adapters.BlogAdapter
 import ie.swcc.adapters.ClimbAdapter
 import ie.swcc.adapters.ClimbListener
 import ie.swcc.main.SWCCApp
-import ie.swcc.models.blog.BlogModel
 import ie.swcc.models.strava.ClimbModel
-import ie.swcc.utils.*
-import kotlinx.android.synthetic.main.activity_latest_messages.*
-import kotlinx.android.synthetic.main.fragment_blogreport.*
-import kotlinx.android.synthetic.main.fragment_blogreport.view.*
-import kotlinx.android.synthetic.main.fragment_blogreport.view.recyclerView
+import ie.swcc.utils.SwipeToEditCallback
+import ie.swcc.utils.createLoader
+import ie.swcc.utils.hideLoader
+import ie.swcc.utils.showLoader
 import kotlinx.android.synthetic.main.fragment_blogreport.view.swiperefresh
 import kotlinx.android.synthetic.main.fragment_climbreport.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+
 
 open class ReportAllClimbsFragment : Fragment(), AnkoLogger,
     ClimbListener {
@@ -47,6 +34,8 @@ open class ReportAllClimbsFragment : Fragment(), AnkoLogger,
     lateinit var app: SWCCApp
     lateinit var loader : AlertDialog
     lateinit var root: View
+    var yes = 0
+    var no = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,6 +64,13 @@ open class ReportAllClimbsFragment : Fragment(), AnkoLogger,
         }
         val itemTouchEditHelper = ItemTouchHelper(swipeEditHandler)
         itemTouchEditHelper.attachToRecyclerView(root.recyclerViewClimbs)
+
+
+
+
+
+
+
         return root
     }
     companion object {
@@ -103,7 +99,7 @@ open class ReportAllClimbsFragment : Fragment(), AnkoLogger,
 
     override fun onClimbClick(climb: ClimbModel) {
         activity!!.supportFragmentManager.beginTransaction()
-            .replace(R.id.homeFrame, ViewClimbFragment.newInstance(climb))
+            .replace(R.id.homeFrame, EditClimb.newInstance(climb))
             .addToBackStack(null)
             .commit()
     }
@@ -139,10 +135,11 @@ open class ReportAllClimbsFragment : Fragment(), AnkoLogger,
 
                         app.database.child("climbs")
                             .removeEventListener(this)
+
                     }
+                    }
+                    })
+
                 }
-            })
-    }
+            }
 
-
-}
