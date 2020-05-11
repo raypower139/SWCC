@@ -14,9 +14,14 @@ import ie.swcc.models.strava.ClimbModel
 import ie.swcc.utils.createLoader
 import ie.swcc.utils.hideLoader
 import ie.swcc.utils.showLoader
+import kotlinx.android.synthetic.main.fragment_add_climbs.view.*
 import kotlinx.android.synthetic.main.fragment_menu.*
 import kotlinx.android.synthetic.main.fragment_strava_menu.*
 import kotlinx.android.synthetic.main.fragment_strava_menu.view.*
+import kotlinx.android.synthetic.main.fragment_strava_menu.view.my_efforts_button_MahonFalls
+import kotlinx.android.synthetic.main.fragment_strava_menu.view.my_efforts_button_Mt_Leinster
+import kotlinx.android.synthetic.main.fragment_strava_menu.view.my_efforts_button_SeskinHill
+import kotlinx.android.synthetic.main.fragment_strava_menu.view.saveStravaButton
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.util.HashMap

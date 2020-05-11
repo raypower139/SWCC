@@ -79,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <Button
-        android:id="@+id/my_efforts_button_MahonFalls"
+        android:id="@+id/my_efforts_button2_MahonFalls"
         android:layout_width="80dp"
         android:layout_height="25dp"
         android:background="@color/colorPrimary"
@@ -90,25 +90,25 @@
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/my_efforts_button_SeskinHill"
+        android:id="@+id/my_efforts_button2_SeskinHill"
         android:layout_width="80dp"
         android:layout_height="25dp"
         android:background="@color/colorPrimary"
         android:text="Check"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/my_efforts_button_MahonFalls"
+        app:layout_constraintStart_toStartOf="@+id/my_efforts_button2_MahonFalls"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
 
     <Button
-        android:id="@+id/my_efforts_button_Mt_Leinster"
+        android:id="@+id/my_efforts_button2_Mt_Leinster"
         android:layout_width="80dp"
         android:layout_height="25dp"
         android:background="@color/colorPrimary"
         android:text="Check"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/my_efforts_button_SeskinHill"
+        app:layout_constraintStart_toStartOf="@+id/my_efforts_button2_SeskinHill"
         app:layout_constraintTop_toTopOf="@+id/textView9" />
 
     <CheckBox
@@ -137,11 +137,11 @@
         android:id="@+id/updateStravaButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="56dp"
         android:text="Update"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_efforts_button_Mt_Leinster" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_checkBox_Mt_Leinster" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

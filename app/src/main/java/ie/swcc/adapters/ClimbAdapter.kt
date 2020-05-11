@@ -47,7 +47,7 @@ class ClimbAdapter constructor(var blogPosts: ArrayList<ClimbModel>,
 
     override fun getItemCount(): Int = blogPosts.size
 
-
+    fun Count(): Int = blogPosts.count {it.SeskinHill == true}
 
     fun removeAt(position: Int) {
         blogPosts.removeAt(position)
@@ -61,6 +61,15 @@ class ClimbAdapter constructor(var blogPosts: ArrayList<ClimbModel>,
             itemView.tag = climb
             itemView.name.text = climb.Name
             itemView.lastUpdated.text = climb.LastUpdated
+
+            val booleanFields = ArrayList<Boolean>()
+            booleanFields.add(climb.MahonFalls)
+            booleanFields.add(climb.SeskinHill)
+            booleanFields.add(climb.MtLeinster)
+
+            val count = booleanFields.count { it }
+
+            itemView.countClimbs.text = count.toString()
 
 
 

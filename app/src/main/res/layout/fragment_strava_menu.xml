@@ -35,29 +35,16 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
-        android:id="@+id/strava_members_list"
-        android:layout_width="105dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="76dp"
-        android:background="@color/colorPrimary"
-        android:text="Group Members"
-        android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/strava_welcome_name" />
-
-    <Button
         android:id="@+id/strava_activities_list"
-        android:layout_width="108dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="10dp"
+        android:layout_width="228dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="60dp"
         android:background="@color/colorPrimary"
         android:text="Latest Activities"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/strava_members_list"
-        app:layout_constraintTop_toTopOf="@+id/strava_members_list" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="186dp" />
 
     <Button
         android:id="@+id/buttonGroupOne"
@@ -109,14 +96,14 @@
 
     <TextView
         android:id="@+id/strava_menu_choose_group_text"
-        android:layout_width="269dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="44dp"
+        android:layout_width="286dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
-        android:text="Choose Your Club Group"
+        android:text="View Members of Each Challenge"
+        android:textAlignment="center"
         android:textSize="18dp"
         android:textStyle="bold"
-        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/strava_welcome_name" />
 
@@ -124,33 +111,31 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
         android:text="Mahon Falls"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/strava_activities_list" />
+        app:layout_constraintTop_toBottomOf="@+id/button_strava_view_climbs" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="3dp"
         android:text="Seskin Hill"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="3dp"
         android:text="Mt.Leinster"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <Button
@@ -163,7 +148,7 @@
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/my_efforts_button_MahonFalls"
-        app:layout_constraintTop_toTopOf="@+id/checkBox_MahonFalls" />
+        app:layout_constraintTop_toTopOf="@+id/my_efforts_button_MahonFalls" />
 
     <Button
         android:id="@+id/strava_segment_button_SeskinHill"
@@ -191,13 +176,13 @@
         android:id="@+id/my_efforts_button_MahonFalls"
         android:layout_width="80dp"
         android:layout_height="25dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="16dp"
         android:background="@color/colorPrimary"
         android:text="Check"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/checkBox_MahonFalls"
-        app:layout_constraintTop_toTopOf="@+id/strava_segment_button" />
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
 
     <Button
         android:id="@+id/my_efforts_button_SeskinHill"
@@ -221,28 +206,6 @@
         app:layout_constraintStart_toStartOf="@+id/my_efforts_button_SeskinHill"
         app:layout_constraintTop_toTopOf="@+id/textView9" />
 
-    <CheckBox
-        android:id="@+id/checkBox_MahonFalls"
-        android:layout_width="36dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
-
-    <CheckBox
-        android:id="@+id/checkBox_SeskinHill"
-        android:layout_width="35dp"
-        android:layout_height="24dp"
-        app:layout_constraintStart_toStartOf="@+id/checkBox_MahonFalls"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
-
-    <CheckBox
-        android:id="@+id/checkBox_Mt_Leinster"
-        android:layout_width="34dp"
-        android:layout_height="24dp"
-        app:layout_constraintStart_toStartOf="@+id/checkBox_SeskinHill"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
-
     <Button
         android:id="@+id/saveStravaButton"
         android:layout_width="wrap_content"
@@ -255,20 +218,22 @@
 
     <Button
         android:id="@+id/addClimbs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
+        android:layout_width="138dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:text="MRA Challenge"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_efforts_button_Mt_Leinster" />
+        app:layout_constraintTop_toBottomOf="@+id/strava_activities_list" />
 
     <Button
         android:id="@+id/button_strava_view_climbs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="162dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="12dp"
         android:text="View MRA Results"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addClimbs" />
+        app:layout_constraintStart_toEndOf="@+id/addClimbs"
+        app:layout_constraintTop_toTopOf="@+id/addClimbs" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
