@@ -13,7 +13,9 @@ import ie.swcc.adapters.StravaSegmentAdapter
 import ie.swcc.api.StravaWrapper
 import ie.swcc.main.SWCCApp
 import ie.swcc.utils.*
+import kotlinx.android.synthetic.main.fragment_strava_segments.*
 import kotlinx.android.synthetic.main.fragment_strava_segments.view.*
+import kotlinx.android.synthetic.main.fragment_strava_segments.view.recyclerView3
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import retrofit2.Call
@@ -40,14 +42,9 @@ class StravaSegment() : Fragment(), Callback<StravaWrapper>, AnkoLogger {
         var root = inflater.inflate(R.layout.fragment_strava_segments, container, false)
         activity?.title = app.segmentName
         loader = createLoader(activity!!)
-
         root.recyclerView3.setLayoutManager(LinearLayoutManager(activity))
-        root.recyclerView3.adapter = StravaSegmentAdapter(app.stravaStore.findAllSegmentEfforts())
-
         return root
     }
-
-
 
     override fun onResponse(
         call: Call<StravaWrapper>,
@@ -57,6 +54,7 @@ class StravaSegment() : Fragment(), Callback<StravaWrapper>, AnkoLogger {
         info("Retrofit JSON = $response.raw()")
         app.stravaStore.segmentEfforts = response.body()!!.entries!!
         hideLoader(loader)
+        recyclerView3.adapter = StravaSegmentAdapter(app.stravaStore.findAllSegmentEfforts())
     }
 
     override fun onFailure(call: Call<StravaWrapper>, t: Throwable) {

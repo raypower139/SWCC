@@ -17,30 +17,31 @@
 
         <TextView
             android:id="@+id/KMs"
-            android:layout_width="42dp"
-            android:layout_height="27dp"
+            android:layout_width="37dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="4dp"
             android:text="KMs"
             android:textColor="#000000"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/strava_activity_distance"
             app:layout_constraintTop_toTopOf="@+id/strava_activity_distance" />
 
         <TextView
             android:id="@+id/Mts"
-            android:layout_width="39dp"
-            android:layout_height="25dp"
+            android:layout_width="37dp"
+            android:layout_height="20dp"
             android:text="Mts"
             android:textColor="#000000"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/strava_activity_elevation"
-            app:layout_constraintTop_toTopOf="@+id/strava_activity_elevation" />
+            app:layout_constraintTop_toTopOf="@+id/KMs" />
 
         <TextView
             android:id="@+id/strava_activity_firstname"
-            android:layout_width="78dp"
+            android:layout_width="71dp"
             android:layout_height="27dp"
 
-            android:layout_marginTop="4dp"
             android:text="TextView"
             android:textColor="#000000"
             android:textSize="18sp"
@@ -50,60 +51,58 @@
 
         <TextView
             android:id="@+id/strava_activity_lastname"
-            android:layout_width="38dp"
+            android:layout_width="29dp"
             android:layout_height="27dp"
 
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
             android:text="TextView"
             android:textColor="#000000"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/strava_activity_firstname"
-            app:layout_constraintTop_toBottomOf="@+id/strava_activity_name"
+            app:layout_constraintTop_toTopOf="@+id/strava_activity_firstname"
             tools:text="" />
 
         <TextView
             android:id="@+id/strava_activity_distance"
-            android:layout_width="44dp"
+            android:layout_width="36dp"
             android:layout_height="27dp"
 
-            android:layout_marginStart="16dp"
             android:text="TextView"
 
             android:textColor="#2196F3"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/strava_activity_lastname"
-            app:layout_constraintTop_toTopOf="@+id/strava_activity_lastname"
+            app:layout_constraintTop_toBottomOf="@+id/strava_activity_name"
             tools:text="" />
 
         <TextView
             android:id="@+id/strava_activity_elevation"
-            android:layout_width="48dp"
-            android:layout_height="26dp"
+            android:layout_width="51dp"
+            android:layout_height="27dp"
+            android:layout_marginStart="2dp"
             android:text="TextView"
             android:textColor="#2196F3"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/KMs"
-            app:layout_constraintStart_toStartOf="@+id/strava_activity_time"
-            app:layout_constraintTop_toTopOf="@+id/KMs"
+            app:layout_constraintTop_toTopOf="@+id/strava_activity_distance"
             tools:text="" />
 
         <TextView
             android:id="@+id/strava_activity_time"
-            android:layout_width="46dp"
-            android:layout_height="28dp"
+            android:layout_width="35dp"
+            android:layout_height="27dp"
             android:text="TextView"
             android:textColor="#2196F3"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/strava_activity_name"
-            app:layout_constraintStart_toEndOf="@+id/strava_activity_name"
-            app:layout_constraintTop_toTopOf="@+id/strava_activity_name"
+            app:layout_constraintBottom_toBottomOf="@+id/strava_activity_elevation"
+            app:layout_constraintStart_toEndOf="@+id/Mts"
+            app:layout_constraintTop_toTopOf="@+id/strava_activity_elevation"
+            app:layout_constraintVertical_bias="0.0"
             tools:text="" />
 
         <TextView
             android:id="@+id/strava_activity_name"
-            android:layout_width="247dp"
-            android:layout_height="27dp"
+            android:layout_width="384dp"
+            android:layout_height="28dp"
             android:text="TextView"
             android:textColor="#000000"
             android:textSize="18sp"
@@ -114,13 +113,13 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="39dp"
-            android:layout_height="28dp"
+            android:layout_width="38dp"
+            android:layout_height="20dp"
             android:text="Min"
             android:textColor="#000000"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/Mts"
-            app:layout_constraintTop_toTopOf="@+id/strava_activity_time" />
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/strava_activity_time"
+            app:layout_constraintTop_toTopOf="@+id/Mts" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

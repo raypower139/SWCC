@@ -133,11 +133,11 @@ class EditClimb : Fragment(), AnkoLogger {
         editPost!!.MtLeinster = root.edit_checkBox_Mt_Leinster.isChecked
         editPost!!.SeskinHill = root.edit_checkBox_SeskinHill.isChecked
 
-        val zonedToday = ZonedDateTime.now(ZoneId.of("Europe/Dublin")).toLocalDate()
-        val zonedFormattedToday = zonedToday.format(
-            DateTimeFormatter.ofLocalizedDate(
-                FormatStyle.FULL))
-        val date = zonedFormattedToday
+        val zonedToday = ZonedDateTime.now(ZoneId.of("Europe/Dublin")).toLocalDate().toString()
+//        val zonedFormattedToday = zonedToday.format(
+//            DateTimeFormatter.ofLocalizedDate(
+//                FormatStyle.FULL))
+        val date = zonedToday
         editPost!!.LastUpdated = date
     }
 

@@ -62,6 +62,7 @@ class ClimbAdapter constructor(var blogPosts: ArrayList<ClimbModel>,
             itemView.name.text = climb.Name
             itemView.lastUpdated.text = climb.LastUpdated
 
+            // Count number of climbs marked TRUE
             val booleanFields = ArrayList<Boolean>()
             booleanFields.add(climb.MahonFalls)
             booleanFields.add(climb.SeskinHill)
@@ -70,8 +71,6 @@ class ClimbAdapter constructor(var blogPosts: ArrayList<ClimbModel>,
             val count = booleanFields.count { it }
 
             itemView.countClimbs.text = count.toString()
-
-
 
             if (!blogAll)
                 itemView.setOnClickListener { listener.onClimbClick(climb) }

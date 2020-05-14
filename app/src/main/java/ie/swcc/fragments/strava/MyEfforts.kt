@@ -19,7 +19,9 @@ import ie.swcc.models.strava.mySegmentEfforts.MyEffortsModel
 import ie.swcc.utils.*
 import kotlinx.android.synthetic.main.card_blog.*
 import kotlinx.android.synthetic.main.card_strava_my_efforts.*
+import kotlinx.android.synthetic.main.fragment_strava_my_efforts.*
 import kotlinx.android.synthetic.main.fragment_strava_my_efforts.view.*
+import kotlinx.android.synthetic.main.fragment_strava_my_efforts.view.recyclerView4
 import kotlinx.android.synthetic.main.fragment_strava_segments.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -51,7 +53,7 @@ class MyEfforts() : Fragment(), Callback<List<MyEffortsModel>>, AnkoLogger {
         loader = createLoader(activity!!)
 
         root.recyclerView4.setLayoutManager(LinearLayoutManager(activity))
-        root.recyclerView4.adapter = MyEffortsAdapter(app.stravaStore.findAllMyEfforts())
+
 
         return root
     }
@@ -67,6 +69,7 @@ class MyEfforts() : Fragment(), Callback<List<MyEffortsModel>>, AnkoLogger {
         info("Retrofit JSON = $response.raw()")
         app.stravaStore.myEfforts = response.body() as ArrayList<MyEffortsModel>
         hideLoader(loader)
+        recyclerView4.adapter = MyEffortsAdapter(app.stravaStore.findAllMyEfforts())
     }
 
     override fun onFailure(call: Call<List<MyEffortsModel>>, t: Throwable) {

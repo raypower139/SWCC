@@ -10,6 +10,18 @@
     <!-- TODO: Update blank fragment layout -->
 
 
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="164dp"
+        android:text="Record or View Results"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/strava_activities_list" />
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="161dp"
@@ -20,37 +32,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/strava_welcome_name"
-        android:layout_width="213dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="68dp"
-        android:text="User Name"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
     <Button
         android:id="@+id/strava_activities_list"
-        android:layout_width="228dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="60dp"
+        android:layout_width="188dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="12dp"
         android:background="@color/colorPrimary"
         android:text="Latest Activities"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="186dp" />
+        app:layout_constraintStart_toStartOf="@+id/buttonGroupThree"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGroupThree" />
 
     <Button
         android:id="@+id/buttonGroupOne"
-        android:layout_width="80dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="79dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="12dp"
         android:background="@color/colorPrimary"
         android:text="Group 1"
         android:textColor="@color/colorWhite"
@@ -61,8 +60,8 @@
     <Button
         android:id="@+id/buttonGroupTwo"
         android:layout_width="80dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="4dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
         android:background="@color/colorPrimary"
         android:text="Group 2"
         android:textColor="@color/colorWhite"
@@ -73,50 +72,49 @@
     <Button
         android:id="@+id/buttonGroupThree"
         android:layout_width="80dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="4dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
         android:background="@color/colorPrimary"
         android:text="Group 3"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/buttonGroupTwo"
-        app:layout_constraintTop_toTopOf="@+id/buttonGroupTwo" />
+        app:layout_constraintStart_toStartOf="@+id/buttonGroupOne"
+        app:layout_constraintTop_toBottomOf="@+id/buttonGroupOne" />
 
     <Button
         android:id="@+id/buttonGroupFour"
         android:layout_width="80dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="4dp"
+        android:layout_height="40dp"
         android:background="@color/colorPrimary"
         android:text="Group 4"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/buttonGroupThree"
-        app:layout_constraintTop_toTopOf="@+id/buttonGroupTwo" />
+        app:layout_constraintStart_toStartOf="@+id/buttonGroupTwo"
+        app:layout_constraintTop_toTopOf="@+id/buttonGroupThree" />
 
     <TextView
         android:id="@+id/strava_menu_choose_group_text"
         android:layout_width="286dp"
         android:layout_height="24dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="36dp"
         android:text="View Members of Each Challenge"
         android:textAlignment="center"
         android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/strava_welcome_name" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="64dp"
         android:text="Mahon Falls"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_strava_view_climbs" />
+        app:layout_constraintTop_toBottomOf="@+id/strava_activities_list" />
 
     <TextView
         android:id="@+id/textView8"
@@ -207,33 +205,35 @@
         app:layout_constraintTop_toTopOf="@+id/textView9" />
 
     <Button
-        android:id="@+id/saveStravaButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="220dp"
-        android:text="Save"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_efforts_button_Mt_Leinster" />
-
-    <Button
         android:id="@+id/addClimbs"
-        android:layout_width="138dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="MRA Challenge"
+        android:layout_width="109dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="56dp"
+        android:text="Record"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/strava_activities_list" />
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <Button
         android:id="@+id/button_strava_view_climbs"
-        android:layout_width="162dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="12dp"
-        android:text="View MRA Results"
+        android:layout_width="124dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="20dp"
+        android:text="View"
         app:layout_constraintStart_toEndOf="@+id/addClimbs"
         app:layout_constraintTop_toTopOf="@+id/addClimbs" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="98dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="24dp"
+        android:text="Climb Times"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/strava_activities_list" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

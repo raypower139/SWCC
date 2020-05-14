@@ -51,7 +51,6 @@ class ViewClimbFragment : Fragment(), AnkoLogger {
         arguments?.let {
             viewPost = it.getParcelable("viewpost")
         }
-
     }
 
     override fun onCreateView(
@@ -73,7 +72,6 @@ class ViewClimbFragment : Fragment(), AnkoLogger {
 //        }
 //        else
             root.viewBlogImage.setImageResource(R.mipmap.ic_launcher_homer_foreground)
-
 
         return root
     }

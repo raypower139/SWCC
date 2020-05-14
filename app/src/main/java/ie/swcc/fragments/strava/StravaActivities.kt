@@ -14,7 +14,10 @@ import ie.swcc.adapters.StravaActivitiesAdapter
 import ie.swcc.main.SWCCApp
 import ie.swcc.models.strava.StravaStatsModel
 import ie.swcc.utils.*
+import kotlinx.android.synthetic.main.fragment_strava_activity_report.*
 import kotlinx.android.synthetic.main.fragment_strava_activity_report.view.*
+import kotlinx.android.synthetic.main.fragment_strava_activity_report.view.recyclerView2
+import kotlinx.coroutines.delay
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import retrofit2.Call
@@ -41,7 +44,7 @@ class StravaActivities : Fragment(), Callback<List<StravaStatsModel>>, AnkoLogge
         loader = createLoader(activity!!)
 
         root.recyclerView2.setLayoutManager(LinearLayoutManager(activity))
-        root.recyclerView2.adapter = StravaActivitiesAdapter(app.stravaStore.findAllStats())
+        //root.recyclerView2.adapter = StravaActivitiesAdapter(app.stravaStore.findAllStats())
 
         return root
     }
@@ -51,11 +54,13 @@ class StravaActivities : Fragment(), Callback<List<StravaStatsModel>>, AnkoLogge
     override fun onResponse(call: Call<List<StravaStatsModel>>,
                             response: Response<List<StravaStatsModel>>
     ) {
+
         serviceAvailableMessage(activity!!)
         info("Retrofit JSON = $response.raw()")
         app.stravaStore.activities = response.body() as ArrayList<StravaStatsModel>
-        //updateUI()
         hideLoader(loader)
+        recyclerView2.adapter = StravaActivitiesAdapter(app.stravaStore.findAllStats())
+
     }
 
     override fun onFailure(call: Call<List<StravaStatsModel>>, t: Throwable) {
@@ -73,7 +78,6 @@ class StravaActivities : Fragment(), Callback<List<StravaStatsModel>>, AnkoLogge
         showLoader(loader, "Downloading Strava List")
         var callGetAll = app.stravaService.getall2(app.groupId,app.access_token,30)
         callGetAll.enqueue(this)
-
     }
 
 

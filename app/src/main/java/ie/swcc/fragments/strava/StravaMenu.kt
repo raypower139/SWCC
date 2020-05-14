@@ -60,7 +60,7 @@ class StravaMenu : Fragment() {
             fragmentTransaction.commit()
         }
         root.addClimbs.setOnClickListener {
-            val newGamefragment = AddClimbs()
+            val newGamefragment = StravaStats()
             val fragmentTransaction: FragmentTransaction =
                 activity!!.supportFragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
@@ -232,6 +232,9 @@ class StravaMenu : Fragment() {
         app.database.updateChildren(childUpdates)
         hideLoader(loader)
     }
+
+
+
 
 
 }
