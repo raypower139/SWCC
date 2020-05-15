@@ -5,14 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ie.swcc.R
-import ie.swcc.api.StatsWrapper
-import ie.swcc.api.StravaWrapper
-import ie.swcc.fragments.strava.StravaStats
-import ie.swcc.models.strava.StravaModel
-import ie.swcc.models.strava.athleteStats.AthleteStatsModel
 import ie.swcc.models.strava.athleteStats.Totals
-import ie.swcc.models.strava.athleteStats.YtdRideTotals
-import kotlinx.android.synthetic.main.card_strava_member.view.*
 import kotlinx.android.synthetic.main.card_strava_stats.view.*
 
 class StravaStatsAdapter constructor(private var stats: List<Totals>)

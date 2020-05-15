@@ -60,7 +60,7 @@ class StravaMenu : Fragment() {
             fragmentTransaction.commit()
         }
         root.addClimbs.setOnClickListener {
-            val newGamefragment = StravaStats()
+            val newGamefragment = AddClimbs()
             val fragmentTransaction: FragmentTransaction =
                 activity!!.supportFragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
@@ -109,43 +109,67 @@ class StravaMenu : Fragment() {
             Members()
         }
 
-       // Buttons for Strava Segment MYEFFORTS
+        // Buttons for Strava Segment MYEFFORTS
         root.my_efforts_button_MahonFalls.setOnClickListener {
             app.segmentId = "623750"
             app.segmentName = "Mahon Falls"
             println("Changed to Mahon Falls")
-            val newGamefragment = MyEfforts()
-            val fragmentTransaction: FragmentTransaction =
-                activity!!.supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+            Efforts()
         }
-
         root.my_efforts_button_SeskinHill.setOnClickListener {
             app.segmentId = "623748"
             println("Changed to SeskinHill")
             app.segmentName = "Seskin Hill"
-            val newGamefragment = MyEfforts()
-            val fragmentTransaction: FragmentTransaction =
-                activity!!.supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+            Efforts()
         }
-
         root.my_efforts_button_Mt_Leinster.setOnClickListener {
             app.segmentId = "4374283"
             println("Changed to Mt.Leinster")
             app.segmentName = "Mt.Leinster"
-            val newGamefragment = MyEfforts()
-            val fragmentTransaction: FragmentTransaction =
-                activity!!.supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+            Efforts()
         }
-
+        root.my_efforts_button_SlieveCoillte.setOnClickListener {
+            app.segmentId = "916722"
+            app.segmentName = "Slieve Coillte"
+            println("Changed to Slieve Coillte")
+            Efforts()
+        }
+        root.my_efforts_button_Vee.setOnClickListener {
+            app.segmentId = "17174357"
+            println("Changed to The Vee")
+            app.segmentName = "The Vee"
+            Efforts()
+        }
+        root.my_efforts_button_Powers_East.setOnClickListener {
+            app.segmentId = "623749"
+            println("Changed to Powers The Pot (From East)")
+            app.segmentName = "Powers The Pot (East)"
+            Efforts()
+        }
+        root.my_efforts_button_Mountain_Road.setOnClickListener {
+            app.segmentId = "656892"
+            app.segmentName = "Mountain Road"
+            println("Changed to Mountain Road")
+            Efforts()
+        }
+        root.my_efforts_button_Slieve_Na_mBan.setOnClickListener {
+            app.segmentId = "656136"
+            println("Changed to Slieve Na mBan")
+            app.segmentName = "Slieve Na mBan"
+            Efforts()
+        }
+        root.my_efforts_button_Powers_West.setOnClickListener {
+            app.segmentId = "623749"
+            println("Changed to Powers The Pot (West)")
+            app.segmentName = "Powers The Pot (West)"
+            Efforts()
+        }
+        root.my_efforts_button_Tickincor.setOnClickListener {
+            app.segmentId = "656146"
+            println("Changed to Tickincor")
+            app.segmentName = "Tickincor"
+            Efforts()
+        }
 
         // Leaderboard Buttons
         root.strava_segment_button.setOnClickListener {
@@ -154,35 +178,62 @@ class StravaMenu : Fragment() {
             println("Changed to Mahon Falls")
             Leaderboard()
         }
-
         root.strava_segment_button_SeskinHill.setOnClickListener {
             app.segmentId = "623748"
             println("Changed to SeskinHill")
             app.segmentName = "Seskin Hill"
             Leaderboard()
         }
-
         root.strava_segment_button_Mt_Leinster.setOnClickListener {
             app.segmentId = "4374283"
             println("Changed to Mt.Leinster")
             app.segmentName = "Mt.Leinster"
             Leaderboard()
         }
+        root.strava_segment_SlieveCoillte.setOnClickListener {
+            app.segmentId = "916722"
+            println("Changed to Slieve Coillte")
+            app.segmentName = "Slieve Coillte"
+            Leaderboard()
+        }
+        root.strava_segment_button_Vee.setOnClickListener {
+            app.segmentId = "17174357"
+            println("Changed to The Vee")
+            app.segmentName = "The Vee"
+            Leaderboard()
+        }
+        root.strava_segment_button_Powers_East.setOnClickListener {
+            app.segmentId = "623749"
+            app.segmentName = "Powers The Pot East"
+            println("Changed to Powers The Pot East")
+            Leaderboard()
+        }
+        root.strava_segment_button_Mountain_Road.setOnClickListener {
+            app.segmentId = "656892"
+            println("Changed to Mountain Road")
+            app.segmentName = "Mountain Road"
+            Leaderboard()
+        }
+        root.strava_segment_Slieve_Na_mBan.setOnClickListener {
+            app.segmentId = "656136"
+            println("Changed to Slieve Na mBan")
+            app.segmentName = "Slieve Na mBan"
+            Leaderboard()
+        }
+        root.strava_segment_button_Powers_West.setOnClickListener {
+            app.segmentId = "623749"
+            println("Changed to Powers The Pot (West)")
+            app.segmentName = "Powers The Pot (West)"
+            Leaderboard()
+        }
+        root.strava_segment_button_Tickincor.setOnClickListener {
+            app.segmentId = "656146"
+            println("Changed to Tickincor")
+            app.segmentName = "Tickincor"
+            Leaderboard()
+        }
 
-//        root.saveStravaButton.setOnClickListener {
-//            val MahonFalls = root.checkBox_MahonFalls.isChecked
-//            val SeskinHill = root.checkBox_SeskinHill.isChecked
-//            val MtLeinster = root.checkBox_Mt_Leinster.isChecked
-//            val LastUpdated = ZonedDateTime.now(ZoneId.of("Europe/Dublin")).toLocalDate().toString()
-//            writeNewClimb(
-//                ClimbModel(
-//                    MahonFalls = MahonFalls,
-//                    SeskinHill = SeskinHill,
-//                    MtLeinster = MtLeinster,
-//                    LastUpdated = LastUpdated
-//                )
-//            )
-//        }
+
 
         return root
     }
@@ -204,6 +255,15 @@ class StravaMenu : Fragment() {
         fragmentTransaction.addToBackStack(null)
         fragmentTransaction.commit()
     }
+    fun Efforts() {
+        val newGamefragment = MyEfforts()
+        val fragmentTransaction: FragmentTransaction =
+            activity!!.supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
+
 
 
     override fun onPause() {

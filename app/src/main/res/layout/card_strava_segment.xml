@@ -17,9 +17,9 @@
 
         <TextView
             android:id="@+id/strava_segment_athlete_name"
-            android:layout_width="123dp"
+            android:layout_width="104dp"
             android:layout_height="23dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="7dp"
             android:text="TextView"
             android:textColor="#000000"
             android:textSize="18sp"
@@ -32,10 +32,11 @@
             android:id="@+id/strava_segment_effort_time"
             android:layout_width="75dp"
             android:layout_height="22dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="12dp"
             android:text="TextView"
             android:textColor="#2196F3"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/strava_activity_name"
             app:layout_constraintStart_toEndOf="@+id/strava_segment_start_date"
             app:layout_constraintTop_toTopOf="@+id/strava_segment_athlete_name"
@@ -43,23 +44,26 @@
 
         <TextView
             android:id="@+id/strava_segment_rank"
-            android:layout_width="20dp"
+            android:layout_width="25dp"
             android:layout_height="23dp"
+            android:layout_marginStart="3dp"
             android:text="TextView"
             android:textColor="#2196F3"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/strava_activity_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/strava_segment_athlete_name" />
 
         <TextView
             android:id="@+id/strava_segment_start_date"
-            android:layout_width="96dp"
-            android:layout_height="23dp"
+            android:layout_width="106dp"
+            android:layout_height="26dp"
             android:layout_marginStart="8dp"
             android:text="TextView"
             android:textColor="#2196F3"
             android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/strava_activity_name"
             app:layout_constraintStart_toEndOf="@+id/strava_segment_athlete_name"
             app:layout_constraintTop_toTopOf="@+id/strava_segment_athlete_name" />
