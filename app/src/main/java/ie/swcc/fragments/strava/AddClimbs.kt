@@ -57,48 +57,18 @@ class AddClimbs : Fragment() {
         activity?.title = "MRA Challenge"
 
 
-       // Buttons for Strava Segment MYEFFORTS
-        root.my_efforts_button_MahonFalls.setOnClickListener {
-            app.segmentId = "623750"
-            app.segmentName = "Mahon Falls"
-            println("Changed to Mahon Falls")
-            val newGamefragment = MyEfforts()
-            val fragmentTransaction: FragmentTransaction =
-                activity!!.supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
-
-        root.my_efforts_button_SeskinHill.setOnClickListener {
-            app.segmentId = "623748"
-            println("Changed to SeskinHill")
-            app.segmentName = "Seskin Hill"
-            val newGamefragment = MyEfforts()
-            val fragmentTransaction: FragmentTransaction =
-                activity!!.supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
-
-        root.my_efforts_button_Mt_Leinster.setOnClickListener {
-            app.segmentId = "4374283"
-            println("Changed to Mt.Leinster")
-            app.segmentName = "Mt.Leinster"
-            val newGamefragment = MyEfforts()
-            val fragmentTransaction: FragmentTransaction =
-                activity!!.supportFragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.homeFrame, newGamefragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
-        }
-
         root.saveStravaButton.setOnClickListener {
             val Name = app.auth.currentUser!!.displayName
-            val MahonFalls = root.checkBox_MahonFalls.isChecked
-            val SeskinHill = root.checkBox_SeskinHill.isChecked
-            val MtLeinster = root.checkBox_Mt_Leinster.isChecked
+            val MahonFalls = root.checkBox_add_MahonFalls.isChecked
+            val SeskinHill = root.checkBox_add_SeskinHill.isChecked
+            val MtLeinster = root.checkBox_add_Mt_Leinster.isChecked
+            val SlieveCoillte = root.checkBox_add_Vee.isChecked
+            val Vee = root.checkBox_add_MahonFalls.isChecked
+            val PowersEast = root.checkBox_add_Powers_East.isChecked
+            val MountainRoad = root.checkBox_add_Mountain_Road.isChecked
+            val SlieveNamBan = root.checkBox_add_Slieve_Na_mBan.isChecked
+            val PowersWest = root.checkBox_add_Powers_West.isChecked
+            val Tickincor = root.checkBox_add_Tickincor.isChecked
             val LastUpdated = ZonedDateTime.now(ZoneId.of("Europe/Dublin")).toLocalDate().toString()
             writeNewClimb(
                 ClimbModel(
@@ -106,6 +76,13 @@ class AddClimbs : Fragment() {
                     MahonFalls = MahonFalls,
                     SeskinHill = SeskinHill,
                     MtLeinster = MtLeinster,
+                    SlieveCoillte = SlieveCoillte,
+                    Vee = Vee,
+                    PowersEast = PowersEast,
+                    MountainRoad = MountainRoad,
+                    SlieveNamBan = SlieveNamBan,
+                    PowersWest = PowersWest,
+                    Tickincor = Tickincor,
                     LastUpdated = LastUpdated
                 )
             )

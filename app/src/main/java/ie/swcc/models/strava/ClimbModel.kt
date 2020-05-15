@@ -14,6 +14,13 @@ data class ClimbModel(
     var MahonFalls: Boolean= false,
     var SeskinHill: Boolean = false,
     var MtLeinster: Boolean = false,
+    var SlieveCoillte: Boolean = false,
+    var Vee: Boolean= false,
+    var PowersEast: Boolean = false,
+    var MountainRoad: Boolean = false,
+    var SlieveNamBan: Boolean = false,
+    var PowersWest: Boolean = false,
+    var Tickincor: Boolean = false,
     var LastUpdated: String = ""
 
     ) : Parcelable
@@ -28,6 +35,13 @@ data class ClimbModel(
             "MahonFalls" to MahonFalls,
             "SeskinHill" to SeskinHill,
             "MtLeinster" to MtLeinster,
+            "SlieveCoillte" to SlieveCoillte,
+            "Vee" to Vee,
+            "PowersEast" to PowersEast,
+            "MountainRoad" to MountainRoad,
+            "SlieveNamBan" to SlieveNamBan,
+            "PowersWest" to PowersWest,
+            "Tickincor" to Tickincor,
             "LastUpdated" to LastUpdated
 
         )

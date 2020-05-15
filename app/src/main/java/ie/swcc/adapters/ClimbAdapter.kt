@@ -67,6 +67,13 @@ class ClimbAdapter constructor(var blogPosts: ArrayList<ClimbModel>,
             booleanFields.add(climb.MahonFalls)
             booleanFields.add(climb.SeskinHill)
             booleanFields.add(climb.MtLeinster)
+            booleanFields.add(climb.SlieveCoillte)
+            booleanFields.add(climb.Vee)
+            booleanFields.add(climb.PowersEast)
+            booleanFields.add(climb.MountainRoad)
+            booleanFields.add(climb.SlieveNamBan)
+            booleanFields.add(climb.PowersWest)
+            booleanFields.add(climb.Tickincor)
 
             val count = booleanFields.count { it }
 

@@ -51,7 +51,7 @@ open class ReportAllClimbsFragment : Fragment(), AnkoLogger,
     ): View? {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_climbreport, container, false)
-        activity?.title = getString(R.string.menu_bloglist_all)
+        activity?.title = "MRA Challenge Results"
 
 
         root.recyclerViewClimbs.setLayoutManager(LinearLayoutManager(activity))
@@ -64,12 +64,6 @@ open class ReportAllClimbsFragment : Fragment(), AnkoLogger,
         }
         val itemTouchEditHelper = ItemTouchHelper(swipeEditHandler)
         itemTouchEditHelper.attachToRecyclerView(root.recyclerViewClimbs)
-
-
-
-
-
-
 
         return root
     }
@@ -93,9 +87,6 @@ open class ReportAllClimbsFragment : Fragment(), AnkoLogger,
     fun checkSwipeRefresh() {
         if (root.swiperefresh.isRefreshing) root.swiperefresh.isRefreshing = false
     }
-
-
-
 
     override fun onClimbClick(climb: ClimbModel) {
         activity!!.supportFragmentManager.beginTransaction()
@@ -141,5 +132,5 @@ open class ReportAllClimbsFragment : Fragment(), AnkoLogger,
                     })
 
                 }
-            }
+}
 
