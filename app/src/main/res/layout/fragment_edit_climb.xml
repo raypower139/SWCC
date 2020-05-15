@@ -20,27 +20,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/strava_welcome_name"-->
-<!--        android:layout_width="213dp"-->
-<!--        android:layout_height="32dp"-->
-<!--        android:layout_marginStart="68dp"-->
-<!--        android:text="User Name"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textAllCaps="true"-->
-<!--        android:textColor="@color/colorPrimary"-->
-<!--        android:textSize="20dp"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/imageView2" />-->
-
     <TextView
         android:id="@+id/strava_menu_choose_group_text"
-        android:layout_width="282dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="44dp"
-        android:text="Check your results and record tick off climbs you have done"
+        android:layout_width="314dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Check off the climbs you have done!"
         android:textAlignment="center"
         android:textSize="18dp"
         android:textStyle="bold"
@@ -52,96 +38,191 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="5dp"
         android:text="Mahon Falls"
-        android:textSize="18sp"
+        android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/strava_menu_choose_group_text" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Seskin Hill"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+    <CheckBox
+        android:id="@+id/checkBox_edit_SeskinHill"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@+id/checkBox_edit_MahonFalls"
+        app:layout_constraintTop_toTopOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="4dp"
         android:text="Mt.Leinster"
-        android:textSize="18sp"
+        android:textSize="22sp"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-    <Button
-        android:id="@+id/my_efforts_button2_MahonFalls"
-        android:layout_width="80dp"
-        android:layout_height="25dp"
-        android:background="@color/colorPrimary"
-        android:text="Check"
-        android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/edit_checkBox_MahonFalls"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Slieve Coillte"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-    <Button
-        android:id="@+id/my_efforts_button2_SeskinHill"
-        android:layout_width="80dp"
-        android:layout_height="25dp"
-        android:background="@color/colorPrimary"
-        android:text="Check"
-        android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/my_efforts_button2_MahonFalls"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+    <CheckBox
+        android:id="@+id/checkBox_edit_Powers_East"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@+id/checkBox_edit_Vee"
+        app:layout_constraintTop_toTopOf="@+id/textView_Powers_East" />
 
-    <Button
-        android:id="@+id/my_efforts_button2_Mt_Leinster"
-        android:layout_width="80dp"
-        android:layout_height="25dp"
-        android:background="@color/colorPrimary"
-        android:text="Check"
-        android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/my_efforts_button2_SeskinHill"
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Seskin Hill"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <CheckBox
+        android:id="@+id/checkBox_edit_Mt_Leinster"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@+id/checkBox_edit_SeskinHill"
         app:layout_constraintTop_toTopOf="@+id/textView9" />
 
     <CheckBox
-        android:id="@+id/edit_checkBox_MahonFalls"
-        android:layout_width="36dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="8dp"
+        android:id="@+id/checkBox_edit_Vee"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@+id/checkBox_edit_Slieve_Coillte"
+        app:layout_constraintTop_toTopOf="@+id/textView_Vee" />
+
+    <TextView
+        android:id="@+id/textView_Vee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="The Vee"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <CheckBox
+        android:id="@+id/checkBox_edit_Slieve_Coillte"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@+id/checkBox_edit_Mt_Leinster"
+        app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+    <TextView
+        android:id="@+id/textView_Powers_East"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="Powers The Pot (East)"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/textView_Vee"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Vee" />
+
+
+    <CheckBox
+        android:id="@+id/checkBox_edit_MahonFalls"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="112dp"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
-    <CheckBox
-        android:id="@+id/edit_checkBox_SeskinHill"
-        android:layout_width="35dp"
-        android:layout_height="24dp"
-        app:layout_constraintStart_toStartOf="@+id/edit_checkBox_MahonFalls"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView_Mountain_Road"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="Mountain Road"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@+id/checkBox_edit_Powers_East"
+        app:layout_constraintStart_toStartOf="@+id/textView_Powers_East"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Powers_East" />
 
     <CheckBox
-        android:id="@+id/edit_checkBox_Mt_Leinster"
-        android:layout_width="34dp"
-        android:layout_height="24dp"
-        app:layout_constraintStart_toStartOf="@+id/edit_checkBox_SeskinHill"
-        app:layout_constraintTop_toTopOf="@+id/textView9" />
+        android:id="@+id/checkBox_edit_Mountain_Road"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@+id/checkBox_edit_MahonFalls"
+        app:layout_constraintTop_toTopOf="@+id/textView_Mountain_Road" />
+
+    <TextView
+        android:id="@+id/textView_Slieve_Na_mBan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="Slieve Na mBan"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/textView_Mountain_Road"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Mountain_Road" />
+
+
+    <CheckBox
+        android:id="@+id/checkBox_edit_Slieve_Na_mBan"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@+id/checkBox_edit_MahonFalls"
+        app:layout_constraintTop_toTopOf="@+id/textView_Slieve_Na_mBan" />
+
+
+    <TextView
+        android:id="@+id/textView_Powers_West"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="Powers The Pot (West)"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/textView_Slieve_Na_mBan"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Slieve_Na_mBan" />
+
+    <CheckBox
+        android:id="@+id/checkBox_edit_Powers_West"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@+id/checkBox_edit_Slieve_Na_mBan"
+        app:layout_constraintTop_toTopOf="@+id/textView_Powers_West" />
+
+    <TextView
+        android:id="@+id/textView_Tickincor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="Tickincor"
+        android:textSize="22sp"
+        app:layout_constraintStart_toEndOf="@+id/textView_Powers_West"
+        app:layout_constraintStart_toStartOf="@+id/textView_Powers_West"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Powers_West" />
+
+
+    <CheckBox
+        android:id="@+id/checkBox_edit_Tickincor"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toStartOf="@+id/checkBox_edit_Powers_West"
+        app:layout_constraintTop_toTopOf="@+id/textView_Tickincor" />
 
     <Button
         android:id="@+id/updateStravaButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="56dp"
+        android:layout_width="277dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/mybutton"
         android:text="Update"
+        android:textColor="@color/colorWhite"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_checkBox_Mt_Leinster" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_Tickincor" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
