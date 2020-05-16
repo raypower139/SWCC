@@ -1,6 +1,5 @@
 package ie.swcc.fragments.strava
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -22,8 +21,6 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import java.time.ZoneId
 import java.time.ZonedDateTime
-
-
 
 class EditClimb : Fragment(), AnkoLogger {
 
@@ -90,13 +87,13 @@ class EditClimb : Fragment(), AnkoLogger {
         editPost!!.MahonFalls = root.checkBox_edit_MahonFalls.isChecked
         editPost!!.MtLeinster = root.checkBox_edit_Mt_Leinster.isChecked
         editPost!!.SeskinHill = root.checkBox_edit_SeskinHill.isChecked
-        editPost!!.MahonFalls = root.checkBox_edit_MahonFalls.isChecked
-        editPost!!.MtLeinster = root.checkBox_edit_Mt_Leinster.isChecked
-        editPost!!.SeskinHill = root.checkBox_edit_SeskinHill.isChecked
-        editPost!!.MahonFalls = root.checkBox_edit_MahonFalls.isChecked
-        editPost!!.MtLeinster = root.checkBox_edit_Mt_Leinster.isChecked
-        editPost!!.SeskinHill = root.checkBox_edit_SeskinHill.isChecked
-        editPost!!.SeskinHill = root.checkBox_edit_SeskinHill.isChecked
+        editPost!!.SlieveCoillte = root.checkBox_edit_Slieve_Coillte.isChecked
+        editPost!!.Vee = root.checkBox_edit_Vee.isChecked
+        editPost!!.PowersEast = root.checkBox_edit_Powers_East.isChecked
+        editPost!!.MountainRoad = root.checkBox_edit_Mountain_Road.isChecked
+        editPost!!.SlieveNamBan = root.checkBox_edit_Slieve_Na_mBan.isChecked
+        editPost!!.PowersWest = root.checkBox_edit_Powers_West.isChecked
+        editPost!!.Tickincor = root.checkBox_edit_Tickincor.isChecked
 
         val zonedToday = ZonedDateTime.now(ZoneId.of("Europe/Dublin")).toLocalDate().toString()
         editPost!!.LastUpdated = zonedToday
@@ -116,5 +113,4 @@ class EditClimb : Fragment(), AnkoLogger {
                     }
                 })
     }
-
 }
