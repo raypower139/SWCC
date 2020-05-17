@@ -162,4 +162,9 @@ class Home : AppCompatActivity(),
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        val uri = intent.data
+    }
 }

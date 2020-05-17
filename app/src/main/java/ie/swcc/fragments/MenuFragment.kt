@@ -22,6 +22,7 @@ import ie.swcc.models.UserModel
 import ie.swcc.utils.createLoader
 import ie.swcc.utils.hideLoader
 import kotlinx.android.synthetic.main.fragment_menu.view.*
+import kotlinx.android.synthetic.main.fragment_strava_menu.view.*
 
 
 class MenuFragment : Fragment() {
@@ -39,10 +40,7 @@ class MenuFragment : Fragment() {
         app = activity?.application as SWCCApp
 
 
-
     }
-
-
 
     companion object {
         @JvmStatic
@@ -61,6 +59,8 @@ class MenuFragment : Fragment() {
         loader = createLoader(activity!!)
         activity?.title = getString(R.string.welcome_title)
 
+
+
         root.newsImage.setOnClickListener {
             val newGamefragment = ReportAllFragment()
             val fragmentTransaction: FragmentTransaction =
@@ -74,6 +74,20 @@ class MenuFragment : Fragment() {
         root.chatImage.setOnClickListener {
             val intent = Intent (getActivity(), LatestMessagesActivity::class.java)
             getActivity()!!.startActivity(intent)
+        }
+
+        root.stravaAuth.setOnClickListener {
+            val intentUri = Uri.parse("https://www.strava.com/oauth/mobile/authorize")
+                .buildUpon()
+                .appendQueryParameter("client_id", "37817")
+                .appendQueryParameter("redirect_uri", "https://swcc.ie/callback")
+                .appendQueryParameter("response_type", "code")
+                .appendQueryParameter("approval_prompt", "auto")
+                .appendQueryParameter("scope", "activity:read")
+                .build()
+
+            val intent = Intent(Intent.ACTION_VIEW, intentUri)
+            startActivity(intent)
         }
 
         root.stravaImage.setOnClickListener {
@@ -115,6 +129,8 @@ class MenuFragment : Fragment() {
             })
         return root;
     }
+
+
 }
 
 

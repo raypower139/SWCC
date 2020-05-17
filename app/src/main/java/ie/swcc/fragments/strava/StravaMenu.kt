@@ -18,6 +18,7 @@ import ie.swcc.models.strava.ClimbModel
 import ie.swcc.utils.createLoader
 import ie.swcc.utils.hideLoader
 import ie.swcc.utils.showLoader
+import kotlinx.android.synthetic.main.fragment_menu.view.*
 import kotlinx.android.synthetic.main.fragment_strava_menu.view.*
 import java.util.*
 
@@ -69,19 +70,7 @@ class StravaMenu : Fragment() {
         loader = createLoader(activity!!)
         activity?.title = "Strava Menu"
 
-        root.imageView2.setOnClickListener{
-                    val intentUri = Uri.parse("https://www.strava.com/oauth/mobile/authorize")
-            .buildUpon()
-            .appendQueryParameter("client_id", "37817")
-            .appendQueryParameter("redirect_uri", "https://swcc.ie/callback")
-            .appendQueryParameter("response_type", "code")
-            .appendQueryParameter("approval_prompt", "auto")
-            .appendQueryParameter("scope", "activity:read")
-            .build()
 
-        val intent = Intent(Intent.ACTION_VIEW, intentUri)
-        startActivity(intent)
-        }
 
 
         root.strava_activities_list.setOnClickListener {
@@ -272,6 +261,8 @@ class StravaMenu : Fragment() {
     }
 
 
+
+
     fun Members() {
         val newGamefragment = StravaFragment()
         val fragmentTransaction: FragmentTransaction =
@@ -326,12 +317,6 @@ class StravaMenu : Fragment() {
         hideLoader(loader)
     }
 
-
-    override fun onResume() {
-        super.onResume()
-        val uri = activity?.intent?.data
-        print(uri)
-    }
 
 
 }
