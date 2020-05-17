@@ -30,6 +30,8 @@ interface StravaService {
     fun getMyStats(): Call<StatsWrapper>
 
 
+
+
     companion object {
 
         val serviceURL = "https://www.strava.com/api/v3/"

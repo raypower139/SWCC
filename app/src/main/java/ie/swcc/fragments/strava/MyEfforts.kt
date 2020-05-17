@@ -51,15 +51,9 @@ class MyEfforts() : Fragment(), Callback<List<MyEffortsModel>>, AnkoLogger {
         var root = inflater.inflate(R.layout.fragment_strava_my_efforts, container, false)
         activity?.title = app.segmentName
         loader = createLoader(activity!!)
-
         root.recyclerView4.setLayoutManager(LinearLayoutManager(activity))
-
-
         return root
     }
-
-
-
 
     override fun onResponse(
         call: Call<List<MyEffortsModel>>,

@@ -1,6 +1,9 @@
 package ie.swcc.fragments.strava
 
-import android.graphics.Color
+import android.content.Intent
+import android.content.Intent.getIntent
+import android.content.Intent.parseUri
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,16 +12,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import ie.swcc.R
+import ie.swcc.activities.Home
 import ie.swcc.main.SWCCApp
 import ie.swcc.models.strava.ClimbModel
 import ie.swcc.utils.createLoader
 import ie.swcc.utils.hideLoader
 import ie.swcc.utils.showLoader
-import kotlinx.android.synthetic.main.fragment_strava_menu.*
 import kotlinx.android.synthetic.main.fragment_strava_menu.view.*
-import java.time.ZoneId
-import java.time.ZonedDateTime
-import java.util.HashMap
+import java.util.*
 
 
 class StravaMenu : Fragment() {
@@ -28,11 +29,28 @@ class StravaMenu : Fragment() {
     lateinit var loader: AlertDialog
 
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         app = activity?.application as SWCCApp
 
+//        val intentUri = Uri.parse("https://www.strava.com/oauth/mobile/authorize")
+//            .buildUpon()
+//            .appendQueryParameter("client_id", "37817")
+//            .appendQueryParameter("redirect_uri", "https://swcc.ie/callback")
+//            .appendQueryParameter("response_type", "code")
+//            .appendQueryParameter("approval_prompt", "auto")
+//            .appendQueryParameter("scope", "activity:read")
+//            .build()
+//
+//        val intent = Intent(Intent.ACTION_VIEW, intentUri)
+//        startActivity(intent)
+
     }
+
+
 
     companion object {
         @JvmStatic
@@ -50,6 +68,21 @@ class StravaMenu : Fragment() {
         val root = inflater.inflate(R.layout.fragment_strava_menu, container, false)
         loader = createLoader(activity!!)
         activity?.title = "Strava Menu"
+
+        root.imageView2.setOnClickListener{
+                    val intentUri = Uri.parse("https://www.strava.com/oauth/mobile/authorize")
+            .buildUpon()
+            .appendQueryParameter("client_id", "37817")
+            .appendQueryParameter("redirect_uri", "https://swcc.ie/callback")
+            .appendQueryParameter("response_type", "code")
+            .appendQueryParameter("approval_prompt", "auto")
+            .appendQueryParameter("scope", "activity:read")
+            .build()
+
+        val intent = Intent(Intent.ACTION_VIEW, intentUri)
+        startActivity(intent)
+        }
+
 
         root.strava_activities_list.setOnClickListener {
             val newGamefragment = StravaActivities()
@@ -294,7 +327,11 @@ class StravaMenu : Fragment() {
     }
 
 
-
+    override fun onResume() {
+        super.onResume()
+        val uri = activity?.intent?.data
+        print(uri)
+    }
 
 
 }

@@ -1,6 +1,7 @@
 package ie.swcc.activities
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -38,11 +39,17 @@ class Home : AppCompatActivity(),
     lateinit var ft: FragmentTransaction
     lateinit var app: SWCCApp
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
         setSupportActionBar(toolbar)
         app = application as SWCCApp
+
+
+
+
 
 
         navView.setNavigationItemSelectedListener(this)
@@ -70,7 +77,12 @@ class Home : AppCompatActivity(),
         val fragment = MenuFragment.newInstance()
         ft.replace(R.id.homeFrame, fragment)
         ft.commit()
+
     }
+
+
+
+
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 

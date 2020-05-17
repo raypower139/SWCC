@@ -1,6 +1,7 @@
 package ie.swcc.fragments
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,11 +30,19 @@ class MenuFragment : Fragment() {
     lateinit var root: View
     lateinit var loader: AlertDialog
 
+    val clientId = "37817"
+    val clientSecret = "8473a2971d4dc36c51e51b6da9395bd55c8c8c89"
+    val redirectUri = "org.example.app://auth_code"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         app = activity?.application as SWCCApp
 
+
+
     }
+
+
 
     companion object {
         @JvmStatic
