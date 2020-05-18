@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction
 import ie.swcc.R
 import ie.swcc.activities.Home
 import ie.swcc.main.SWCCApp
+import ie.swcc.models.strava.AccessToken
 import ie.swcc.models.strava.ClimbModel
 import ie.swcc.utils.createLoader
 import ie.swcc.utils.hideLoader
@@ -36,18 +37,6 @@ class StravaMenu : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         app = activity?.application as SWCCApp
-
-//        val intentUri = Uri.parse("https://www.strava.com/oauth/mobile/authorize")
-//            .buildUpon()
-//            .appendQueryParameter("client_id", "37817")
-//            .appendQueryParameter("redirect_uri", "https://swcc.ie/callback")
-//            .appendQueryParameter("response_type", "code")
-//            .appendQueryParameter("approval_prompt", "auto")
-//            .appendQueryParameter("scope", "activity:read")
-//            .build()
-//
-//        val intent = Intent(Intent.ACTION_VIEW, intentUri)
-//        startActivity(intent)
 
     }
 
@@ -315,8 +304,8 @@ class StravaMenu : Fragment() {
 
         app.database.updateChildren(childUpdates)
         hideLoader(loader)
-    }
 
+    }
 
 
 }

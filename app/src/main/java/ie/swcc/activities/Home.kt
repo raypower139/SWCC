@@ -163,7 +163,7 @@ class Home : AppCompatActivity(),
         val uri = intent.data
 
         if (uri != null){
-            toast("Uri Working: " + uri)
+            //toast("Uri Working: " + uri)
             val code = uri.getQueryParameter("code")
             toast("Code: " + code)
         }

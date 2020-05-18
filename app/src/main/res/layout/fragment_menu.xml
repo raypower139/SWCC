@@ -40,7 +40,7 @@
         android:layout_width="157dp"
         android:layout_height="153dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/news"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/strava_welcome_name" />
@@ -50,7 +50,7 @@
         android:layout_width="157dp"
         android:layout_height="153dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:src="@drawable/chat"
         app:layout_constraintStart_toEndOf="@+id/newsImage"
         app:layout_constraintTop_toBottomOf="@+id/strava_welcome_name" />
@@ -134,8 +134,8 @@
 
     <Button
         android:id="@+id/stravaAuth"
-        android:layout_width="330dp"
-        android:layout_height="25dp"
+        android:layout_width="333dp"
+        android:layout_height="38dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="9dp"
         android:background="#ff6500"

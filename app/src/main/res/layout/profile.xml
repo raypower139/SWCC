@@ -9,20 +9,27 @@
 
     <Button
         android:id="@+id/deleteUserButton"
-        android:layout_width="204dp"
+        android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/mybutton"
         android:text="Delete User"
+        android:textAllCaps="true"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/resetPasswordButton"
         app:layout_constraintTop_toBottomOf="@+id/resetPasswordButton" />
 
     <Button
         android:id="@+id/editNameButton"
-        android:layout_width="265dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="283dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/mybutton"
         android:text="@string/editProfileName"
+        android:textAllCaps="true"
+        android:textColor="@color/colorWhite"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +48,7 @@
 
     <EditText
         android:id="@+id/editProfileName"
-        android:layout_width="203dp"
+        android:layout_width="250dp"
         android:layout_height="38dp"
         android:layout_marginTop="12dp"
         android:hint="Profile Name"
@@ -53,20 +60,28 @@
 
     <Button
         android:id="@+id/updateProfileImage"
-        android:layout_width="206dp"
+        android:layout_width="250dp"
         android:layout_height="43dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/mybutton"
         android:text="@string/editProfileImage"
+        android:textAllCaps="true"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editProfileImage" />
 
     <Button
         android:id="@+id/resetPasswordButton"
-        android:layout_width="204dp"
-        android:layout_height="44dp"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/mybutton"
         android:text="Request Email Reset"
+        android:textAllCaps="true"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/editProfileName"
         app:layout_constraintTop_toBottomOf="@+id/editProfileName" />
 
