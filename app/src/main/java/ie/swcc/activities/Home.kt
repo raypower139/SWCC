@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
@@ -47,15 +48,9 @@ class Home : AppCompatActivity(),
         setSupportActionBar(toolbar)
         app = application as SWCCApp
 
-
-
-
-
-
         navView.setNavigationItemSelectedListener(this)
         navView.getHeaderView(0).imageView
             .setOnClickListener { showImagePicker(this,1) }
-
 
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar,
@@ -166,5 +161,11 @@ class Home : AppCompatActivity(),
     override fun onResume() {
         super.onResume()
         val uri = intent.data
+
+        if (uri != null){
+            toast("Uri Working: " + uri)
+            val code = uri.getQueryParameter("code")
+            toast("Code: " + code)
+        }
     }
 }
