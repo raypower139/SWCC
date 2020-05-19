@@ -24,7 +24,7 @@ class SWCCApp : Application(),AnkoLogger {
     var groupName = ""
     var segmentId = ""
     var segmentName = ""
-    var access_token = "477d2e18dfc3f214b174ef7564976c52b7fbb00c"
+    var access_token = "f02da4041dd1f32b1537a611f1a48ed9284ac6d1"
 
 
     // [START declare_auth]

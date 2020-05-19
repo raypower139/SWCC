@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/new_graph"
+    app:startDestination="@id/login">
+
+    <activity
+        android:id="@+id/login"
+        android:name="ie.swcc.activities.Login"
+        android:label="Login" >
+        <action
+            android:id="@+id/action_login_to_menuFragment"
+            app:popUpTo="@id/menuFragment" />
+    </activity>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="ie.swcc.fragments.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_editFragment"
+            app:destination="@id/editFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_reportFragment"
+            app:destination="@id/reportFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_latestMessagesActivity"
+            app:destination="@id/latestMessagesActivity" />
+        <action
+            android:id="@+id/action_menuFragment_to_stravaMenu"
+            app:destination="@id/stravaMenu" />
+    </fragment>
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="ie.swcc.fragments.blog.EditFragment"
+        android:label="profile"
+        tools:layout="@layout/profile" />
+    <fragment
+        android:id="@+id/reportFragment"
+        android:name="ie.swcc.fragments.blog.ReportFragment"
+        android:label="fragment_blogreport"
+        tools:layout="@layout/fragment_blogreport" >
+        <action
+            android:id="@+id/action_reportFragment_to_blogFragment"
+            app:destination="@id/blogFragment" />
+        <action
+            android:id="@+id/action_reportFragment_to_viewBlogFragment"
+            app:destination="@id/viewBlogFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/chatActivity"
+        android:name="ie.swcc.activities.chat.ChatActivity"
+        android:label="activity_chat"
+        tools:layout="@layout/activity_chat" >
+        <action
+            android:id="@+id/action_chatActivity_to_newMessageActivity"
+            app:destination="@id/newMessageActivity" />
+    </activity>
+    <fragment
+        android:id="@+id/stravaMenu"
+        android:name="ie.swcc.fragments.strava.StravaMenu"
+        android:label="StravaMenu" >
+        <action
+            android:id="@+id/action_stravaMenu_to_stravaActivities"
+            app:destination="@id/stravaActivities" />
+        <action
+            android:id="@+id/action_stravaMenu_to_stravaSegment"
+            app:destination="@id/stravaSegment" />
+        <action
+            android:id="@+id/action_stravaMenu_to_myEfforts"
+            app:destination="@id/myEfforts" />
+    </fragment>
+    <fragment
+        android:id="@+id/blogFragment"
+        android:name="ie.swcc.fragments.blog.BlogFragment"
+        android:label="fragment_add_blogpost"
+        tools:layout="@layout/fragment_add_blogpost" />
+    <fragment
+        android:id="@+id/viewBlogFragment"
+        android:name="ie.swcc.fragments.blog.ViewBlogFragment"
+        android:label="fragment_viewblog"
+        tools:layout="@layout/fragment_viewblog" />
+    <activity
+        android:id="@+id/latestMessagesActivity"
+        android:name="ie.swcc.activities.chat.LatestMessagesActivity"
+        android:label="activity_latest_messages"
+        tools:layout="@layout/activity_latest_messages" >
+        <action
+            android:id="@+id/action_latestMessagesActivity_to_chatActivity"
+            app:destination="@id/chatActivity"
+            app:enterAnim="@anim/nav_default_exit_anim"
+            app:exitAnim="@anim/fragment_open_exit" />
+        <action
+            android:id="@+id/action_latestMessagesActivity_to_newMessageActivity"
+            app:destination="@id/newMessageActivity"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </activity>
+    <activity
+        android:id="@+id/newMessageActivity"
+        android:name="ie.swcc.activities.chat.NewMessageActivity"
+        android:label="activity_new_message"
+        tools:layout="@layout/activity_new_message" />
+    <fragment
+        android:id="@+id/stravaSegment"
+        android:name="ie.swcc.fragments.strava.StravaSegment"
+        android:label="fragment_strava_segments"
+        tools:layout="@layout/fragment_strava_segments" />
+    <fragment
+        android:id="@+id/stravaActivities"
+        android:name="ie.swcc.fragments.strava.StravaActivities"
+        android:label="fragment_strava_activity_report"
+        tools:layout="@layout/fragment_strava_activity_report" />
+    <fragment
+        android:id="@+id/myEfforts"
+        android:name="ie.swcc.fragments.strava.MyEfforts"
+        android:label="fragment_strava_my_efforts"
+        tools:layout="@layout/fragment_strava_my_efforts" />
+    <fragment
+        android:id="@+id/stravaFragment"
+        android:name="ie.swcc.fragments.strava.StravaFragment"
+        android:label="fragment_strava_report"
+        tools:layout="@layout/fragment_strava_report" />
+    <fragment
+        android:id="@+id/addClimbs2"
+        android:name="ie.swcc.fragments.strava.AddClimbs"
+        android:label="AddClimbs" />
+</navigation>

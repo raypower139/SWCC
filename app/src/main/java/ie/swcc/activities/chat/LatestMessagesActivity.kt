@@ -35,7 +35,7 @@ class LatestMessagesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latest_messages)
-
+        supportActionBar?.title = "Club Chat"
         recyclerview_latest_messages.adapter = adapter
         // Display a vertical line between rows
         recyclerview_latest_messages.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))

@@ -1,6 +1,7 @@
 package ie.swcc.fragments.strava
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -33,6 +34,7 @@ class StravaFragment : Fragment(), Callback<List<StravaModel>>, AnkoLogger {
         super.onCreate(savedInstanceState)
         app = activity?.application as SWCCApp
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

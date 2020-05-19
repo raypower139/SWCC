@@ -29,7 +29,9 @@
         <activity
             android:name=".activities.chat.LatestMessagesActivity"
             android:label="@string/club_chat" />
-
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".activities.Home" />
 
 
         <activity

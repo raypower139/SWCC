@@ -21,7 +21,7 @@ class ResetPasswordActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.reset_password)
-
+        supportActionBar?.title = "Reset Password"
 
         edtEmail = findViewById<View>(R.id.edt_reset_email) as EditText
         btnResetPassword = findViewById<View>(R.id.btn_reset_password) as Button

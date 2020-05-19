@@ -46,6 +46,7 @@ class Home : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
         setSupportActionBar(toolbar)
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
         app = application as SWCCApp
 
         navView.setNavigationItemSelectedListener(this)

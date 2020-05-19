@@ -41,7 +41,7 @@ class StravaActivities : Fragment(), Callback<List<StravaStatsModel>>, AnkoLogge
         // Inflate the layout for this fragment
         var root = inflater.inflate(R.layout.fragment_strava_activity_report, container, false)
         activity?.title = getString(R.string.action_strava_activities)
-        loader = createLoader(activity!!)
+        loader = createLoader(requireActivity())
 
         root.recyclerView2.setLayoutManager(LinearLayoutManager(activity))
         //root.recyclerView2.adapter = StravaActivitiesAdapter(app.stravaStore.findAllStats())
@@ -55,7 +55,7 @@ class StravaActivities : Fragment(), Callback<List<StravaStatsModel>>, AnkoLogge
                             response: Response<List<StravaStatsModel>>
     ) {
 
-        serviceAvailableMessage(activity!!)
+        serviceAvailableMessage(requireActivity())
         info("Retrofit JSON = $response.raw()")
         app.stravaStore.activities = response.body() as ArrayList<StravaStatsModel>
         hideLoader(loader)
@@ -65,7 +65,7 @@ class StravaActivities : Fragment(), Callback<List<StravaStatsModel>>, AnkoLogge
 
     override fun onFailure(call: Call<List<StravaStatsModel>>, t: Throwable) {
         info("Retrofit Error : $t.message")
-        serviceUnavailableMessage(activity!!)
+        serviceUnavailableMessage(requireActivity())
         hideLoader(loader)
     }
 

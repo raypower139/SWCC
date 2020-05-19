@@ -47,6 +47,7 @@ class BlogFragment : Fragment(), AnkoLogger {
         loader = createLoader(activity!!)
         activity?.title = getString(R.string.action_post)
         setButtonListener(root)
+
         return root;
     }
 

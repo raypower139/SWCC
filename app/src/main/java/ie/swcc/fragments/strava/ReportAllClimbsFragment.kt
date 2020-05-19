@@ -57,7 +57,7 @@ open class ReportAllClimbsFragment : Fragment(), AnkoLogger,
         root.recyclerViewClimbs.setLayoutManager(LinearLayoutManager(activity))
         setSwipeRefresh()
 
-        val swipeEditHandler = object : SwipeToEditCallback(activity!!) {
+        val swipeEditHandler = object : SwipeToEditCallback(requireActivity()) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 onClimbClick(viewHolder.itemView.tag as ClimbModel)
             }
@@ -89,7 +89,7 @@ open class ReportAllClimbsFragment : Fragment(), AnkoLogger,
     }
 
     override fun onClimbClick(climb: ClimbModel) {
-        activity!!.supportFragmentManager.beginTransaction()
+        requireActivity().supportFragmentManager.beginTransaction()
             .replace(R.id.homeFrame, EditClimb.newInstance(climb))
             .addToBackStack(null)
             .commit()
