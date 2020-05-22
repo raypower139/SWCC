@@ -79,6 +79,7 @@ class BlogFragment : Fragment(), AnkoLogger {
                         email = app.auth.currentUser?.email
                     )
                 )
+
             }
 
         layout.blogImage.setOnClickListener { Log.d("Photo","Working")

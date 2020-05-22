@@ -43,7 +43,7 @@ class EditClimb : Fragment(), AnkoLogger {
     ): View? {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_edit_climb, container, false)
-        activity?.title = getString(R.string.action_edit)
+        activity?.title = "MRA Climbs Completed"
         loader = createLoader(activity!!)
 
         root.checkBox_edit_MahonFalls.isChecked = editPost!!.MahonFalls
@@ -67,7 +67,7 @@ class EditClimb : Fragment(), AnkoLogger {
         root.updateStravaButton.setVisibility(View.INVISIBLE) //To set visible
         if(app.auth.currentUser!!.displayName == editPost!!.Name) {
             root.updateStravaButton.setVisibility(View.VISIBLE) //To set visible
-            root.strava_menu_choose_group_text.setText("Welcome")
+            root.strava_menu_choose_group_text.setText("Check off the climbs you have done!")
         }
 
         return root

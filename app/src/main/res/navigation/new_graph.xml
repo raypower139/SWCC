@@ -29,7 +29,8 @@
             app:destination="@id/latestMessagesActivity" />
         <action
             android:id="@+id/action_menuFragment_to_stravaMenu"
-            app:destination="@id/stravaMenu" />
+            app:destination="@id/stravaMenu"
+            app:enterAnim="@anim/fragment_fade_enter" />
     </fragment>
     <fragment
         android:id="@+id/editFragment"
@@ -70,6 +71,12 @@
         <action
             android:id="@+id/action_stravaMenu_to_myEfforts"
             app:destination="@id/myEfforts" />
+        <action
+            android:id="@+id/action_stravaMenu_to_addClimbs2"
+            app:destination="@id/addClimbs2" />
+        <action
+            android:id="@+id/action_stravaMenu_to_viewClimbFragment"
+            app:destination="@id/viewClimbFragment" />
     </fragment>
     <fragment
         android:id="@+id/blogFragment"
@@ -118,12 +125,12 @@
         android:label="fragment_strava_my_efforts"
         tools:layout="@layout/fragment_strava_my_efforts" />
     <fragment
-        android:id="@+id/stravaFragment"
-        android:name="ie.swcc.fragments.strava.StravaFragment"
-        android:label="fragment_strava_report"
-        tools:layout="@layout/fragment_strava_report" />
-    <fragment
         android:id="@+id/addClimbs2"
         android:name="ie.swcc.fragments.strava.AddClimbs"
         android:label="AddClimbs" />
+    <fragment
+        android:id="@+id/viewClimbFragment"
+        android:name="ie.swcc.fragments.strava.ViewClimbFragment"
+        android:label="fragment_view_climbs"
+        tools:layout="@layout/fragment_view_climbs" />
 </navigation>

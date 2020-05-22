@@ -63,7 +63,7 @@ class ProfileFragment : Fragment(), AnkoLogger {
 
         val root = inflater.inflate(R.layout.profile, container, false)
         loader = createLoader(activity!!)
-        activity?.title = getString(R.string.action_post)
+        activity?.title = "Profile Settings"
 
 
         val userId = app.auth.currentUser!!.uid
@@ -114,7 +114,7 @@ class ProfileFragment : Fragment(), AnkoLogger {
                     }
                 }
             updateProfile(app, app.userImage.toString(), editProfileName.toString())
-
+            getActivity()?.finish()
         }
 
 

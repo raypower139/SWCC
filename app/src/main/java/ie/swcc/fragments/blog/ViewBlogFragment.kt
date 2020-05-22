@@ -59,7 +59,7 @@ class ViewBlogFragment : Fragment(), AnkoLogger {
     ): View? {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_viewblog, container, false)
-        activity?.title = getString(R.string.action_edit)
+        activity?.title = "View Blog Post"
         loader = createLoader(activity!!)
         root.viewBlogTitle.setText(viewPost!!.title)
         root.viewBlogBody.setText(viewPost!!.body)

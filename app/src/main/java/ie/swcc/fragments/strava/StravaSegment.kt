@@ -41,7 +41,7 @@ class StravaSegment() : Fragment(), Callback<StravaWrapper>, AnkoLogger {
         // Inflate the layout for this fragment
         var root = inflater.inflate(R.layout.fragment_strava_segments, container, false)
         activity?.title = app.segmentName
-        loader = createLoader(activity!!)
+        loader = createLoader(requireActivity())
         root.recyclerView3.setLayoutManager(LinearLayoutManager(activity))
         return root
     }
@@ -50,7 +50,7 @@ class StravaSegment() : Fragment(), Callback<StravaWrapper>, AnkoLogger {
         call: Call<StravaWrapper>,
         response: Response<StravaWrapper>
     ) {
-        serviceAvailableMessage(activity!!)
+        serviceAvailableMessage(requireActivity())
         info("Retrofit JSON = $response.raw()")
         app.stravaStore.segmentEfforts = response.body()!!.entries!!
         hideLoader(loader)
@@ -59,7 +59,7 @@ class StravaSegment() : Fragment(), Callback<StravaWrapper>, AnkoLogger {
 
     override fun onFailure(call: Call<StravaWrapper>, t: Throwable) {
         info("Retrofit Error : $t.message")
-        serviceUnavailableMessage(activity!!)
+        serviceUnavailableMessage(requireActivity())
         hideLoader(loader)
     }
 
